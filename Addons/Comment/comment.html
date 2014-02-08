@@ -1,0 +1,24 @@
+<table>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<volist name="listKey" id="vo">
+				<th>{$vo}</th>
+			</volist>
+			<!-- <th>操作</th> -->
+		</tr>
+	</thead>
+	<tbody>
+		<volist name="_list" id="lv" key="vo">
+		<tr>
+			<td>{$lv.id}</td>
+			<volist name="listKey" id="lk">
+				<td>{$lv.$lk}</td>
+			</volist>
+			<td>
+				<!-- <a class="update" href="javascript:;" data-id="{$lv.id}">禁显</a> -->
+			</td>
+		</tr>
+		</volist>
+	</tbody>
+</table>

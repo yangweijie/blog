@@ -1,0 +1,96 @@
+<link rel="stylesheet" type="text/css" href="__ADDONS__/comment/style.css" />
+<div class="clearfix" ></div>
+
+<div class="comment-default">
+<div class="comment-list">
+<h5>共有{$comments_number}条评论</h5>
+  <volist name="comments" id="comment">
+  <table width="100%">
+  <tr style="border-top:1px solid #ccc;">
+	  <td rowspan="4" valign="top" class="headimg" style="padding-top:10px;"><img src="__IMG__/default.png" class="img-rounded"></td>
+	  <td class="form-inline" style="padding-top:10px;">
+		 <if condition="!empty($comment['uid'])">
+		<label><a href="javascript:void(0);">会员：{:get_username($comment.uid)}</a></label>
+		 <else/>
+		<label><a href="javascript:void(0);">网友：{$comment.uname}</a></label>
+		 </if>
+	  </td>
+  </tr>
+  <tr>
+	  <td>{$comment.comment}</td>
+  </tr>
+  <tr>
+	  <td><label class="pull-left">{$comment.create_time_text}</label> <label class="pull-right"><!--没时间了能提交，但还不能显示 <a href="javascript:void(0);" id="replybutton" onclick="replyclick({$comment.id});">回复</a> | --><a href="javascript:void(0);" id="diggbutton" onclick="diggcomment({$comment.id});">顶 (<span id="diggcont_{$comment.id}">{$comment.digg}</span>)</a></label></div></td>
+  </tr>
+  <tr><td style="padding-bottom:20px;"><div class="replybox" id="replybox_{$comment.id}" style="display:none;"></div></td></tr>
+  </table>
+  </volist>
+
+</div>
+<div id="commentformbox">
+	<h5 id="commentformtitle">发表评论</h5>
+	<form action="{:addons_url('Comment://Comment/savedata')}" class="commentForm" method = "post">
+		<input type="hidden" class="" name="model_id" id="model_id" value="{$info.model_id}" />
+		<input type="hidden" class="" name="cid" id="cid" value="{$info.id}" />
+		<input type="hidden" class="" name="pid" id="pid" value="0" />
+		<table width="100%" >
+		<tr style="border-top:1px solid #ccc;">
+			<td rowspan="3" valign="top" class="headimg"  style="padding-top:10px;"><img src="__IMG__/default.png" class="img-rounded"></td>
+			<td class="form-inline"  style="padding-top:10px;">
+			   <if condition="is_login()">
+			  <label class="sr-only" for="uname">我是 ： <a href="javascript:void(0);">{:get_username()}</a></label>
+			   <else/>
+				<label class="sr-only" for="uname">昵称* ：</label>
+				<input type="text" class="" name="uname" id="uname" placeholder="请输入您的昵称">
+				<label class="sr-only" for="uemail">邮箱* ：</label>
+				<input type="text" class="" name="uemail" id="uemail"  placeholder="请输入您的邮箱">
+			   </if>
+			</td>
+		</tr>
+		<tr>
+			<td><textarea rows="3" name="comment" id="comment" class="" style="width:100%;"></textarea></td>
+		</tr>
+		<tr>
+			<td>
+			<button type="submit" class="btn btn-small btn-primary pull-right ajax-post" target-form = "commentForm">发布</button>
+			</td>
+		</tr>
+		</table>
+	</form>
+</div>
+</div>
+<script type="text/javascript">
+function diggcomment(id){
+		$.ajax({
+			async : false,
+			type: 'POST',
+			dataType:'json',
+			url: "{:addons_url('Comment://Comment/diggit')}",
+			data : {'id':id},
+			success : function (r) {
+			  if(r.status){
+				var diggs = parseInt($('#diggcont_'+id).html()) + 1;
+				$('#diggcont_'+id).html(diggs);
+			  }else{
+				 alert(r.info);
+			  }
+			},
+			error :function (r){
+				 alert("嘛情况？顶歪了！");
+			}
+	});
+}
+
+function replyclick(id){
+	$.each($('.replybox'), function(i,n){
+		 $(this).html('');
+	});
+	$('#replybox_'+ id).html($('#commentformbox').html());
+	$('#replybox_'+ id + ' #pid').val(id);
+	$('#replybox_'+ id + ' #commentformtitle').html('发表回复');
+	$('#replybox_'+ id + ' .btn').html('回复');
+	$('#replybox_'+ id).toggle();
+}
+
+
+</script>
