@@ -57,7 +57,7 @@ return array(
     'URL_ROUTE_RULES'=>array(
         '/:year/:month/' => array('/Home/Index/archive/year/:1/month/:2'),
         'category/:name'       => '/Home/Index/category/name/:1',
-        'Archive/:id'  => array('/Home/Index/detail/id/:1'),
+//        'Archive/:id'  => array('/Home/Index/detail/id/:1'),
     ),
 );
 
