@@ -2,6 +2,8 @@
   Options +FollowSymlinks
   RewriteEngine On
 
+  RewriteRule /archive/([\d]+).html$ index.php/Home/Index/detail/id/$1 [QSA,PT,NC,L]
+
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
