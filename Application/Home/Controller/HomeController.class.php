@@ -45,13 +45,7 @@ class HomeController extends Controller {
 		$Document = D('Document');
 		$list_row = I('r')? I('r') : 10;
 		$map = array();
-		if(I('get.year') && I('get.month')){
-			$month = I('get.month');
-			$year = I('get.year');
-			$from = mktime(0, 0, 0, $month, 1, $year);
-            $to = mktime(23, 59, 59, $month, date('t', $from), $year);
-			$map['create_time'] = array('between',array($form, $to));
-		}
+
 		$cate_id = I('get.cate_id');
 		if($cate_id)
 			$map['category_id'] = $cate_id;

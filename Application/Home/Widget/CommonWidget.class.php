@@ -40,7 +40,6 @@ class CommonWidget extends Action{
 		$field = 'id,name,pid,title,link_id';
 		$category = M('Category')->where('status = 1')->order('sort asc')->select();
 		$count = M('Document')->group('category_id')->getField('category_id, count(*) as num');
-		trace($count);
 		foreach ($category as $key => $value) {
 			$category[$key]['article_num'] = (int)$count[$value['id']];
 		}

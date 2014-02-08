@@ -70,7 +70,7 @@ class IndexController extends HomeController {
             $this->error('错误的分类');
         $this->assign('category', $category);
         $_GET['cate_id'] = $category_id;
-        $this->lists(I('get.page'));
+        $this->lists(I('get.page',1));
         $this->display();
     }
 
@@ -79,7 +79,7 @@ class IndexController extends HomeController {
         $_GET['year'] = $year;
         $this->assign('year', $year);
         $this->assign('month', $month);
-        $this->lists(I('get.page'));
+        $this->lists(I('get.page',1));
         $this->display();
     }
 

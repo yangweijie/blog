@@ -334,12 +334,9 @@ class DocumentModel extends Model{
 			$year = I('get.year');
 			$begin_time = strtotime($year . $month . "01");
 			$end_time = strtotime("+1 month", $begin_time);
-
-			// $from = mktime(0, 0, 0, $month, 1, $year);
-   //          $to = mktime(23, 59, 59, $month, date('t', $from), $year);
 			$map['create_time'] = array(array('gt', $begin_time),array('lt', $end_time));
 		}
-		$map['_string']     = 'deadline = 0 OR deadline > ' . NOW_TIME;
+		$map['_string'] = 'deadline = 0 OR deadline > ' . NOW_TIME;
 
 		/* 设置推荐位 */
 		if(is_numeric($type)){
