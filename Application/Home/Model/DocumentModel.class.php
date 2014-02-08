@@ -336,12 +336,14 @@ class DocumentModel extends Model{
 			$end_time = strtotime("+1 month", $begin_time);
 			$map['create_time'] = array(array('gt', $begin_time),array('lt', $end_time));
 		}
-		$map['_string'] = 'deadline = 0 OR deadline > ' . NOW_TIME;
-
-		/* 设置推荐位 */
-		if(is_numeric($type)){
-			$map[] = "type = {$type}";
+		if(I('get.kw')){
+			$kw = trim(I('get.kw'));
+			$map['title'] = array('like',"%{$kw}%");
+			$like_id = $this->logic(2)->where("content like '%{$kw}%'")->getField('id', true);
+			if($like_id)
+				$map['id'] = array('in', $like_id);
 		}
+		$map['_string'] = 'deadline = 0 OR deadline > ' . NOW_TIME;
 
 		return $map;
 	}

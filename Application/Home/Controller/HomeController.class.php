@@ -18,6 +18,15 @@ class HomeController extends Controller {
 
 	/* 空操作，用于输出404页面 */
 	public function _empty(){
+		if(CONTROLLER_NAME == 'search'){
+			$Index = new IndexController();
+			// echo ACTION_NAME;die;
+			$_GET['kw'] = ACTION_NAME;
+			$Index->search();
+			api('Home/Index/search',array('kw'=>ACTION_NAME));
+		}else{
+			$this->error('对不起，你找的页面不存在');
+		}
 
 	}
 
@@ -49,7 +58,8 @@ class HomeController extends Controller {
 		$cate_id = I('get.cate_id');
 		if($cate_id)
 			$map['category_id'] = $cate_id;
-		$list = $Document->page($page, $list_row)->lists(NULL);
+		$cate_id = $cate_id? $cate_id : NULL;
+		$list = $Document->page($page, $list_row)->lists($cate_id);
 
 		/* 分页 */
 		$total = $Document->where($map)->count();

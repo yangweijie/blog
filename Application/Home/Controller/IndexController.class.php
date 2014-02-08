@@ -16,7 +16,7 @@ use OT\DataDictionary;
  */
 class IndexController extends HomeController {
 
-	//系统首页
+	//首页
     public function index(){
 
         $Document = D('Document');
@@ -24,6 +24,7 @@ class IndexController extends HomeController {
         $this->display();
     }
 
+    //详情
     public function detail($id){
         /* 标识正确性检测 */
         if(!($id && is_numeric($id))){
@@ -55,6 +56,7 @@ class IndexController extends HomeController {
         $this->display($tmpl);
     }
 
+    //单页
     public function single($name){
 
         $id = D('Document')->getFieldByName($name, 'id');
@@ -64,23 +66,35 @@ class IndexController extends HomeController {
             $this->detail($id);
     }
 
+    //分类
     public function category($name){
         $category = D('Category')->getByName($name);
         if(!$category)
             $this->error('错误的分类');
         $this->assign('category', $category);
-        $_GET['cate_id'] = $category_id;
+        $_GET['cate_id'] = $category['id'];
         $this->lists(I('get.page',1));
         $this->display();
     }
 
+    //归档
     public function archive($year, $month){
         $_GET['month'] = $month;
         $_GET['year'] = $year;
         $this->assign('year', $year);
         $this->assign('month', $month);
-        $this->lists(I('get.page',1));
+        $this->lists(I('get.page', 1));
         $this->display();
+    }
+
+    //搜索
+    public function search(){
+        $kw = I('get.kw');
+        if(!$kw)
+            $this->error('请输入关键字');
+        $this->assign('kw', $kw);
+        $this->lists(I('get.page', 1));
+        $this->display('Index/search');
     }
 
 }

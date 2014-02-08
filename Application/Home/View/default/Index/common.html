@@ -53,9 +53,9 @@
                     <p class="description">Just So So ...</p>
                 </div>
                 <div class="site-search col-3 kit-hidden-tb">
-                    <form id="search" method="post" action="./" role="search">
-                        <label for="s" class="sr-only">搜索关键字</label>
-                        <input type="text" name="s" class="text" placeholder="输入关键字搜索" />
+                    <form id="search" method="post" action="/" role="search">
+                        <label for="kw" class="sr-only">搜索关键字</label>
+                        <input type="text" name="kw" class="text" placeholder="输入关键字搜索" />
                         <button type="submit" class="submit">搜索</button>
                     </form>
                 </div>
@@ -141,24 +141,27 @@
         <script type="text/javascript">
             var url = window.location.pathname + window.location.search;
             url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
-        (function(){
-            var ThinkPHP = window.Think = {
-                "ROOT"   : "__ROOT__", //当前网站地址
-                "APP"    : "__APP__", //当前项目地址
-                "PUBLIC" : "__PUBLIC__", //项目公共目录地址
-                "DEEP"   : "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
-                "MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
-                "VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
-            }
-        })();
+            (function(){
+                var ThinkPHP = window.Think = {
+                    "ROOT"   : "__ROOT__", //当前网站地址
+                    "APP"    : "__APP__", //当前项目地址
+                    "PUBLIC" : "__PUBLIC__", //项目公共目录地址
+                    "DEEP"   : "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
+                    "MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+                    "VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+                }
+            })();
             $(function(){
-                console.log(url);
                  //单页高亮
                 $('#nav-menu a').removeClass('current');
                 $('#nav-menu a[href="'+url+'"]').addClass('current');
+                $('#search').submit(function(){
+                    var url = '/search/'+ $('#search input[name="kw"]').val();
+                    location.href = url;
+                    return false;
+                });
             })
         </script>
         {:hook('pageFooter')}
     </body>
 </html>
->>>>>>> 修改分类和归档

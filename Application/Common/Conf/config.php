@@ -52,12 +52,5 @@ return array(
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(1 => '目录', 2=>'独立页面'),
 
-    // 开启路由
-    'URL_ROUTER_ON'   => true,
-    'URL_ROUTE_RULES'=>array(
-        '/:year/:month/' => array('/Home/Index/archive/year/:1/month/:2'),
-        'category/:name'       => '/Home/Index/category/name/:1',
-//        'Archive/:id'  => array('/Home/Index/detail/id/:1'),
-    ),
 );
 
