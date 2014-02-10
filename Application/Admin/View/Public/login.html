@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>欢迎您登录OneThink</title>
+        <title>欢迎您登录blog</title>
         <link rel="stylesheet" type="text/css" href="__CSS__/login.css" media="all">
        	<link rel="stylesheet" type="text/css" href="__CSS__/{$Think.config.COLOR_STYLE}.css" media="all">
     </head>
@@ -13,16 +13,14 @@
             <div class="login-body">
                 <div class="login-main pr">
                     <form action="{:U('login')}" method="post" class="login-form">
-                        <h3 class="welcome"><i class="login-logo"></i>OneThink管理平台</h3>
+                        <h3 class="welcome"><i class="login-logo"></i>blog</h3>
                         <div id="itemBox" class="item-box">
                             <div class="item">
-                                <i class="icon-login-user"></i>
-                                <input type="text" name="username" placeholder="请填写用户名" autocomplete="off" />
+                                <input type="text" name="username" placeholder="用户名" autocomplete="off" />
                             </div>
                             <span class="placeholder_copy placeholder_un">请填写用户名</span>
                             <div class="item b0">
-                                <i class="icon-login-pwd"></i>
-                                <input type="password" name="password" placeholder="请填写密码" autocomplete="off" />
+                                <input type="password" name="password" placeholder="密码" autocomplete="off" />
                             </div>
                             <span class="placeholder_copy placeholder_pwd">请填写密码</span>
                             <?php if (C('VERIFY')): ?>
@@ -45,7 +43,9 @@
                             </button>
                             <div class="check-tips"></div>
                         </div>
+                        <a class="more-link" href="{:U('/')}">返回首页</a>
                     </form>
+
                 </div>
             </div>
         </div>

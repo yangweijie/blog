@@ -70,7 +70,6 @@ class CommonWidget extends Action{
 
 		$this->assign('archive', $date);
 		$this->display('Common/archive');
-		echo U('article/index@www.molibei.com',array('id'=>1));
 	}
 
 }

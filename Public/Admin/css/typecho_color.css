@@ -1,5 +1,6 @@
 html {
 	height: 100%;
+	background-color: #F6F6F3 !important;
 }
 
 body {
@@ -45,6 +46,17 @@ code,pre,.mono {
 	border-top:0;
 }
 
+.login-btn{
+	background-color: #467B96 !important;
+    border: medium none !important;
+    border-radius: 2px;
+    color: #FFFFFF;
+}
+
+.login-form input{
+	widows: 100px !important;
+	background-color: #F6F6F3 !important;
+}
 .typecho-head-nav {
 	font-size: 14px;
 	padding: 0 10px;
@@ -542,6 +554,9 @@ table th {
 	font-weight: bold !important;
 	border-bottom: 2px solid #F0F0EC;
 	text-align: left;
+}
+
+.data-table th{
 	background-color: #fff !important;
 }
 
