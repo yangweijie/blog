@@ -53,17 +53,24 @@ class CommonWidget extends Action{
 	 */
 	public function archive(){
 		$list = D('Document')->lists(NULL, '`create_time` DESC,`id` DESC', 1, true);
-		$date = array();
+		$date = $time = array();
 		foreach ($list as $key => $value) {
 			if($value['create_time'])
-				$date[] = array(
-					'text'=> date('F Y', $value['create_time']),
-					'link'=> date('Y/m', $value['create_time'])
-				);
+				$time[] = date('F Y', $value['create_time']);
 		}
-		array_unique($date);
+
+		$time = array_unique($time);
+
+		foreach ($time as $key => $value) {
+			$date[] = array(
+				'text'=> $value,
+				'link'=> date('Y/m', strtotime($value))
+			);
+		}
+
 		$this->assign('archive', $date);
 		$this->display('Common/archive');
+		echo U('article/index@www.molibei.com',array('id'=>1));
 	}
 
 }

@@ -181,7 +181,7 @@ class DocumentModel extends Model{
             return false;
         }
 
-        hook('documentSaveComplete', array('model_id'=>$data['model_id']));
+        hook('documentSaveComplete', array('model_id'=>$data['model_id'], 'id'=>$id));
 
         //行为记录
         if($id){

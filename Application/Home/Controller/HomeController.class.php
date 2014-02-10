@@ -26,8 +26,8 @@ class HomeController extends Controller {
 				$Index->search();
 				break;
 			case 'feed':
-				$count = D('Addons://Comment/comment')->group('cid')->getField('cid','count(*) as num');
-				dump($count);die;
+				// $count = D('Addons://Comment/comment')->group('cid')->getField('cid','count(*) as num');
+				// dump($count);die;
 				$type = I('get.type');
 				$this->feed($type);
 				break;
@@ -126,11 +126,12 @@ class HomeController extends Controller {
 
 
         $this->_feed->setTitle(C('WEB_SITE_TITLE') .'-文章');
-
+        $Document = D('Document');
         $list = $this->lists(1);
 
         foreach ($list as $key => $value) {
-
+            $extend_value = $Document->detail($value['id']);
+            $value = array_merge($value, $extend_value);
             $feedUrl = '';
             if (Feed::RSS2 == $this->_feedType) {
                 $feedUrl = U('/feed', '', false, true);
@@ -143,9 +144,9 @@ class HomeController extends Controller {
 
             $this->_feed->addItem(array(
                 'title'     =>  $value['title'],
-                'content'   =>  C('feedFullText') ? $value['content'] : ($value['description']?$value['description']:msubstr($value['content'], 0 ,200, "utf-8", false)),
+                'content'   =>  C('FEEDFULLTEXT') ? $value['content'] : ($value['description']?$value['description']:msubstr($value['content'], 0 ,200, "utf-8", false)),
                 'date'      =>  $value['create_time'],
-                'link'      =>  U('archive/'.$value['id'], '', false, true),
+                'link'      =>  U('archive/'.$value['id'].'.html', '', false, true),
                 'author'    =>  get_username($value['uid']),
                 'excerpt'   =>  $value['description'],
                 'comments'  =>  (int)$count[$value['id']],

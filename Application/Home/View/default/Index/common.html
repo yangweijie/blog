@@ -25,16 +25,16 @@
     <![endif]-->
 
     <!-- 通过自有函数输出HTML头部信息 -->
-    <meta name="description" content="Just So So ..." />
-    <meta name="keywords" content="typecho,php,blog" />
-    <meta name="generator" content="Typecho 0.9/13.12.12" />
+    <meta name="description" content="{:C('WEB_SITE_DESCRIPTION')}" />
+    <meta name="keywords" content="{:C('WEB_SITE_KEYWORD')}" />
+    <meta name="generator" content="onethink,{$Think.ONETHINK_VERSION}" />
     <meta name="template" content="default" />
     <link rel="pingback" href="http://localhost/typecho/index.php/action/xmlrpc" />
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost/typecho/index.php/action/xmlrpc?rsd" />
     <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://localhost/typecho/index.php/action/xmlrpc?wlw" />
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://localhost/typecho/index.php/feed/" />
-    <link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="http://localhost/typecho/index.php/feed/rss/" />
-    <link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="http://localhost/typecho/index.php/feed/atom/" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{:U('/feed')}" />
+    <link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="{:U('/feed/rss')}" />
+    <link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="{:U('/feed/atom')}" />
 
     {:hook('pageHeader')}
 </head>

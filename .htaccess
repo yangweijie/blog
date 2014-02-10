@@ -3,7 +3,8 @@
   RewriteEngine On
   RewriteRule /archive/([\d]+).html$ index.php/Home/Index/detail/id/$1 [QSA,PT,NC,L]
   RewriteRule /category/([\d\w]+).html$ index.php/Home/Index/category/name/$1 [QSA,PT,NC,L]
-  # RewriteRule /feed$ index.php/Home/Index/feed [QSA,PT,NC,L]
+  RewriteRule /feed/rss$ index.php/Home/Index/feed/type/rss [QSA,PT,NC,L]
+  RewriteRule /feed/atom$ index.php/Home/Index/feed/type/atom [QSA,PT,NC,L]
   RewriteRule /search/([\d\w]+)$ index.php/Home/Index/search/kw/$1 [QSA,PT,NC,L]
   RewriteRule /([\d]+)/([\d]+).html$ index.php/Home/Index/archive/year/$1/month/$2 [QSA,PT,NC,L]
 
