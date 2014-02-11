@@ -15,11 +15,7 @@ namespace Admin\Controller;
  */
 class ThemeController extends AdminController {
 
-    /**
-     * 主题首页
-     * @author yangweijie <yangweijiester@gmail.com>
-     */
-    public function index(){
+    public function path(){
         if(!defined('DEFAULT_MODULE'))
             define('DEFAULT_MODULE', 'Home');
         if(!defined('FRONT_THEME_PATH')){
@@ -29,6 +25,14 @@ class ThemeController extends AdminController {
                 define('FRONT_THEME_PATH',   APP_PATH.DEFAULT_MODULE.'/'.C('DEFAULT_V_LAYER').'/');
             }
         }
+    }
+
+    /**
+     * 主题首页
+     * @author yangweijie <yangweijiester@gmail.com>
+     */
+    public function index(){
+        $this->path();
         $themes = glob(FRONT_THEME_PATH . '*');
         if ($themes) {
             $activated = 0;
@@ -60,8 +64,32 @@ class ThemeController extends AdminController {
     /**
      * 编辑主题
      */
-    public function edit($name=''){
+    public function edit($name='',$file = ''){
         $this->assign('theme', $name);
+        if(!defined('DEFAULT_MODULE'))
+            define('DEFAULT_MODULE', 'Home');
+        if(!defined('FRONT_THEME_PATH')){
+            if(C('VIEW_PATH')){ // 视图目录
+                define('FRONT_THEME_PATH',   C('VIEW_PATH').DEFAULT_MODULE.'/');
+            }else{ // 模块视图
+                define('FRONT_THEME_PATH',   APP_PATH.DEFAULT_MODULE.'/'.C('DEFAULT_V_LAYER').'/');
+            }
+        }
+        $files = glob(FRONT_THEME_PATH.C('FRONT_THEME').'/*/*.html');
+        foreach ($files as $key => $value) {
+            $files[$key] = str_replace(FRONT_THEME_PATH.C('FRONT_THEME').'/', '', $value);
+        }
+        $this->assign('list', $files);
+        if($file){
+            $content = file_get_contents(FRONT_THEME_PATH.C('FRONT_THEME').'/'.base64_decode($file));
+            $this->assign('content', $content);
+            $this->assign('file', $file);
+        }else{
+            $file = array_pop($files);
+            $content = file_get_contents(FRONT_THEME_PATH.C('FRONT_THEME').'/'.$file);
+            $this->assign('content', $content);
+            $this->assign('file', base64_encode($file));
+        }
         $this->display();
     }
 
@@ -77,8 +105,9 @@ class ThemeController extends AdminController {
     }
 
     public function save($file){
-        $file = rawurldecode($file);
-        $file = '.' . $file;
+        $this->path();
+        $file = base64_decode($file);
+        $file = FRONT_THEME_PATH.C('FRONT_THEME').'/' . $file;
         $content = I('post.content');
         if(!file_exists($file))
             $this->error('错误的文件');
