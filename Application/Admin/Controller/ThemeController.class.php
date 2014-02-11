@@ -20,18 +20,18 @@ class ThemeController extends AdminController {
      * @author yangweijie <yangweijiester@gmail.com>
      */
     public function index(){
-        if(!defined('THEME_PATH')){
+        if(!defined('DEFAULT_MODULE'))
+            define('DEFAULT_MODULE', 'Home');
+        if(!defined('FRONT_THEME_PATH')){
             if(C('VIEW_PATH')){ // 视图目录
-                define('THEME_PATH',   C('VIEW_PATH').DEFAULT_MODULE.'/');
+                define('FRONT_THEME_PATH',   C('VIEW_PATH').DEFAULT_MODULE.'/');
             }else{ // 模块视图
-                define('THEME_PATH',   APP_PATH.DEFAULT_MODULE.'/'.C('DEFAULT_V_LAYER').'/');
-
+                define('FRONT_THEME_PATH',   APP_PATH.DEFAULT_MODULE.'/'.C('DEFAULT_V_LAYER').'/');
             }
         }
-        $themes = glob(THEME_PATH . '/*');
-
+        $themes = glob(FRONT_THEME_PATH . '*');
         if ($themes) {
-            $activated  = 0;
+            $activated = 0;
             $result = array();
             foreach ($themes as $key => $theme) {
                 $themeFile = $theme . '/theme.ini';
@@ -44,29 +44,50 @@ class ThemeController extends AdminController {
                 }
                 $screen = glob($theme . '/screen*.{jpg,png,gif,bmp,jpeg,JPG,PNG,GIF,BMG,JPEG}', GLOB_BRACE);
                 if ($screen) {
-                    $info['screen'] = Typecho_Common::url(trim(__TYPECHO_THEME_DIR__, '/') .
-                    '/' . $info['name'] . '/' . basename(current($screen)), $siteUrl);
+                    $info['screen'] = U(ltrim(FRONT_THEME_PATH,'.').$info['name'].'/'.basename(current($screen)) , '', false);
                 } else {
-                    $info['screen'] = Typecho_Common::url('/img/noscreen.png', $adminUrl);
+                    $info['screen'] = '__CSS__/images/noscreen.png';
                 }
-
                 $result[$key] = $info;
             }
+            $this->assign('activated', $activated);
+            $this->assign('list', $result);
         }
+
+        $this->display();
     }
 
     /**
      * 编辑主题
      */
-    public function edit($name){
-
+    public function edit($name=''){
+        $this->assign('theme', $name);
+        $this->display();
     }
 
     /**
      * 启用主题
      */
     public function active($name){
+        $res = M('Config')->where("name = 'FRONT_THEME'")->save(array('value', $name));
+        if($res !== false)
+            $this->success('启用成功');
+        else
+            $this->error('启用失败');
+    }
 
+    public function save($file){
+        $file = rawurldecode($file);
+        $file = '.' . $file;
+        $content = I('post.content');
+        if(!file_exists($file))
+            $this->error('错误的文件');
+        if(!is_writable($file))
+            $this->error('文件不可写');
+        if(file_put_contents($file, $content))
+            $this->success('保存成功');
+        else
+            $this->error('保存失败');
     }
 
 }

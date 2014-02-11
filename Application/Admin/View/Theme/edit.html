@@ -1,0 +1,34 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>编辑主题【】</h2>
+	</div>
+
+	<div class="typecho-edit-theme">
+		<div class="col-mb-12 col-tb-8 col-9 content">
+			<form action="{:U('save')}" id="theme" name="theme" method="post" class="form-horizontal">
+				<label class="sr-only" for="content">编辑源码</label>
+				<textarea class="w-100 mono" id="content" name="content">
+				</textarea>
+				<div class="controls">
+					<button target-form="form-horizontal" class="btn submit-btn ajax-post" type="submit">保存文件</button>
+				</div>
+			</form>
+		</div>
+		<ul class="col-mb-12 col-tb-4 col-3">
+			<li><strong>模板文件</strong></li>
+			<li>
+				<a href="{:U('save?file='.rawurlencode($file))}">404.php</a>
+			</li>
+		</ul>
+	</div>
+
+</block>
+
+<block name="script">
+<script type="text/javascript">
+        //导航高亮
+        // highlight_subnav('{:U('index')}');
+    </script>
+</block>

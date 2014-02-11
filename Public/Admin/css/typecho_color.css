@@ -245,6 +245,78 @@ code,pre,.mono {
 	margin-bottom: 5px;
 }
 
+
+.typecho-table-wrap {
+    background: none repeat scroll 0 0 #FFF;
+    padding: 30px;
+}
+
+.typecho-list-table {
+    width: 100%;
+}
+
+.typecho-theme-list tbody tr.current td {
+    background-color: #FFF9E8;
+}
+.typecho-list-table td {
+    border-top: 1px solid #F0F0EC;
+    padding: 10px;
+    word-break: break-all;
+}
+
+.typecho-theme-list cite {
+    color: #999;
+    font-style: normal;
+}
+
+.typecho-theme-list p{
+	margin: 14px 0;
+}
+
+/* 编辑主题 */
+
+.sr-only {
+    border: 0 none;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.typecho-edit-theme textarea {
+    font-size: 0.92857em;
+    height: 500px;
+    line-height: 1.2;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+code, pre, .mono {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+textarea {
+    line-height: 1.5;
+    resize: vertical;
+}
+
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D9D9D6;
+    border-radius: 2px;
+    padding: 7px;
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top;
+}
+
 /* 标签组 */
 .tab-nav {
 	list-style: none;
