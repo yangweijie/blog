@@ -64,6 +64,7 @@ return array(
         'domain'=>'onethinktest.u.qiniudn.com',
         'timeout'=>3600,
     ),
+    'URL_HTML_SUFFIX'=>'',
 
 
     /* 编辑器图片上传相关配置 */
