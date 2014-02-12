@@ -215,3 +215,11 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+Application/Common/Conf/config.php
+
+Application/Common/Conf/config.php
+
+Application/User/Conf/config.php
+
+Application/Install/Data/install.lock
