@@ -23,7 +23,7 @@
 2. 文件管理在编辑器以后调整后能上传图片时候再做。目前用的独立模型实现。
 3. 后台登录页在火狐下样式有问题，希望前端高手能帮我调整下。
 4. 本项目仅花了20多天，一定存在bug，希望大家踊跃安装测试，提交改进，欢迎加入
-5. 下载地址在
+5. 下载地址在[https://github.com/yangweijie/blog/releases/tag/v1.0beta](https://github.com/yangweijie/blog/releases/tag/v1.0beta)
 
 
 
