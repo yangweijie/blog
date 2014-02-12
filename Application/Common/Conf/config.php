@@ -16,13 +16,10 @@ return array(
     'AUTOLOAD_NAMESPACE' => array('Addons' => ONETHINK_ADDON_PATH), //扩展模块列表
     'DEFAULT_MODULE'     => 'Home',
     'MODULE_DENY_LIST'   => array('Common', 'User'),
-    'MODULE_ALLOW_LIST'  => array('Home', 'Admin'),
-    'TMPL_CACHE_ON'         =>  false,        // 是否开启模板编译缓存,设为false则每次都会重新编译
-    'TMPL_STRIP_SPACE'      =>  false,       // 是否去除模板文件里面的html空格与换行
-    //'MODULE_ALLOW_LIST'  => array('Home','Admin'),
+    'MODULE_ALLOW_LIST'  => array('Home','Admin'),
 
     /* 系统数据加密设置 */
-    'DATA_AUTH_KEY' => 'Y9k>up5P=Aa([EFr|DsO0cdSH3Jm]$W+Qxi.g)~Z', //默认数据加密KEY
+    'DATA_AUTH_KEY' => 'nbNdO-Fp}Voa>LMm~!<_78;"B1`?jC{D5ftvKxl*', //默认数据加密KEY
 
     /* 调试配置 */
     'SHOW_PAGE_TRACE' => true,
@@ -51,6 +48,4 @@ return array(
 
     /* 文档模型配置 (文档模型核心配置，请勿更改) */
     'DOCUMENT_MODEL_TYPE' => array(1 => '目录', 2=>'独立页面'),
-
 );
-

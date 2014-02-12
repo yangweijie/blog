@@ -54,8 +54,12 @@ code,pre,.mono {
 }
 
 .login-form input{
-	widows: 100px !important;
+	width: 272px !important;
+	display: inline-block;
 	background-color: #F6F6F3 !important;
+}
+.login-form .item {
+	padding: 0;
 }
 .typecho-head-nav {
 	font-size: 14px;

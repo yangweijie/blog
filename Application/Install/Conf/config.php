@@ -14,9 +14,9 @@
 define('INSTALL_APP_PATH', realpath('./') . '/');
 
 return array(
-    
-    'ORIGINAL_TABLE_PREFIX' => 'onethink_', //默认表前缀
 
+    'ORIGINAL_TABLE_PREFIX' => 'onethink_', //默认表前缀
+    'URL_MODEL'            => 3, //URL模式
     /* 模板相关配置 */
     'TMPL_PARSE_STRING' => array(
         '__STATIC__' => __ROOT__ . '/Public/static',

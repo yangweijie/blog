@@ -121,7 +121,7 @@ class InstallController extends Controller{
 		$conf 	=	write_config($dbconfig, $auth);
 		session('config_file',$conf);
 		if(session('error')){
-			//show_msg();
+			show_msg();
 		} else {
 			session('step', 3);
 			$this->redirect('Index/complete');

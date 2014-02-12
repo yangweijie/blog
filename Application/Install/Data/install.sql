@@ -1,6 +1,6 @@
 -- -----------------------------
--- Think MySQL Data Transfer 
--- Date : 2013-12-17 15:14:46
+-- Think MySQL Data Transfer
+-- Date : 2014-02-12 10:05:11
 -- -----------------------------
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -30,13 +30,13 @@ INSERT INTO `onethink_action` VALUES ('1', 'user_login', '用户登录', '积分
 INSERT INTO `onethink_action` VALUES ('2', 'add_article', '发布文章', '积分+5，每天上限5次', 'table:member|field:score|condition:uid={$self}|rule:score+5|cycle:24|max:5', '', '2', '0', '1380173180');
 INSERT INTO `onethink_action` VALUES ('3', 'review', '评论', '评论积分+1，无限制', 'table:member|field:score|condition:uid={$self}|rule:score+1', '', '2', '1', '1383285646');
 INSERT INTO `onethink_action` VALUES ('4', 'add_document', '发表文档', '积分+10，每天上限5次', 'table:member|field:score|condition:uid={$self}|rule:score+10|cycle:24|max:5', '[user|get_nickname]在[time|time_format]发表了一篇文章。\r\n表[model]，记录编号[record]。', '2', '0', '1386139726');
-INSERT INTO `onethink_action` VALUES ('5', 'add_document_topic', '发表讨论', '积分+5，每天上限10次', 'table:member|field:score|condition:uid={$self}|rule:score+5|cycle:24|max:10', '', '2', '0', '1383285551');
+INSERT INTO `onethink_action` VALUES ('5', 'add_document_topic', '发表讨论', '积分+5，每天上限10次', 'table:member|field:score|condition:uid={$self}|rule:score+5|cycle:24|max:10', '', '2', '1', '1383285551');
 INSERT INTO `onethink_action` VALUES ('6', 'update_config', '更新配置', '新增或修改或删除配置', '', '', '1', '1', '1383294988');
 INSERT INTO `onethink_action` VALUES ('7', 'update_model', '更新模型', '新增或修改模型', '', '', '1', '1', '1383295057');
 INSERT INTO `onethink_action` VALUES ('8', 'update_attribute', '更新属性', '新增或更新或删除属性', '', '', '1', '1', '1383295963');
-INSERT INTO `onethink_action` VALUES ('9', 'update_channel', '更新导航', '新增或修改或删除导航', '', '', '1', '1', '1383296301');
+INSERT INTO `onethink_action` VALUES ('9', 'update_channel', '更新导航', '新增或修改或删除导航', '', '', '1', '0', '1383296301');
 INSERT INTO `onethink_action` VALUES ('10', 'update_menu', '更新菜单', '新增或修改或删除菜单', '', '', '1', '1', '1383296392');
-INSERT INTO `onethink_action` VALUES ('11', 'update_category', '更新分类', '新增或修改或删除分类', '', '', '1', '1', '1383296765');
+INSERT INTO `onethink_action` VALUES ('11', 'update_category', '更新分类', '新增或修改或删除分类', '', '', '1', '0', '1383296765');
 
 -- -----------------------------
 -- Table structure for `onethink_action_log`
@@ -56,8 +56,7 @@ CREATE TABLE `onethink_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
-
+) ENGINE=MyISAM AUTO_INCREMENT=140 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- -----------------------------
 -- Table structure for `onethink_addons`
@@ -75,18 +74,21 @@ CREATE TABLE `onethink_addons` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '安装时间',
   `has_adminlist` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否有后台列表',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='插件表';
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='插件表';
 
 -- -----------------------------
 -- Records of `onethink_addons`
 -- -----------------------------
-INSERT INTO `onethink_addons` VALUES ('15', 'EditorForAdmin', '后台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"500px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1383126253', '0');
+INSERT INTO `onethink_addons` VALUES ('15', 'EditorForAdmin', '后台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"4\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"500px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1383126253', '0');
 INSERT INTO `onethink_addons` VALUES ('2', 'SiteStat', '站点统计信息', '统计站点的基础信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"1\",\"display\":\"1\",\"status\":\"0\"}', 'thinkphp', '0.1', '1379512015', '0');
-INSERT INTO `onethink_addons` VALUES ('3', 'DevTeam', '开发团队信息', '开发团队成员信息', '1', '{\"title\":\"OneThink\\u5f00\\u53d1\\u56e2\\u961f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512022', '0');
+INSERT INTO `onethink_addons` VALUES ('22', 'DevTeam', '开发团队信息', '开发团队成员信息', '1', '{\"title\":\"OneThink\\u5f00\\u53d1\\u56e2\\u961f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1390978417', '0');
 INSERT INTO `onethink_addons` VALUES ('4', 'SystemInfo', '系统环境信息', '用于显示一些服务器的信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512036', '0');
-INSERT INTO `onethink_addons` VALUES ('5', 'Editor', '前台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"300px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1379830910', '0');
+INSERT INTO `onethink_addons` VALUES ('24', 'Comment', '评论', '用于各种类型文档评论', '1', 'null', 'Wolixli', '0.1', '1391092185', '1');
 INSERT INTO `onethink_addons` VALUES ('6', 'Attachment', '附件', '用于文档模型上传附件', '1', 'null', 'thinkphp', '0.1', '1379842319', '1');
-INSERT INTO `onethink_addons` VALUES ('9', 'SocialComment', '通用社交化评论', '集成了各种社交化评论插件，轻松集成到系统中。', '1', '{\"comment_type\":\"1\",\"comment_uid_youyan\":\"\",\"comment_short_name_duoshuo\":\"\",\"comment_data_list_duoshuo\":\"\"}', 'thinkphp', '0.1', '1380273962', '0');
+INSERT INTO `onethink_addons` VALUES ('21', 'QiuBai', '糗事百科', '读别人的糗事，娱乐自己', '1', '{\"title\":\"\\u7cd7\\u4e8b\\u767e\\u79d1\",\"width\":\"2\",\"display\":\"1\",\"cache_time\":\"60\",\"mulimages\":\"1\"}', 'thinkphp', '0.1', '1390529296', '0');
+INSERT INTO `onethink_addons` VALUES ('25', 'SocialComment', '通用社交化评论', '集成了各种社交化评论插件，轻松集成到系统中。', '0', '{\"comment_type\":\"1\",\"comment_uid_youyan\":\"90040\",\"mulimages\":\"\",\"comment_short_name_duoshuo\":\"\",\"comment_form_pos_duoshuo\":\"buttom\",\"comment_data_list_duoshuo\":\"10\",\"comment_data_order_duoshuo\":\"asc\"}', 'thinkphp', '0.1', '1391765001', '0');
+INSERT INTO `onethink_addons` VALUES ('26', 'Ping', '文章发布ping插件', '用于发布文档后的主动ping，主动增加收录', '1', '{\"site_name\":\"\\u535a\\u5ba2\",\"site_url\":\"blog.cn\",\"update_url\":\"Archive\\/@blog.cn\",\"update_rss\":\"feed@blog.cn\"}', 'yangweijie', '0.1', '1392009365', '0');
+INSERT INTO `onethink_addons` VALUES ('27', 'ReturnTop', '返回顶部', '回到顶部美化，随机或指定显示，100款样式，每天一种换，天天都用新样式', '1', '{\"random\":\"0\",\"current\":\"2\"}', 'thinkphp', '0.1', '1392009776', '0');
 
 -- -----------------------------
 -- Table structure for `onethink_attachment`
@@ -138,7 +140,7 @@ CREATE TABLE `onethink_attribute` (
   `auto_time` tinyint(1) unsigned NOT NULL,
   `auto_type` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='模型属性表';
+) ENGINE=MyISAM AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COMMENT='模型属性表';
 
 -- -----------------------------
 -- Records of `onethink_attribute`
@@ -146,13 +148,13 @@ CREATE TABLE `onethink_attribute` (
 INSERT INTO `onethink_attribute` VALUES ('1', 'uid', '用户ID', 'int(10) unsigned NOT NULL ', 'num', '0', '', '0', '', '1', '0', '1', '1384508362', '1383891233', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('2', 'name', '标识', 'char(40) NOT NULL ', 'string', '', '同一根节点下标识不重复', '1', '', '1', '0', '1', '1383894743', '1383891233', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('3', 'title', '标题', 'char(80) NOT NULL ', 'string', '', '文档标题', '1', '', '1', '0', '1', '1383894778', '1383891233', '', '0', '', '', '', '0', '');
-INSERT INTO `onethink_attribute` VALUES ('4', 'category_id', '所属分类', 'int(10) unsigned NOT NULL ', 'string', '', '', '0', '', '1', '0', '1', '1384508336', '1383891233', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('4', 'category_id', '所属分类', 'int(10) unsigned NOT NULL ', 'string', '', '', '0', '', '1', '0', '1', '1390968266', '1383891233', '', '0', '', 'regex', '', '0', 'function');
 INSERT INTO `onethink_attribute` VALUES ('5', 'description', '描述', 'char(140) NOT NULL ', 'textarea', '', '', '1', '', '1', '0', '1', '1383894927', '1383891233', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('6', 'root', '根节点', 'int(10) unsigned NOT NULL ', 'num', '0', '该文档的顶级文档编号', '0', '', '1', '0', '1', '1384508323', '1383891233', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('7', 'pid', '所属ID', 'int(10) unsigned NOT NULL ', 'num', '0', '父文档编号', '0', '', '1', '0', '1', '1384508543', '1383891233', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('8', 'model_id', '内容模型ID', 'tinyint(3) unsigned NOT NULL ', 'num', '0', '该文档所对应的模型', '0', '', '1', '0', '1', '1384508350', '1383891233', '', '0', '', '', '', '0', '');
-INSERT INTO `onethink_attribute` VALUES ('9', 'type', '内容类型', 'tinyint(3) unsigned NOT NULL ', 'select', '2', '', '1', '1:目录\r\n2:主题\r\n3:段落', '1', '0', '1', '1384511157', '1383891233', '', '0', '', '', '', '0', '');
-INSERT INTO `onethink_attribute` VALUES ('10', 'position', '推荐位', 'smallint(5) unsigned NOT NULL ', 'checkbox', '0', '多个推荐则将其推荐值相加', '1', '1:列表推荐\r\n2:频道页推荐\r\n4:首页推荐', '1', '0', '1', '1383895640', '1383891233', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('9', 'type', '内容类型', 'tinyint(3) unsigned NOT NULL ', 'select', '1', '', '1', '1:文章\r\n2:单独页面', '1', '0', '1', '1391047439', '1383891233', '', '0', '', 'regex', '', '0', 'function');
+INSERT INTO `onethink_attribute` VALUES ('10', 'position', '推荐位', 'smallint(5) unsigned NOT NULL ', 'checkbox', '0', '多个推荐则将其推荐值相加', '0', '1:列表推荐\r\n2:频道页推荐\r\n4:首页推荐', '1', '0', '1', '1390968172', '1383891233', '', '0', '', 'regex', '', '0', 'function');
 INSERT INTO `onethink_attribute` VALUES ('11', 'link_id', '外链', 'int(10) unsigned NOT NULL ', 'num', '0', '0-非外链，大于0-外链ID,需要函数进行链接与编号的转换', '1', '', '1', '0', '1', '1383895757', '1383891233', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('12', 'cover_id', '封面', 'int(10) unsigned NOT NULL ', 'picture', '0', '0-无封面，大于0-封面图片ID，需要函数处理', '1', '', '1', '0', '1', '1384147827', '1383891233', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('13', 'display', '可见性', 'tinyint(3) unsigned NOT NULL ', 'radio', '1', '', '1', '0:不可见\r\n1:所有人可见', '1', '0', '1', '1386662271', '1383891233', '', '0', '', 'regex', '', '0', 'function');
@@ -175,6 +177,22 @@ INSERT INTO `onethink_attribute` VALUES ('29', 'template', '详情页显示模�
 INSERT INTO `onethink_attribute` VALUES ('30', 'file_id', '文件ID', 'int(10) unsigned NOT NULL ', 'file', '0', '需要函数处理', '1', '', '3', '0', '1', '1383896415', '1383891252', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('31', 'download', '下载次数', 'int(10) unsigned NOT NULL ', 'num', '0', '', '1', '', '3', '0', '1', '1383896380', '1383891252', '', '0', '', '', '', '0', '');
 INSERT INTO `onethink_attribute` VALUES ('32', 'size', '文件大小', 'bigint(20) unsigned NOT NULL ', 'num', '0', '单位bit', '1', '', '3', '0', '1', '1383896371', '1383891252', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('33', 'tags', '标签', 'text NOT NULL', 'textarea', '', '', '0', '', '2', '0', '1', '1391000945', '1391000945', '', '3', '', 'regex', '', '3', 'function');
+INSERT INTO `onethink_attribute` VALUES ('34', 'title', '标题', 'varchar(200) NULL ', 'string', '', '', '1', '', '4', '0', '1', '1391049624', '1391049096', '', '0', '', 'regex', '', '0', 'function');
+INSERT INTO `onethink_attribute` VALUES ('35', 'name', '缩略名', 'varchar(200) NULL ', 'string', '', '', '1', '', '4', '0', '1', '1391049611', '1391049096', '', '0', '', 'regex', '', '0', 'function');
+INSERT INTO `onethink_attribute` VALUES ('36', 'description', '描述', 'varchar(200) NULL ', 'string', '', '', '1', '', '4', '0', '1', '1391049592', '1391049096', '', '0', '', 'regex', '', '0', 'function');
+INSERT INTO `onethink_attribute` VALUES ('37', 'count', '数量', 'int(10) unsigned NULL ', 'string', '0', '文章关联的数量', '1', '', '4', '0', '1', '1391049580', '1391049096', '', '0', '', 'regex', '', '0', 'function');
+INSERT INTO `onethink_attribute` VALUES ('38', 'order', '排序', 'int(10) unsigned NULL ', 'string', '0', '', '1', '', '4', '0', '1', '1391049554', '1391049096', '', '0', '', 'regex', '', '0', 'function');
+INSERT INTO `onethink_attribute` VALUES ('39', 'name', '原始文件名', 'char(30) NOT NULL ', 'string', '', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('40', 'savename', '保存名称', 'char(20) NOT NULL ', 'string', '', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('41', 'savepath', '文件保存路径', 'char(30) NOT NULL ', 'string', '', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('42', 'ext', '文件后缀', 'char(5) NOT NULL ', 'string', '', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('43', 'mime', '文件mime类型', 'char(40) NOT NULL ', 'string', '', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('44', 'size', '文件大小', 'int(10) unsigned NOT NULL ', 'string', '0', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('45', 'md5', '文件md5', 'char(32) NOT NULL ', 'string', '', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('46', 'sha1', '文件 sha1编码', 'char(40) NOT NULL ', 'string', '', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('47', 'location', '文件保存位置', 'tinyint(3) unsigned NOT NULL ', 'string', '0', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
+INSERT INTO `onethink_attribute` VALUES ('48', 'create_time', '上传时间', 'int(10) unsigned NOT NULL ', 'string', '', '', '1', '', '5', '0', '1', '1391133228', '1391133228', '', '0', '', '', '', '0', '');
 
 -- -----------------------------
 -- Table structure for `onethink_auth_extend`
@@ -507,8 +525,8 @@ CREATE TABLE `onethink_category` (
 -- -----------------------------
 -- Records of `onethink_category`
 -- -----------------------------
-INSERT INTO `onethink_category` VALUES ('1', 'blog', '博客', '0', '0', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '0', '1', '0', '0', '1', '', '1379474947', '1382701539', '1', '0');
-INSERT INTO `onethink_category` VALUES ('2', 'default_blog', '默认分类', '1', '1', '10', '', '', '', '', '', '', '', '2', '2,1,3', '0', '1', '1', '0', '1', '1', '', '1379475028', '1386839751', '1', '31');
+INSERT INTO `onethink_category` VALUES ('1', 'blog', '默认分类', '0', '0', '10', '', '', '', '', '', '', '', '2', '2,1', '0', '0', '1', '0', '0', '1', '', '1379474947', '1391043811', '1', '0');
+INSERT INTO `onethink_category` VALUES ('2', 'default_blog', '博客', '1', '1', '10', '', '', '', '', '', '', '', '2', '2,1,3', '0', '1', '1', '0', '1', '1', '', '1379475028', '1391043816', '1', '31');
 
 -- -----------------------------
 -- Table structure for `onethink_channel`
@@ -535,6 +553,35 @@ INSERT INTO `onethink_channel` VALUES ('2', '0', '博客', 'Article/index?catego
 INSERT INTO `onethink_channel` VALUES ('3', '0', '官网', 'http://www.onethink.cn', '3', '1379475154', '1387163458', '1', '0');
 
 -- -----------------------------
+-- Table structure for `onethink_comment`
+-- -----------------------------
+DROP TABLE IF EXISTS `onethink_comment`;
+CREATE TABLE `onethink_comment` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(11) unsigned NOT NULL DEFAULT '0',
+  `model_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `cid` int(11) unsigned NOT NULL DEFAULT '0',
+  `comment` text,
+  `digg` int(11) unsigned NOT NULL DEFAULT '0',
+  `com_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '评论IP',
+  `create_time` int(11) unsigned NOT NULL DEFAULT '0',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `uid` int(10) unsigned DEFAULT NULL,
+  `uname` varchar(200) DEFAULT NULL,
+  `uemail` varchar(200) DEFAULT NULL,
+  `uurl` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `uid` (`uid`),
+  KEY `model_id` (`model_id`),
+  KEY `cid` (`cid`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- -----------------------------
+-- Records of `onethink_comment`
+-- -----------------------------
+INSERT INTO `onethink_comment` VALUES ('1', '0', '2', '2', 'qweqwe', '1', '2130706433', '1391604570', '1', '', '123', '917647288@qq.com', '');
+
+-- -----------------------------
 -- Table structure for `onethink_config`
 -- -----------------------------
 DROP TABLE IF EXISTS `onethink_config`;
@@ -549,42 +596,79 @@ CREATE TABLE `onethink_config` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态',
-  `value` text NOT NULL COMMENT '配置值',
+  `value` longtext NOT NULL COMMENT '配置值',
   `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_name` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- -----------------------------
 -- Records of `onethink_config`
 -- -----------------------------
-INSERT INTO `onethink_config` VALUES ('1', 'WEB_SITE_TITLE', '1', '网站标题', '1', '', '网站标题前台显示标题', '1378898976', '1379235274', '1', 'OneThink内容管理框架', '0');
-INSERT INTO `onethink_config` VALUES ('2', 'WEB_SITE_DESCRIPTION', '2', '网站描述', '1', '', '网站搜索引擎描述', '1378898976', '1379235841', '1', 'OneThink内容管理框架', '1');
-INSERT INTO `onethink_config` VALUES ('3', 'WEB_SITE_KEYWORD', '2', '网站关键字', '1', '', '网站搜索引擎关键字', '1378898976', '1381390100', '1', 'ThinkPHP,OneThink', '8');
-INSERT INTO `onethink_config` VALUES ('4', 'WEB_SITE_CLOSE', '4', '关闭站点', '1', '0:关闭,1:开启', '站点关闭后其他用户不能访问，管理员可以正常访问', '1378898976', '1379235296', '1', '1', '1');
-INSERT INTO `onethink_config` VALUES ('9', 'CONFIG_TYPE_LIST', '3', '配置类型列表', '4', '', '主要用于数据解析和页面表单的生成', '1378898976', '1379235348', '1', '0:数字\r\n1:字符\r\n2:文本\r\n3:数组\r\n4:枚举', '2');
-INSERT INTO `onethink_config` VALUES ('10', 'WEB_SITE_ICP', '1', '网站备案号', '1', '', '设置在网站底部显示的备案号，如“沪ICP备12007941号-2', '1378900335', '1379235859', '1', '', '9');
-INSERT INTO `onethink_config` VALUES ('11', 'DOCUMENT_POSITION', '3', '文档推荐位', '2', '', '文档推荐位，推荐到多个位置KEY值相加即可', '1379053380', '1379235329', '1', '1:列表页推荐\r\n2:频道页推荐\r\n4:网站首页推荐', '3');
-INSERT INTO `onethink_config` VALUES ('12', 'DOCUMENT_DISPLAY', '3', '文档可见性', '2', '', '文章可见性仅影响前台显示，后台不收影响', '1379056370', '1379235322', '1', '0:所有人可见\r\n1:仅注册会员可见\r\n2:仅管理员可见', '4');
-INSERT INTO `onethink_config` VALUES ('13', 'COLOR_STYLE', '4', '后台色系', '1', 'default_color:默认\r\nblue_color:紫罗兰', '后台颜色风格', '1379122533', '1379235904', '1', 'default_color', '10');
-INSERT INTO `onethink_config` VALUES ('20', 'CONFIG_GROUP_LIST', '3', '配置分组', '4', '', '配置分组', '1379228036', '1384418383', '1', '1:基本\r\n2:内容\r\n3:用户\r\n4:系统', '4');
-INSERT INTO `onethink_config` VALUES ('21', 'HOOKS_TYPE', '3', '钩子的类型', '4', '', '类型 1-用于扩展显示内容，2-用于扩展业务处理', '1379313397', '1379313407', '1', '1:视图\r\n2:控制器', '6');
-INSERT INTO `onethink_config` VALUES ('22', 'AUTH_CONFIG', '3', 'Auth配置', '4', '', '自定义Auth.class.php类配置', '1379409310', '1379409564', '1', 'AUTH_ON:1\r\nAUTH_TYPE:2', '8');
-INSERT INTO `onethink_config` VALUES ('23', 'OPEN_DRAFTBOX', '4', '是否开启草稿功能', '2', '0:关闭草稿功能\r\n1:开启草稿功能\r\n', '新增文章时的草稿功能配置', '1379484332', '1379484591', '1', '1', '1');
-INSERT INTO `onethink_config` VALUES ('24', 'DRAFT_AOTOSAVE_INTERVAL', '0', '自动保存草稿时间', '2', '', '自动保存草稿的时间间隔，单位：秒', '1379484574', '1386143323', '1', '60', '2');
-INSERT INTO `onethink_config` VALUES ('25', 'LIST_ROWS', '0', '后台每页记录数', '2', '', '后台数据每页显示记录数', '1379503896', '1380427745', '1', '10', '10');
-INSERT INTO `onethink_config` VALUES ('26', 'USER_ALLOW_REGISTER', '4', '是否允许用户注册', '3', '0:关闭注册\r\n1:允许注册', '是否开放用户注册', '1379504487', '1379504580', '1', '1', '3');
-INSERT INTO `onethink_config` VALUES ('27', 'CODEMIRROR_THEME', '4', '预览插件的CodeMirror主题', '4', '3024-day:3024 day\r\n3024-night:3024 night\r\nambiance:ambiance\r\nbase16-dark:base16 dark\r\nbase16-light:base16 light\r\nblackboard:blackboard\r\ncobalt:cobalt\r\neclipse:eclipse\r\nelegant:elegant\r\nerlang-dark:erlang-dark\r\nlesser-dark:lesser-dark\r\nmidnight:midnight', '详情见CodeMirror官网', '1379814385', '1384740813', '1', 'ambiance', '3');
+INSERT INTO `onethink_config` VALUES ('1', 'WEB_SITE_TITLE', '1', '网站标题', '1', '', '网站标题前台显示标题', '1378898976', '1379235274', '1', 'OneThink内容管理框架', '1');
+INSERT INTO `onethink_config` VALUES ('2', 'WEB_SITE_DESCRIPTION', '2', '网站描述', '1', '', '网站搜索引擎描述', '1378898976', '1379235841', '1', 'OneThink内容管理框架', '2');
+INSERT INTO `onethink_config` VALUES ('3', 'WEB_SITE_KEYWORD', '2', '网站关键字', '1', '', '网站搜索引擎关键字', '1378898976', '1381390100', '1', 'ThinkPHP,OneThink', '3');
+INSERT INTO `onethink_config` VALUES ('4', 'WEB_SITE_CLOSE', '4', '关闭站点', '1', '0:关闭,1:开启', '站点关闭后其他用户不能访问，管理员可以正常访问', '1378898976', '1379235296', '1', '1', '5');
+INSERT INTO `onethink_config` VALUES ('9', 'CONFIG_TYPE_LIST', '3', '配置类型列表', '4', '', '主要用于数据解析和页面表单的生成', '1378898976', '1379235348', '1', '0:数字\r\n1:字符\r\n2:文本\r\n3:数组\r\n4:枚举', '10');
+INSERT INTO `onethink_config` VALUES ('10', 'WEB_SITE_ICP', '1', '网站备案号', '1', '', '设置在网站底部显示的备案号，如“沪ICP备12007941号-2', '1378900335', '1379235859', '1', '', '10');
+INSERT INTO `onethink_config` VALUES ('11', 'DOCUMENT_POSITION', '3', '文档推荐位', '2', '', '文档推荐位，推荐到多个位置KEY值相加即可', '1379053380', '1379235329', '1', '1:列表页推荐\r\n2:频道页推荐\r\n4:网站首页推荐', '6');
+INSERT INTO `onethink_config` VALUES ('12', 'DOCUMENT_DISPLAY', '3', '文档可见性', '2', '', '文章可见性仅影响前台显示，后台不收影响', '1379056370', '1379235322', '1', '0:所有人可见\r\n1:仅注册会员可见\r\n2:仅管理员可见', '7');
+INSERT INTO `onethink_config` VALUES ('13', 'COLOR_STYLE', '4', '后台色系', '1', 'default_color:默认\r\nblue_color:紫罗兰\r\ntypecho_color:仿typecho', '后台颜色风格', '1379122533', '1390719847', '1', 'typecho_color', '10');
+INSERT INTO `onethink_config` VALUES ('20', 'CONFIG_GROUP_LIST', '3', '配置分组', '4', '', '配置分组', '1379228036', '1384418383', '1', '1:基本\r\n2:评论\r\n3:阅读\r\n4:站点框架\r\n5:个人设置', '8');
+INSERT INTO `onethink_config` VALUES ('21', 'HOOKS_TYPE', '3', '钩子的类型', '4', '', '类型 1-用于扩展显示内容，2-用于扩展业务处理', '1379313397', '1379313407', '1', '1:视图\r\n2:控制器', '9');
+INSERT INTO `onethink_config` VALUES ('22', 'AUTH_CONFIG', '3', 'Auth配置', '4', '', '自定义Auth.class.php类配置', '1379409310', '1379409564', '1', 'AUTH_ON:1\r\nAUTH_TYPE:2', '5');
+INSERT INTO `onethink_config` VALUES ('23', 'OPEN_DRAFTBOX', '4', '是否开启草稿功能', '2', '0:关闭草稿功能\r\n1:开启草稿功能\r\n', '新增文章时的草稿功能配置', '1379484332', '1379484591', '1', '1', '7');
+INSERT INTO `onethink_config` VALUES ('24', 'DRAFT_AOTOSAVE_INTERVAL', '0', '自动保存草稿时间', '5', '', '自动保存草稿的时间间隔，单位：秒', '1379484574', '1392017874', '1', '60', '10');
+INSERT INTO `onethink_config` VALUES ('25', 'LIST_ROWS', '0', '后台每页记录数', '5', '', '后台数据每页显示记录数', '1379503896', '1392017862', '1', '10', '10');
+INSERT INTO `onethink_config` VALUES ('26', 'USER_ALLOW_REGISTER', '4', '是否允许用户注册', '3', '0:关闭注册\r\n1:允许注册', '是否开放用户注册', '1379504487', '1379504580', '1', '1', '4');
+INSERT INTO `onethink_config` VALUES ('27', 'CODEMIRROR_THEME', '4', '预览插件的CodeMirror主题', '1', '3024-day:3024 day\r\n3024-night:3024 night\r\nambiance:ambiance\r\nbase16-dark:base16 dark\r\nbase16-light:base16 light\r\nblackboard:blackboard\r\ncobalt:cobalt\r\neclipse:eclipse\r\nelegant:elegant\r\nerlang-dark:erlang-dark\r\nlesser-dark:lesser-dark\r\nmidnight:midnight', '详情见CodeMirror官网', '1379814385', '1390906341', '1', 'ambiance', '6');
 INSERT INTO `onethink_config` VALUES ('28', 'DATA_BACKUP_PATH', '1', '数据库备份根路径', '4', '', '路径必须以 / 结尾', '1381482411', '1381482411', '1', './Data/', '5');
-INSERT INTO `onethink_config` VALUES ('29', 'DATA_BACKUP_PART_SIZE', '0', '数据库备份卷大小', '4', '', '该值用于限制压缩后的分卷最大长度。单位：B；建议设置20M', '1381482488', '1381729564', '1', '20971520', '7');
-INSERT INTO `onethink_config` VALUES ('30', 'DATA_BACKUP_COMPRESS', '4', '数据库备份文件是否启用压缩', '4', '0:不压缩\r\n1:启用压缩', '压缩备份文件需要PHP环境支持gzopen,gzwrite函数', '1381713345', '1381729544', '1', '1', '9');
+INSERT INTO `onethink_config` VALUES ('29', 'DATA_BACKUP_PART_SIZE', '0', '数据库备份卷大小', '4', '', '该值用于限制压缩后的分卷最大长度。单位：B；建议设置20M', '1381482488', '1381729564', '1', '20971520', '4');
+INSERT INTO `onethink_config` VALUES ('30', 'DATA_BACKUP_COMPRESS', '4', '数据库备份文件是否启用压缩', '4', '0:不压缩\r\n1:启用压缩', '压缩备份文件需要PHP环境支持gzopen,gzwrite函数', '1381713345', '1381729544', '1', '1', '8');
 INSERT INTO `onethink_config` VALUES ('31', 'DATA_BACKUP_COMPRESS_LEVEL', '4', '数据库备份文件压缩级别', '4', '1:普通\r\n4:一般\r\n9:最高', '数据库备份文件的压缩级别，该配置在开启压缩时生效', '1381713408', '1381713408', '1', '9', '10');
 INSERT INTO `onethink_config` VALUES ('32', 'DEVELOP_MODE', '4', '开启开发者模式', '4', '0:关闭\r\n1:开启', '是否开启开发者模式', '1383105995', '1383291877', '1', '1', '11');
-INSERT INTO `onethink_config` VALUES ('33', 'ALLOW_VISIT', '3', '不受限控制器方法', '0', '', '', '1386644047', '1386644741', '1', '0:article/draftbox\r\n1:article/mydocument\r\n2:Category/tree\r\n3:Index/verify\r\n4:file/upload\r\n5:file/download\r\n6:user/updatePassword\r\n7:user/updateNickname\r\n8:user/submitPassword\r\n9:user/submitNickname\r\n10:file/uploadpicture', '0');
-INSERT INTO `onethink_config` VALUES ('34', 'DENY_VISIT', '3', '超管专限控制器方法', '0', '', '仅超级管理员可访问的控制器方法', '1386644141', '1386644659', '1', '0:Addons/addhook\r\n1:Addons/edithook\r\n2:Addons/delhook\r\n3:Addons/updateHook\r\n4:Admin/getMenus\r\n5:Admin/recordList\r\n6:AuthManager/updateRules\r\n7:AuthManager/tree', '0');
-INSERT INTO `onethink_config` VALUES ('35', 'REPLY_LIST_ROWS', '0', '回复列表每页条数', '2', '', '', '1386645376', '1387178083', '1', '10', '0');
+INSERT INTO `onethink_config` VALUES ('33', 'ALLOW_VISIT', '3', '不受限控制器方法', '0', '', '', '1386644047', '1386644741', '1', '0:article/draftbox\r\n1:article/mydocument\r\n2:Category/tree\r\n3:Index/verify\r\n4:file/upload\r\n5:file/download\r\n6:user/updatePassword\r\n7:user/updateNickname\r\n8:user/submitPassword\r\n9:user/submitNickname\r\n10:file/uploadpicture', '9');
+INSERT INTO `onethink_config` VALUES ('34', 'DENY_VISIT', '3', '超管专限控制器方法', '0', '', '仅超级管理员可访问的控制器方法', '1386644141', '1386644659', '1', '0:Addons/addhook\r\n1:Addons/edithook\r\n2:Addons/delhook\r\n3:Addons/updateHook\r\n4:Admin/getMenus\r\n5:Admin/recordList\r\n6:AuthManager/updateRules\r\n7:AuthManager/tree', '4');
+INSERT INTO `onethink_config` VALUES ('35', 'REPLY_LIST_ROWS', '0', '回复列表每页条数', '2', '', '', '1386645376', '1387178083', '1', '10', '10');
 INSERT INTO `onethink_config` VALUES ('36', 'ADMIN_ALLOW_IP', '2', '后台允许访问IP', '4', '', '多个用逗号分隔，如果不配置表示不限制IP访问', '1387165454', '1387165553', '1', '', '12');
-INSERT INTO `onethink_config` VALUES ('37', 'SHOW_PAGE_TRACE', '4', '是否显示页面Trace', '4', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '1387165685', '1387165685', '1', '0', '1');
+INSERT INTO `onethink_config` VALUES ('37', 'SHOW_PAGE_TRACE', '4', '是否显示页面Trace', '4', '0:关闭\r\n1:开启', '是否显示页面Trace信息', '1387165685', '1390274668', '1', '1', '10');
+INSERT INTO `onethink_config` VALUES ('38', 'VERIFY', '4', '开启验证码', '1', '0:关闭,1:开启', '', '1390611680', '1391997526', '1', '0', '5');
+INSERT INTO `onethink_config` VALUES ('41', 'FRONT_THEME', '1', '前台主题', '0', '', '前台主题配置，覆盖系统文件', '1392108077', '1392108077', '1', 'default', '0');
+INSERT INTO `onethink_config` VALUES ('40', 'FEEDFULLTEXT', '4', '聚合全文输出', '3', '0:仅输出摘要,1:全文输出', '如果你不希望在聚合中输出文章全文,请使用仅输出摘要选项.\r\n摘要的文字来自description字段，此字段无内容就截取前200个字符.', '1391997436', '1391997436', '1', '1', '0');
+
+-- -----------------------------
+-- Table structure for `onethink_contents`
+-- -----------------------------
+DROP TABLE IF EXISTS `onethink_contents`;
+CREATE TABLE `onethink_contents` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL,
+  `slug` varchar(200) DEFAULT NULL,
+  `created` int(10) unsigned DEFAULT '0',
+  `modified` int(10) unsigned DEFAULT '0',
+  `text` text,
+  `order` int(10) unsigned DEFAULT '0',
+  `authorId` int(10) unsigned DEFAULT '0',
+  `template` varchar(32) DEFAULT NULL,
+  `type` varchar(16) DEFAULT 'post',
+  `status` varchar(16) DEFAULT 'publish',
+  `password` varchar(32) DEFAULT NULL,
+  `commentsNum` int(10) unsigned DEFAULT '0',
+  `allowComment` char(1) DEFAULT '0',
+  `allowPing` char(1) DEFAULT '0',
+  `allowFeed` char(1) DEFAULT '0',
+  `parent` int(10) unsigned DEFAULT '0',
+  `cid` int(10) unsigned DEFAULT '0' COMMENT '分类id',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `slug` (`slug`),
+  KEY `created` (`created`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- -----------------------------
+-- Records of `onethink_contents`
+-- -----------------------------
+INSERT INTO `onethink_contents` VALUES ('1', '欢迎使用 Typecho', 'start', '1390574404', '1390574404', '<!--markdown-->如果您看到这篇文章,表示您的 blog 已经安装成功.', '0', '1', '', 'post', 'publish', '', '1', '1', '1', '1', '0', '0');
+INSERT INTO `onethink_contents` VALUES ('2', '关于', 'start-page', '1390574404', '1390574404', '<!--markdown-->本页面由 Typecho 创建, 这只是个测试页面.', '0', '1', '', 'page', 'publish', '', '0', '1', '1', '1', '0', '0');
 
 -- -----------------------------
 -- Table structure for `onethink_document`
@@ -600,7 +684,7 @@ CREATE TABLE `onethink_document` (
   `root` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '根节点',
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属ID',
   `model_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '内容模型ID',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '2' COMMENT '内容类型',
+  `type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '内容类型',
   `position` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '推荐位',
   `link_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '外链',
   `cover_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '封面',
@@ -618,12 +702,14 @@ CREATE TABLE `onethink_document` (
   KEY `idx_name` (`name`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`type`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- -----------------------------
 -- Records of `onethink_document`
 -- -----------------------------
-INSERT INTO `onethink_document` VALUES ('1', '1', '', 'OneThink1.0正式版发布', '2', '大家期待的OneThink正式版发布', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '8', '0', '0', '0', '1387260660', '1387263112', '1');
+INSERT INTO `onethink_document` VALUES ('1', '1', '', 'OneThink1.0正式版发布', '2', '大家期待的OneThink正式版发布', '0', '0', '2', '1', '0', '0', '1', '1', '0', '0', '31', '0', '0', '0', '1387260660', '1390638860', '1');
+INSERT INTO `onethink_document` VALUES ('2', '1', 'test_category', '测试分类', '1', '', '0', '0', '2', '2', '0', '0', '0', '1', '0', '0', '33', '0', '0', '0', '1391043840', '1391758366', '1');
+INSERT INTO `onethink_document` VALUES ('3', '1', '', '123123', '1', '', '0', '0', '2', '1', '0', '0', '0', '1', '0', '0', '4', '0', '0', '0', '1391045400', '1392009535', '1');
 
 -- -----------------------------
 -- Table structure for `onethink_document_article`
@@ -635,28 +721,32 @@ CREATE TABLE `onethink_document_article` (
   `content` text NOT NULL COMMENT '文章内容',
   `template` varchar(100) NOT NULL DEFAULT '' COMMENT '详情页显示模板',
   `bookmark` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏数',
+  `tags` text NOT NULL COMMENT '标签',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文档模型文章表';
 
 -- -----------------------------
 -- Records of `onethink_document_article`
 -- -----------------------------
-INSERT INTO `onethink_document_article` VALUES ('1', '0', '<h1>\r\n	OneThink1.0正式版发布&nbsp;\r\n</h1>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。&nbsp;</strong> \r\n</p>\r\n<h2>\r\n	主要特性：\r\n</h2>\r\n<p>\r\n	1. 基于ThinkPHP最新3.2版本。\r\n</p>\r\n<p>\r\n	2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。&nbsp;\r\n</p>\r\n<p>\r\n	3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。\r\n</p>\r\n<p>\r\n	4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。&nbsp;\r\n</p>\r\n<p>\r\n	5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。\r\n</p>\r\n<p>\r\n	6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。\r\n</p>\r\n<p>\r\n	7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。\r\n</p>\r\n<p>\r\n	8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。&nbsp;\r\n</p>\r\n<p>\r\n	9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>&nbsp;OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。&nbsp;</strong> \r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<h2>\r\n	后台主要功能：\r\n</h2>\r\n<p>\r\n	1. 用户Passport系统\r\n</p>\r\n<p>\r\n	2. 配置管理系统&nbsp;\r\n</p>\r\n<p>\r\n	3. 权限控制系统\r\n</p>\r\n<p>\r\n	4. 后台建模系统&nbsp;\r\n</p>\r\n<p>\r\n	5. 多级分类系统&nbsp;\r\n</p>\r\n<p>\r\n	6. 用户行为系统&nbsp;\r\n</p>\r\n<p>\r\n	7. 钩子和插件系统\r\n</p>\r\n<p>\r\n	8. 系统日志系统&nbsp;\r\n</p>\r\n<p>\r\n	9. 数据备份和还原\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	&nbsp;[ 官方下载：&nbsp;<a href=\"http://www.onethink.cn/download.html\" target=\"_blank\">http://www.onethink.cn/download.html</a>&nbsp;&nbsp;开发手册：<a href=\"http://document.onethink.cn/\" target=\"_blank\">http://document.onethink.cn/</a>&nbsp;]&nbsp;\r\n</p>\r\n<p>\r\n	<br />\r\n</p>\r\n<p>\r\n	<strong>OneThink开发团队 2013</strong> \r\n</p>', '', '0');
+INSERT INTO `onethink_document_article` VALUES ('1', '0', '<img src=\"/Uploads/Editor/2014-01-24/52e1d78da828b.jpg\" alt=\"\" />\r\n<h1>\r\n  OneThink1.0正式版发布 \r\n</h1>\r\n<p>\r\n <br />\r\n</p>\r\n<p>\r\n <strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。 </strong> \r\n</p>\r\n<h2>\r\n  主要特性：\r\n</h2>\r\n<p>\r\n 1. 基于ThinkPHP最新3.2版本。\r\n</p>\r\n<p>\r\n  2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。 \r\n</p>\r\n<p>\r\n  3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。\r\n</p>\r\n<p>\r\n  4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。 \r\n</p>\r\n<p>\r\n 5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。\r\n</p>\r\n<p>\r\n 6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。\r\n</p>\r\n<p>\r\n 7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。\r\n</p>\r\n<p>\r\n 8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。 \r\n</p>\r\n<p>\r\n  9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。 \r\n</p>\r\n<p>\r\n <br />\r\n</p>\r\n<p>\r\n <strong> OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。 </strong> \r\n</p>\r\n<p>\r\n <br />\r\n</p>\r\n<h2>\r\n  后台主要功能：\r\n</h2>\r\n<p>\r\n 1. 用户Passport系统\r\n</p>\r\n<p>\r\n  2. 配置管理系统 \r\n</p>\r\n<p>\r\n 3. 权限控制系统\r\n</p>\r\n<p>\r\n  4. 后台建模系统 \r\n</p>\r\n<p>\r\n 5. 多级分类系统 \r\n</p>\r\n<p>\r\n 6. 用户行为系统 \r\n</p>\r\n<p>\r\n 7. 钩子和插件系统\r\n</p>\r\n<p>\r\n 8. 系统日志系统 \r\n</p>\r\n<p>\r\n 9. 数据备份和还原\r\n</p>\r\n<p>\r\n <br />\r\n</p>\r\n<p>\r\n  [ 官方下载： <a href=\"http://www.onethink.cn/download.html\" target=\"_blank\">http://www.onethink.cn/download.html</a>  开发手册：<a href=\"http://document.onethink.cn/\" target=\"_blank\">http://document.onethink.cn/</a> ] \r\n</p>\r\n<p>\r\n  <br />\r\n</p>\r\n<p>\r\n <strong>OneThink开发团队 2013</strong> \r\n</p>', '', '0', '');
+INSERT INTO `onethink_document_article` VALUES ('2', '2', '# 测试分类', '', '0', '');
+INSERT INTO `onethink_document_article` VALUES ('3', '2', '# 测试分类', '', '0', '测试分类,今天');
 
 -- -----------------------------
--- Table structure for `onethink_document_download`
+-- Table structure for `onethink_fields`
 -- -----------------------------
-DROP TABLE IF EXISTS `onethink_document_download`;
-CREATE TABLE `onethink_document_download` (
-  `id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文档ID',
-  `parse` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '内容解析类型',
-  `content` text NOT NULL COMMENT '下载详细描述',
-  `template` varchar(100) NOT NULL DEFAULT '' COMMENT '详情页显示模板',
-  `file_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文件ID',
-  `download` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '下载次数',
-  `size` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '文件大小',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文档模型下载表';
+DROP TABLE IF EXISTS `onethink_fields`;
+CREATE TABLE `onethink_fields` (
+  `cid` int(10) unsigned NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `type` varchar(8) DEFAULT 'str',
+  `str_value` text,
+  `int_value` int(10) DEFAULT '0',
+  `float_value` float DEFAULT '0',
+  PRIMARY KEY (`cid`,`name`),
+  KEY `int_value` (`int_value`),
+  KEY `float_value` (`float_value`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 
 -- -----------------------------
@@ -693,7 +783,7 @@ CREATE TABLE `onethink_hooks` (
   `addons` varchar(255) NOT NULL DEFAULT '' COMMENT '钩子挂载的插件 ''，''分割',
   PRIMARY KEY (`id`),
   UNIQUE KEY `搜索索引` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- -----------------------------
 -- Records of `onethink_hooks`
@@ -701,14 +791,15 @@ CREATE TABLE `onethink_hooks` (
 INSERT INTO `onethink_hooks` VALUES ('1', 'pageHeader', '页面header钩子，一般用于加载插件CSS文件和代码', '1', '0', '');
 INSERT INTO `onethink_hooks` VALUES ('2', 'pageFooter', '页面footer钩子，一般用于加载插件JS文件和JS代码', '1', '0', 'ReturnTop');
 INSERT INTO `onethink_hooks` VALUES ('3', 'documentEditForm', '添加编辑表单的 扩展内容钩子', '1', '0', 'Attachment');
-INSERT INTO `onethink_hooks` VALUES ('4', 'documentDetailAfter', '文档末尾显示', '1', '0', 'Attachment,SocialComment');
+INSERT INTO `onethink_hooks` VALUES ('4', 'documentDetailAfter', '文档末尾显示', '1', '0', 'Attachment,Comment,SocialComment');
 INSERT INTO `onethink_hooks` VALUES ('5', 'documentDetailBefore', '页面内容前显示用钩子', '1', '0', '');
-INSERT INTO `onethink_hooks` VALUES ('6', 'documentSaveComplete', '保存文档数据后的扩展钩子', '2', '0', 'Attachment');
-INSERT INTO `onethink_hooks` VALUES ('7', 'documentEditFormContent', '添加编辑表单的内容显示钩子', '1', '0', 'Editor');
+INSERT INTO `onethink_hooks` VALUES ('6', 'documentSaveComplete', '保存文档数据后的扩展钩子', '2', '0', 'Attachment,Ping');
+INSERT INTO `onethink_hooks` VALUES ('7', 'documentEditFormContent', '添加编辑表单的内容显示钩子', '1', '0', '');
 INSERT INTO `onethink_hooks` VALUES ('8', 'adminArticleEdit', '后台内容编辑页编辑器', '1', '1378982734', 'EditorForAdmin');
-INSERT INTO `onethink_hooks` VALUES ('13', 'AdminIndex', '首页小格子个性化显示', '1', '1382596073', 'SiteStat,SystemInfo,DevTeam');
-INSERT INTO `onethink_hooks` VALUES ('14', 'topicComment', '评论提交方式扩展钩子。', '1', '1380163518', 'Editor');
+INSERT INTO `onethink_hooks` VALUES ('13', 'AdminIndex', '首页小格子个性化显示', '1', '1392170084', 'SiteStat,SystemInfo,DevTeam,QiuBai');
+INSERT INTO `onethink_hooks` VALUES ('14', 'topicComment', '评论提交方式扩展钩子。', '1', '1380163518', '');
 INSERT INTO `onethink_hooks` VALUES ('16', 'app_begin', '应用开始', '2', '1384481614', '');
+INSERT INTO `onethink_hooks` VALUES ('17', 'sidebar', '前台首页侧边栏', '1', '1391602065', 'Comment');
 
 -- -----------------------------
 -- Table structure for `onethink_member`
@@ -728,7 +819,8 @@ CREATE TABLE `onethink_member` (
   `last_login_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后登录时间',
   `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '会员状态',
   PRIMARY KEY (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='会员表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='会员表';
+
 
 -- -----------------------------
 -- Table structure for `onethink_menu`
@@ -745,14 +837,13 @@ CREATE TABLE `onethink_menu` (
   `group` varchar(50) DEFAULT '' COMMENT '分组',
   `is_dev` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否仅开发者模式可见',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=122 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=139 DEFAULT CHARSET=utf8;
 
 -- -----------------------------
 -- Records of `onethink_menu`
 -- -----------------------------
-INSERT INTO `onethink_menu` VALUES ('1', '首页', '0', '1', 'Index/index', '0', '', '', '0');
-INSERT INTO `onethink_menu` VALUES ('2', '内容', '0', '2', 'Article/mydocument', '0', '', '', '0');
-INSERT INTO `onethink_menu` VALUES ('3', '文档列表', '2', '0', 'article/index', '1', '', '内容', '0');
+INSERT INTO `onethink_menu` VALUES ('1', '控制台', '0', '1', 'Index/index', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('3', '文档列表', '2', '0', 'Article/index', '1', '', '内容', '0');
 INSERT INTO `onethink_menu` VALUES ('4', '新增', '3', '0', 'article/add', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('5', '编辑', '3', '0', 'article/edit', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('6', '改变状态', '3', '0', 'article/setStatus', '0', '', '', '0');
@@ -762,11 +853,11 @@ INSERT INTO `onethink_menu` VALUES ('9', '移动', '3', '0', 'article/move', '0'
 INSERT INTO `onethink_menu` VALUES ('10', '复制', '3', '0', 'article/copy', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('11', '粘贴', '3', '0', 'article/paste', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('12', '导入', '3', '0', 'article/batchOperate', '0', '', '', '0');
-INSERT INTO `onethink_menu` VALUES ('13', '回收站', '2', '0', 'article/recycle', '1', '', '内容', '0');
+INSERT INTO `onethink_menu` VALUES ('13', '回收站', '128', '0', 'Article/recycle', '1', '', '内容', '0');
 INSERT INTO `onethink_menu` VALUES ('14', '还原', '13', '0', 'article/permit', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('15', '清空', '13', '0', 'article/clear', '0', '', '', '0');
-INSERT INTO `onethink_menu` VALUES ('16', '用户', '0', '3', 'User/index', '0', '', '', '0');
-INSERT INTO `onethink_menu` VALUES ('17', '用户信息', '16', '0', 'User/index', '0', '', '用户管理', '0');
+INSERT INTO `onethink_menu` VALUES ('16', '用户', '0', '6', 'User/index', '1', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('17', '用户', '128', '6', 'User/index', '0', '', '用户管理', '0');
 INSERT INTO `onethink_menu` VALUES ('18', '新增用户', '17', '0', 'User/add', '0', '添加新用户', '', '0');
 INSERT INTO `onethink_menu` VALUES ('19', '用户行为', '16', '0', 'User/action', '0', '', '行为管理', '0');
 INSERT INTO `onethink_menu` VALUES ('20', '新增用户行为', '19', '0', 'User/addaction', '0', '', '', '0');
@@ -792,8 +883,7 @@ INSERT INTO `onethink_menu` VALUES ('39', '分类授权', '27', '0', 'AuthManage
 INSERT INTO `onethink_menu` VALUES ('40', '保存分类授权', '27', '0', 'AuthManager/addToCategory', '0', '\"分类授权\"页面的\"保存\"按钮', '', '0');
 INSERT INTO `onethink_menu` VALUES ('41', '模型授权', '27', '0', 'AuthManager/modelauth', '0', '\"后台 \\ 用户 \\ 权限管理\"列表页的\"模型授权\"操作按钮', '', '0');
 INSERT INTO `onethink_menu` VALUES ('42', '保存模型授权', '27', '0', 'AuthManager/addToModel', '0', '\"分类授权\"页面的\"保存\"按钮', '', '0');
-INSERT INTO `onethink_menu` VALUES ('43', '扩展', '0', '7', 'Addons/index', '0', '', '', '0');
-INSERT INTO `onethink_menu` VALUES ('44', '插件管理', '43', '1', 'Addons/index', '0', '', '扩展', '0');
+INSERT INTO `onethink_menu` VALUES ('44', '插件', '1', '2', 'Addons/index', '0', '', '扩展', '0');
 INSERT INTO `onethink_menu` VALUES ('45', '创建', '44', '0', 'Addons/create', '0', '服务器上创建插件结构向导', '', '0');
 INSERT INTO `onethink_menu` VALUES ('46', '检测创建', '44', '0', 'Addons/checkForm', '0', '检测插件是否可以创建', '', '0');
 INSERT INTO `onethink_menu` VALUES ('47', '预览', '44', '0', 'Addons/preview', '0', '预览插件定义类文件', '', '0');
@@ -806,8 +896,8 @@ INSERT INTO `onethink_menu` VALUES ('53', '卸载', '44', '0', 'Addons/uninstall
 INSERT INTO `onethink_menu` VALUES ('54', '更新配置', '44', '0', 'Addons/saveconfig', '0', '更新插件配置处理', '', '0');
 INSERT INTO `onethink_menu` VALUES ('55', '插件后台列表', '44', '0', 'Addons/adminList', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('56', 'URL方式访问插件', '44', '0', 'Addons/execute', '0', '控制是否有权限通过url访问插件控制器方法', '', '0');
-INSERT INTO `onethink_menu` VALUES ('57', '钩子管理', '43', '2', 'Addons/hooks', '0', '', '扩展', '0');
-INSERT INTO `onethink_menu` VALUES ('58', '模型管理', '68', '3', 'Model/index', '0', '', '系统设置', '0');
+INSERT INTO `onethink_menu` VALUES ('57', '钩子', '1', '2', 'Addons/hooks', '0', '', '扩展', '0');
+INSERT INTO `onethink_menu` VALUES ('58', '模型管理', '68', '3', 'Model/index', '0', '', '系统设置', '1');
 INSERT INTO `onethink_menu` VALUES ('59', '新增', '58', '0', 'model/add', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('60', '编辑', '58', '0', 'model/edit', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('61', '改变状态', '58', '0', 'model/setStatus', '0', '', '', '0');
@@ -817,19 +907,19 @@ INSERT INTO `onethink_menu` VALUES ('64', '新增', '63', '0', 'Attribute/add', 
 INSERT INTO `onethink_menu` VALUES ('65', '编辑', '63', '0', 'Attribute/edit', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('66', '改变状态', '63', '0', 'Attribute/setStatus', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('67', '保存数据', '63', '0', 'Attribute/update', '0', '', '', '0');
-INSERT INTO `onethink_menu` VALUES ('68', '系统', '0', '4', 'Config/group', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('68', '系统', '0', '7', 'Config/group', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('69', '网站设置', '68', '1', 'Config/group', '0', '', '系统设置', '0');
-INSERT INTO `onethink_menu` VALUES ('70', '配置管理', '68', '4', 'Config/index', '0', '', '系统设置', '0');
+INSERT INTO `onethink_menu` VALUES ('70', '配置管理', '68', '4', 'Config/index', '0', '', '系统设置', '1');
 INSERT INTO `onethink_menu` VALUES ('71', '编辑', '70', '0', 'Config/edit', '0', '新增编辑和保存配置', '', '0');
 INSERT INTO `onethink_menu` VALUES ('72', '删除', '70', '0', 'Config/del', '0', '删除配置', '', '0');
 INSERT INTO `onethink_menu` VALUES ('73', '新增', '70', '0', 'Config/add', '0', '新增配置', '', '0');
 INSERT INTO `onethink_menu` VALUES ('74', '保存', '70', '0', 'Config/save', '0', '保存配置', '', '0');
-INSERT INTO `onethink_menu` VALUES ('75', '菜单管理', '68', '5', 'Menu/index', '0', '', '系统设置', '0');
+INSERT INTO `onethink_menu` VALUES ('75', '菜单管理', '68', '5', 'Menu/index', '0', '', '系统设置', '1');
 INSERT INTO `onethink_menu` VALUES ('76', '导航管理', '68', '6', 'Channel/index', '0', '', '系统设置', '0');
 INSERT INTO `onethink_menu` VALUES ('77', '新增', '76', '0', 'Channel/add', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('78', '编辑', '76', '0', 'Channel/edit', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('79', '删除', '76', '0', 'Channel/del', '0', '', '', '0');
-INSERT INTO `onethink_menu` VALUES ('80', '分类管理', '68', '2', 'Category/index', '0', '', '系统设置', '0');
+INSERT INTO `onethink_menu` VALUES ('80', '分类', '128', '7', 'Category/index', '0', '', '系统设置', '0');
 INSERT INTO `onethink_menu` VALUES ('81', '编辑', '80', '0', 'Category/edit', '0', '编辑和保存栏目分类', '', '0');
 INSERT INTO `onethink_menu` VALUES ('82', '新增', '80', '0', 'Category/add', '0', '新增栏目分类', '', '0');
 INSERT INTO `onethink_menu` VALUES ('83', '删除', '80', '0', 'Category/remove', '0', '删除栏目分类', '', '0');
@@ -842,7 +932,7 @@ INSERT INTO `onethink_menu` VALUES ('89', '修复表', '86', '0', 'Database/repa
 INSERT INTO `onethink_menu` VALUES ('90', '还原数据库', '68', '0', 'Database/index?type=import', '0', '', '数据备份', '0');
 INSERT INTO `onethink_menu` VALUES ('91', '恢复', '90', '0', 'Database/import', '0', '数据库恢复', '', '0');
 INSERT INTO `onethink_menu` VALUES ('92', '删除', '90', '0', 'Database/del', '0', '删除备份文件', '', '0');
-INSERT INTO `onethink_menu` VALUES ('93', '其他', '0', '5', 'other', '1', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('93', '其他', '0', '8', 'other', '1', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('96', '新增', '75', '0', 'Menu/add', '0', '', '系统设置', '0');
 INSERT INTO `onethink_menu` VALUES ('98', '编辑', '75', '0', 'Menu/edit', '0', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('104', '下载管理', '102', '0', 'Think/lists?model=download', '0', '', '', '0');
@@ -861,6 +951,23 @@ INSERT INTO `onethink_menu` VALUES ('118', '文档排序', '3', '0', 'Article/so
 INSERT INTO `onethink_menu` VALUES ('119', '排序', '70', '0', 'Config/sort', '1', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('120', '排序', '75', '0', 'Menu/sort', '1', '', '', '0');
 INSERT INTO `onethink_menu` VALUES ('121', '排序', '76', '0', 'Channel/sort', '1', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('122', '概要', '1', '0', 'Index/Index', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('123', '个人设置', '1', '1', 'Config/group?id=5', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('124', '外观', '1', '3', 'Theme/index', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('125', '撰写', '0', '2', 'Article/add', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('126', '撰写文章', '125', '0', 'Article/add', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('127', '创建页面', '125', '0', 'Article/add?type=2', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('128', '管理', '0', '3', 'Article/index?type=1', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('129', '文章', '128', '0', 'Article/index?type=1', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('134', '配置', '0', '4', 'Config/group?id=1', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('130', '独立页面', '128', '0', 'Article/index?type=2', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('131', '评论', '128', '0', 'Addons/adminList?name=Comment', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('132', '标签', '128', '0', 'Think/lists?model=tags', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('133', '文件', '128', '0', 'Think/lists?model=file', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('135', '基本', '134', '0', 'Config/group?id=1', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('136', '评论', '134', '0', 'Config/group?id=2', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('137', '阅读', '134', '0', 'Config/group?id=3', '0', '', '', '0');
+INSERT INTO `onethink_menu` VALUES ('138', '站点', '134', '0', 'Config/group?id=4', '0', '', '', '0');
 
 -- -----------------------------
 -- Table structure for `onethink_model`
@@ -888,14 +995,15 @@ CREATE TABLE `onethink_model` (
   `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
   `engine_type` varchar(25) NOT NULL DEFAULT 'MyISAM' COMMENT '数据库引擎',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='文档模型表';
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='文档模型表';
 
 -- -----------------------------
 -- Records of `onethink_model`
 -- -----------------------------
-INSERT INTO `onethink_model` VALUES ('1', 'document', '基础文档', '0', '', '1', '{\"1\":[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\"]}', '1:基础', '', '', '', '', 'id:编号\r\ntitle:标题:article/index?cate_id=[category_id]&pid=[id]\r\ntype|get_document_type:类型\r\nlevel:优先级\r\nupdate_time|time_format:最后更新\r\nstatus_text:状态\r\nview:浏览\r\nid:操作:[EDIT]&cate_id=[category_id]|编辑,article/setstatus?status=-1&ids=[id]|删除', '0', '', '', '1383891233', '1384507827', '1', 'MyISAM');
-INSERT INTO `onethink_model` VALUES ('2', 'article', '文章', '1', '', '1', '{\"1\":[\"3\",\"24\",\"2\",\"5\"],\"2\":[\"9\",\"13\",\"19\",\"10\",\"12\",\"16\",\"17\",\"26\",\"20\",\"14\",\"11\",\"25\"]}', '1:基础,2:扩展', '', '', '', '', 'id:编号\r\ntitle:标题:article/edit?cate_id=[category_id]&id=[id]\r\ncontent:内容', '0', '', '', '1383891243', '1387260622', '1', 'MyISAM');
-INSERT INTO `onethink_model` VALUES ('3', 'download', '下载', '1', '', '1', '{\"1\":[\"3\",\"28\",\"30\",\"32\",\"2\",\"5\",\"31\"],\"2\":[\"13\",\"10\",\"27\",\"9\",\"12\",\"16\",\"17\",\"19\",\"11\",\"20\",\"14\",\"29\"]}', '1:基础,2:扩展', '', '', '', '', 'id:编号\r\ntitle:标题', '0', '', '', '1383891252', '1387260449', '1', 'MyISAM');
+INSERT INTO `onethink_model` VALUES ('1', 'document', '基础文档', '0', '', '1', '{\"1\":[\"2\",\"3\",\"5\",\"9\",\"11\",\"12\",\"13\",\"14\",\"16\",\"17\",\"19\",\"20\"]}', '1:基础', '', '', '', '', 'id:编号\r\ntitle:标题:article/index?cate_id=[category_id]&pid=[id]\r\ntype|get_document_type:类型\r\ncategory_id|get_category_title:分类\r\nlevel:优先级\r\nupdate_time|time_format:最后更新\r\nstatus_text:状态\r\nview:浏览\r\nid:操作:[EDIT]&cate_id=[category_id]|编辑,article/setstatus?status=-1&ids=[id]|删除', '0', '', '', '1383891233', '1391163759', '1', 'MyISAM');
+INSERT INTO `onethink_model` VALUES ('2', 'article', '文章', '1', '', '1', '{\"1\":[\"3\",\"2\",\"24\",\"5\",\"9\"],\"2\":[\"20\",\"13\",\"19\",\"10\",\"12\",\"14\",\"11\",\"25\"],\"3\":[\"17\",\"26\",\"16\"]}', '1:基础,2:选项,3:统计', '', '', '', '', 'id:编号\r\ntitle:标题:article/edit?cate_id=[category_id]&id=[id]\r\ncontent:内容', '0', '', '', '1383891243', '1390968122', '1', 'MyISAM');
+INSERT INTO `onethink_model` VALUES ('4', 'tags', 'tags', '0', '', '1', '{\"1\":[\"34\",\"35\",\"36\",\"37\",\"38\"]}', '1:基础', '', '', '', '', 'id:编号\r\ntitle:标题\r\nname:缩略名\r\ndescription:描述\r\ncount:文章数量\r\norder:优先级\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '10', '', '', '1391049096', '1391049440', '1', 'MyISAM');
+INSERT INTO `onethink_model` VALUES ('5', 'file', 'file', '0', '', '1', '{\"1\":[\"39\",\"40\",\"41\",\"42\",\"43\",\"44\",\"45\",\"46\",\"47\",\"48\"]}', '1:基础', '', '', '', '', 'id:编号\r\nsavepath:保存路径\r\nsavename:保存文件名\r\next:文件后缀\r\nmime:MIME\r\nsize:大小\r\nmd5:MD5\r\nsha1:SHA1\r\nlocation:保存位置\r\ncreate_time:上传时间', '10', '', '', '1391133228', '1391135686', '1', 'MyISAM');
 
 -- -----------------------------
 -- Table structure for `onethink_picture`
@@ -910,8 +1018,51 @@ CREATE TABLE `onethink_picture` (
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+-- -----------------------------
+-- Records of `onethink_picture`
+-- -----------------------------
+INSERT INTO `onethink_picture` VALUES ('1', '/Uploads/Picture/2014-01-24/52e1c8bae4dc2.jpg', '', '2fa4364f4b35b84275497ddbc10d269d', '29f6857891f76cbc6528d4549efa2c6b33a0c002', '1', '1390528698');
+
+-- -----------------------------
+-- Table structure for `onethink_relationships`
+-- -----------------------------
+DROP TABLE IF EXISTS `onethink_relationships`;
+CREATE TABLE `onethink_relationships` (
+  `cid` int(10) unsigned NOT NULL,
+  `mid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`cid`,`mid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED;
+
+-- -----------------------------
+-- Records of `onethink_relationships`
+-- -----------------------------
+INSERT INTO `onethink_relationships` VALUES ('1', '1');
+
+-- ----------------------------
+-- Table structure for onethink_tags
+-- ----------------------------
+DROP TABLE IF EXISTS `onethink_tags`;
+CREATE TABLE `onethink_tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL COMMENT '标题',
+  `name` varchar(200) DEFAULT NULL COMMENT '缩略名',
+  `description` varchar(200) DEFAULT NULL COMMENT '描述',
+  `count` int(10) unsigned DEFAULT '0' COMMENT '数量',
+  `order` int(10) unsigned DEFAULT '0' COMMENT '排序',
+  PRIMARY KEY (`id`),
+  KEY `slug` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of onethink_tags
+-- ----------------------------
+INSERT INTO `onethink_tags` VALUES ('1', '默认分类', 'default', '只是一个默认分类', '1', '1');
+INSERT INTO `onethink_tags` VALUES ('3', '', null, null, '1', '0');
+INSERT INTO `onethink_tags` VALUES ('4', '', null, null, '1', '0');
+INSERT INTO `onethink_tags` VALUES ('5', '', null, null, '1', '0');
+INSERT INTO `onethink_tags` VALUES ('6', '', null, null, '1', '0');
 
 -- -----------------------------
 -- Table structure for `onethink_ucenter_admin`
@@ -965,7 +1116,8 @@ CREATE TABLE `onethink_ucenter_member` (
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
 
 -- -----------------------------
 -- Table structure for `onethink_ucenter_setting`
