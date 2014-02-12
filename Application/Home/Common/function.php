@@ -61,10 +61,14 @@ function get_nav_url($url){
     switch ($url) {
         case 'http://' === substr($url, 0, 7):
         case '#' === substr($url, 0, 1):
-            break;        
+            break;
         default:
             $url = U($url);
             break;
     }
     return $url;
+}
+
+function category_name($id){
+    return M('Category')->getFieldById($id, 'name');
 }

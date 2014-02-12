@@ -6,7 +6,7 @@
         <ul class="post-meta">
             <li>作者：{$info.uid|get_username}</li>
             <li>时间：发表于 {$info.create_time|date='Y-m-d H:i',###}</li>
-            <li>分类：<a href="{:U('index?cate_id='.$info['category_id'])}">{$info.category_id|get_category_title}</a></li>
+            <li>分类：<a href="{:U('category/'.category_name($info['category_id']))}">{$info.category_id|get_category_title}</a></li>
         </ul>
         <div class="post-content">
             <p>{$info.content}</p>
