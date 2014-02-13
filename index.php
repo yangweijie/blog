@@ -6,6 +6,12 @@
 // +----------------------------------------------------------------------
 // | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
 // +----------------------------------------------------------------------
+include './PHP/SocketLog.class.php';
+// slog(array(
+//  'error_handler'=>true,
+//  'optimize'=>true,
+//  'show_included_files'=>true
+// ),'set_config');
 
 if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 
