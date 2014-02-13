@@ -97,7 +97,7 @@ class ThemeController extends AdminController {
      * 启用主题
      */
     public function active($name){
-        $res = M('Config')->where("name = 'FRONT_THEME'")->save(array('value', $name));
+        $res = M('Config')->where("name = 'FRONT_THEME'")->setField('value', $name);
         if($res !== false)
             $this->success('启用成功');
         else
