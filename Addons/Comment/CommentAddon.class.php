@@ -79,15 +79,15 @@ use Common\Controller\Addon;
 			$comments = list_to_tree($allcomments, 'id', 'pid', 'reply', 0);
 			$comments_number = $commentDao->where($map)->order('create_time DESC, id DESC')->count();
 			$this->assign('comments',   $comments);
-			$this->assign('comments_number',   $comments_number);
-			$this->display(T('Addons://Comment@Content/comment'));
+			$this->assign('comments_number', $comments_number);
+			$this->display($this->addon_path.'View/default/Content/comment.html');
         }
 
         //实现sidebar方法
         public function sidebar(){
             $list = D('Addons://Comment/Comment')->where("status = 1")->order('create_time DESC, id DESC')->limit(3)->select();
             $this->assign('addon_comment', $list);
-            $this->display(T('Addons://Comment@Content/sidebar'));
+            $this->display($this->addon_path.'View/default/Content/sidebar.html');
         }
 
     }

@@ -44,6 +44,11 @@ class HomeController extends Controller {
 		$config = api('Config/lists');
         C($config); //添加配置
         C('DEFAULT_THEME', C('FRONT_THEME'));
+        $TMPL_PARSE_STRING = C('TMPL_PARSE_STRING');
+        foreach ($TMPL_PARSE_STRING as $key => $value) {
+            $TMPL_PARSE_STRING[$key] = str_replace('__THEME__', C('DEFAULT_THEME'), $value);
+        }
+        C('TMPL_PARSE_STRING', $TMPL_PARSE_STRING);
         if(!C('WEB_SITE_CLOSE')){
         	$this->error('站点已经关闭，请稍后访问~');
         }

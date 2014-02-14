@@ -17,7 +17,6 @@ class IndexController extends HomeController {
 
 	//首页
     public function index(){
-
         $Document = D('Document');
         $this->lists();
         $this->display();

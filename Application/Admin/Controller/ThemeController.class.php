@@ -42,7 +42,7 @@ class ThemeController extends AdminController {
                 if(file_exists($themeFile)){
                     $info = parse_ini_file($themeFile);
                     $info['name'] = basename($theme);
-                    if ($info['activated'] = (C('DEFAULT_THEME') == $info['name'])) {
+                    if ($info['activated'] = (C('FRONT_THEME') == $info['name'])) {
                         $activated = $key;
                     }
                 }
@@ -98,10 +98,12 @@ class ThemeController extends AdminController {
      */
     public function active($name){
         $res = M('Config')->where("name = 'FRONT_THEME'")->setField('value', $name);
-        if($res !== false)
+        if($res !== false){
+            S('DB_CONFIG_DATA',null);
             $this->success('启用成功');
-        else
+        }else{
             $this->error('启用失败');
+        }
     }
 
     public function save($file){

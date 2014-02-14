@@ -58,30 +58,6 @@
 			</script>
 		</eq>
 	</case>
-	<case value="3">
-		{// UBB 官网http://xheditor.com/demos/demo07.html}
-		<script type="text/javascript" src="__STATIC__/jquery-migrate-1.2.1.min.js"></script>
-		<script charset="utf-8" src="__STATIC__/xheditor/xheditor-1.2.1.min.js"></script>
-		<script charset="utf-8" src="__STATIC__/xheditor/xheditor_lang/zh-cn.js"></script>
-		<script type="text/javascript" src="__STATIC__/xheditor/xheditor_plugins/ubb.js"></script>
-		<script type="text/javascript">
-		var submitForm = function (){
-			$('textarea[name="{$addons_data.name}"]').closest('form').submit();
-		}
-		$('textarea[name="{$addons_data.name}"]').attr('id', 'editor_id_{$addons_data.name}')
-		$('#editor_id_{$addons_data.name}').xheditor({
-			tools:'full',
-			showBlocktag:false,
-			forcePtag:false,
-			beforeSetSource:ubb2html,
-			beforeGetSource:html2ubb,
-			shortcuts:{'ctrl+enter':submitForm},
-			'height':'{$addons_config.editor_height}',
-			'width' :'100%'
-		});
-		</script>
-		<input type="hidden" name="parse" value="1">
-	</case>
 	<case value="4">
 		{// markdown }
 		<div id="epiceditor"></div>
