@@ -1,0 +1,64 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+    margin:0;
+    padding:0;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+fieldset,img {
+    border:0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+    font-style:normal;
+    font-weight:normal;
+}
+ol,ul {
+    list-style:none;
+}
+caption,th {
+    text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-size:100%;
+    font-weight:normal;
+}
+q:before,q:after {
+    content:'';
+}
+abbr,acronym {
+    border:0;
+}
+body {
+    font-size:12px;
+    font-family:'microsoft yahei', arial, verdana;
+    background: #fff;
+}
+#header {
+    background: #0099CC;
+    width: 100%;
+    height: 80px;
+}
+#header_content {
+    height: 80px;
+    width: 1000px;
+    margin: 0 auto;
+}
+#header h1 {
+    font-size: 30px;
+    color: #fff;
+    float: left;
+    font-family: 'microsoft yahei'
+}
+#about_me {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background: url(../images/me.jpg);
+    border-radius: 10px;
+    float: right;
+    margin-top: 10px;
+}
+#header_content .me_hover{
+    border-radius: 60px;
+}

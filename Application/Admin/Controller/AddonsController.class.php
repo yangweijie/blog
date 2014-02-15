@@ -467,4 +467,16 @@ str;
         }
     }
 
+    public function lists($addon){
+
+    }
+
+    public function del($id = '', $addon){
+
+    }
+
+    public function edit($id = '', $addon){
+
+    }
+
 }
