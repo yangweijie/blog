@@ -13,7 +13,7 @@ class ping {
     public $method, $callback;
 
     public function method($site_name, $site_url, $update_url, $update_rss) {
-        $this->method = "
+        $this->method = <<<str
   <?xml version="1.0" encoding="UTF-8"?>
   <methodCall>
     <methodName>weblogUpdates.extendedPing</methodName>
@@ -23,7 +23,8 @@ class ping {
    <param><value>{$update_url}</value></param>
    <param><value>{$update_rss}</value></param>
     </params>
-  </methodCall>";
+  </methodCall>
+str;
         return $this->method;
     }
 
@@ -31,7 +32,7 @@ class ping {
         $ch = curl_init();
         $headers = array(
             "POST " . $url . " HTTP/1.0",
-            "Content-type: text/xml;charset="utf-8"",
+            "Content-type: text/xml;charset=\"utf-8\"",
             "Accept: text/xml",
             "Content-length: " . strlen($postvar)
         );
