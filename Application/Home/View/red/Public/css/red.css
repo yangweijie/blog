@@ -1,0 +1,16 @@
+body {
+	background: #E6E5CC;
+}
+#header {
+	background: url(../images/header_tree.png) no-repeat 80% 0 #BCBCA7;
+}
+#search {
+	margin-top: 0;
+	
+}
+#search input {
+	border-radius: 10px;
+	background: #91573E;
+	border-color: #91573E;
+	color: #fff;
+}
