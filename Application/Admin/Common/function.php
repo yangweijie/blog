@@ -67,7 +67,6 @@ function get_list_field($data, $grid,$model){
 /* 解析列表定义规则*/
 
 function get_addonlist_field($data, $grid,$addon){
-
     // 获取当前字段数据
     foreach($grid['field'] as $field){
         $array  =   explode('|',$field);
@@ -97,7 +96,7 @@ function get_addonlist_field($data, $grid,$addon){
                 // 替换系统特殊字符串
                 $href   =   str_replace(
                     array('[DELETE]','[EDIT]','[ADDON]'),
-                    array('del?ids=[id]&addon=[ADDON]','edit?id=[id]&addon=[ADDON]',$addon['id']),
+                    array('del?ids=[id]&name=[ADDON]','edit?id=[id]&name=[ADDON]',$addon),
                     $href);
 
                 // 替换数据变量
@@ -425,27 +424,27 @@ function get_action_type($type, $all = false){
 }
 
 
-    /**
-     * 输出文章标签
+/**
+ * 输出文章标签
 
-     *
-     * @access public
-     * @param string $split 多个标签之间分隔符
-     * @param boolean $link 是否输出链接
-     * @param string $default 如果没有则输出
-     * @return void
-     */
-    function tags($tags, $split = ',', $link = true, $default = NULL){
-        /** 取出tags */
-        if ($tags) {
-            $result = array();
-            foreach ($tags as $tag) {
-                $result[] = $link ? '<a href="' . U() . '">'
-                . $tag['title'] . '</a>' : $tag['title'];
-            }
-
-            echo implode($split, $result);
-        } else {
-            echo $default;
+ *
+ * @access public
+ * @param string $split 多个标签之间分隔符
+ * @param boolean $link 是否输出链接
+ * @param string $default 如果没有则输出
+ * @return void
+ */
+function tags($tags, $split = ',', $link = true, $default = NULL){
+    /** 取出tags */
+    if ($tags) {
+        $result = array();
+        foreach ($tags as $tag) {
+            $result[] = $link ? '<a href="' . U() . '">'
+            . $tag['title'] . '</a>' : $tag['title'];
         }
+
+        echo implode($split, $result);
+    } else {
+        echo $default;
     }
+}

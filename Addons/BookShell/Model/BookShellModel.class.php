@@ -1,14 +1,15 @@
 <?php
 
-namespace Addons\BookShell\Model;
+namespace Addons\Bookshell\Model;
 use Think\Model;
 
 /**
  * BookShell模型
  */
-class BookShellModel extends Model{
+class BookshellModel extends Model{
 	protected $_auto = array (
 		array('update_time','time',3,'function'), // 对create_time字段在更新的时候写入当前时间戳
+		array('link_id', 'getLink', self::MODEL_BOTH, 'callback'),
 	);
 
 	protected $_validate = array(
@@ -16,17 +17,32 @@ class BookShellModel extends Model{
 		array('title','','书名！',0,'unique',1), // 在新增的时候验证name字段是否唯一
 	);
 
-	protected $model = array(
+	public $model = array(
 		'title'=>'书架',
 		'template_add'=>'',
 		'template_edit'=>'',
 		'search_key'=>'',
+		'extend'=>1,
 	);
 
+    /**
+     * 获取链接id
+     * @return int 链接对应的id
+     * @author huajie <banhuajie@163.com>
+     */
+    protected function getLink(){
+        $link = I('post.link_id');
+        if(empty($link)){
+            return 0;
+        } else if(is_numeric($link)){
+            return $link;
+        }
+        $res = D('Url')->update(array('url'=>$link));
+        return $res['id'];
+    }
 
-
-	protected $fields = array(
-		array(
+	public $_fields = array(
+		'id'=>array(
 			'name'=>'id',
 			'title'=>'ID',
 			'type'=>'num',
@@ -34,39 +50,38 @@ class BookShellModel extends Model{
 			'is_show'=>2,
 			'value'=>0,
 		),
-		array(
+		'title'=>array(
 			'name'=>'title',
 			'title'=>'书名',
 			'type'=>'string',
 			'remark'=>'',
-			'is_show'=>2,
+			'is_show'=>3,
 			'value'=>0,
 			'is_must'=>1,
-		),
-		array(
+		),'description'=>array(
 			'name'=>'description',
 			'title'=>'描述',
 			'type'=>'textarea',
 			'remark'=>'',
-			'is_show'=>2,
+			'is_show'=>3,
 			'value'=>0,
 			'is_must'=>1,
-		),
-		array(
+		),'link_id'=>array(
 			'name'=>'link_id',
 			'title'=>'外链',
 			'type'=>'string',
 			'remark'=>'',
-			'is_show'=>2,
+			'is_show'=>3,
 			'value'=>0,
 			'is_must'=>0,
 		),
+		'cover_id'=>
 		array(
 			'name'=>'cover_id',
 			'title'=>'外链',
 			'type'=>'picture',
 			'remark'=>'',
-			'is_show'=>2,
+			'is_show'=>3,
 			'value'=>0,
 			'is_must'=>0,
 		),

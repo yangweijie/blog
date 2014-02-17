@@ -1,9 +1,9 @@
 <?php
 
-namespace Addons\BookShell\Controller;
+namespace Addons\Bookshell\Controller;
 use Home\Controller\AddonsController;
 
-class BookShellController extends AddonsController{
+class BookshellController extends AddonsController{
 	public function index(){
 
 	}
