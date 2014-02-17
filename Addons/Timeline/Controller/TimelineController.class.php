@@ -8,13 +8,13 @@ class TimelineController extends AddonsController{
         $list = D('Addons://Timeline/Timeline')->select();
         foreach ($list as $key => $value) {
             $list[$key]['headline'] = $value['title'];
-            $list[$key]['text'] = $value['text'];
             $list[$key]['asset'] = array(
                 'caption'=>$value['media_title'],
                 'credit'=>$value['author'],
-                'media'=>get_cover($value['id'], 'path')
+                'media'=>get_cover($value['cover_id'], 'path')
             );
         }
+
         $info = array(
             'timeline'=>array(
                 'headline'=>'杨维杰毕业后的故事',

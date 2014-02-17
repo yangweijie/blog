@@ -12,6 +12,15 @@ class BookshellModel extends Model{
 		array('link_id', 'getLink', self::MODEL_BOTH, 'callback'),
 	);
 
+	protected function _after_find(&$result,$options) {
+		$result['link_id'] = get_link($result['link_id']);
+	}
+
+	protected function _after_select(&$result,$options){
+		foreach($result as &$record){
+			$this->_after_find($record,$options);
+		}
+	}
 	protected $_validate = array(
 		array('title','require','书名'), //默认情况下用正则进行验证
 		array('title','','书名！',0,'unique',1), // 在新增的时候验证name字段是否唯一
@@ -58,6 +67,15 @@ class BookshellModel extends Model{
 			'is_show'=>3,
 			'value'=>0,
 			'is_must'=>1,
+		),
+		'author'=>array(
+			'name'=>'author',
+			'title'=>'作者',
+			'type'=>'string',
+			'remark'=>'',
+			'is_show'=>3,
+			'value'=>0,
+			'is_must'=>1,
 		),'description'=>array(
 			'name'=>'description',
 			'title'=>'描述',
@@ -75,10 +93,9 @@ class BookshellModel extends Model{
 			'value'=>0,
 			'is_must'=>0,
 		),
-		'cover_id'=>
-		array(
+		'cover_id'=>array(
 			'name'=>'cover_id',
-			'title'=>'外链',
+			'title'=>'封面',
 			'type'=>'picture',
 			'remark'=>'',
 			'is_show'=>3,

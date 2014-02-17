@@ -62,7 +62,7 @@ use Common\Controller\Addon;
 
         //实现的single钩子方法
         public function single($param){
-            if($param['name'] = 'Timeline'){
+            if($param['name'] == 'Timeline'){
                 $this->display('single');
             }
         }

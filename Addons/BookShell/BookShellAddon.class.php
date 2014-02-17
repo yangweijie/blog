@@ -63,7 +63,7 @@ use Common\Controller\Addon;
 
         //实现的single钩子方法
         public function single($param){
-            if($param['name'] = 'BookShell')
+            if($param['name'] == 'Bookshell')
                 $this->display('single');
         }
 
