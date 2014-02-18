@@ -12,7 +12,11 @@ use Common\Controller\Addon;
 
         public function __construct(){
            parent::__construct();
+<<<<<<< Updated upstream
            include_once $this->addon_path.'function.php';
+=======
+           include $this->addon_path.'function.php';
+>>>>>>> Stashed changes
         }
 
         public $info = array(
