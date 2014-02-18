@@ -12,7 +12,7 @@ use Common\Controller\Addon;
 
         public function __construct(){
            parent::__construct();
-           include $this->addon_path.'function.php';
+           include_once $this->addon_path.'function.php';
         }
 
         public $info = array(
@@ -62,7 +62,7 @@ use Common\Controller\Addon;
 
         //实现的single钩子方法
         public function single($param){
-            if($param['name'] = 'Timeline'){
+            if($param['name'] == 'Timeline'){
                 $this->display('single');
             }
         }
