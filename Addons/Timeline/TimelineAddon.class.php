@@ -12,7 +12,7 @@ use Common\Controller\Addon;
 
         public function __construct(){
            parent::__construct();
-           include $this->addon_path.'function.php';
+           include_once $this->addon_path.'function.php';
         }
 
         public $info = array(

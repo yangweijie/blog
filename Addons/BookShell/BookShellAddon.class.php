@@ -12,7 +12,8 @@ use Common\Controller\Addon;
 
         public function __construct(){
            parent::__construct();
-           include $this->addon_path.'function.php';
+           include_once $this->addon_path.'function.php';
+
         }
 
         public $info = array(
@@ -33,7 +34,7 @@ use Common\Controller\Addon;
                 'cover_id|preview_pic:封面',
                 'title:书名',
                 'description:描述',
-                'link_id:外链',
+                'link_id|get_link:外链',
                 'update_time|time_format:更新时间',
                 'id:操作:[EDIT]|编辑,[DELETE]|删除'
             )
@@ -63,8 +64,11 @@ use Common\Controller\Addon;
 
         //实现的single钩子方法
         public function single($param){
-            if($param['name'] == 'Bookshell')
+            if($param['name'] == 'Bookshell'){
+                $list = D('Addons://Bookshell/Bookshell')->select();
+                $this->assign('list', $list);
                 $this->display('single');
+            }
         }
 
     }
