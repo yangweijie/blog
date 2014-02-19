@@ -72,7 +72,8 @@ class ArticleLogic extends BaseLogic{
 			if(M('Tags')->where("name = '{$value}'")->find())
 				M('Tags')->where("name = '{$value}'")->setInc('count');
 			else
-				M('Tags')->add(array('title'=>$value, 'count'=>1));
+				if($value)
+					M('Tags')->add(array('title'=>$value, 'count'=>1));
 		}
 		return true;
 	}
