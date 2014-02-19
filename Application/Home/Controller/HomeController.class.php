@@ -77,7 +77,6 @@ class HomeController extends Controller {
 
 		/* 分页 */
 		$total = $Document->where($map)->count();
-
 		$page = new \Think\Page($total, $list_row);
 		if($total > $list_row){
 			$page->rollPage = 5;
