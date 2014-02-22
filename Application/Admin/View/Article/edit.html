@@ -193,6 +193,10 @@
 				</volist>
 			</select>
 		</div>
+		<div class="form-item cf" id="tag_item">
+			<label class="item-label">标签</label>
+			<input type="text" name="tags" id="tags" value="{$data['tags']}" />
+		</div>
 
 		<div class="form-item cf">
 			<button class="btn submit-btn ajax-post hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
@@ -217,6 +221,7 @@
 <link href="__STATIC__/datetimepicker/css/dropdown.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="__STATIC__/tokeninput.js"></script>
 <script type="text/javascript">
 
 Think.setValue("type", {$data.type|default='""'});
@@ -228,7 +233,68 @@ $('#submit').click(function(){
 
 $(function(){
 	$('#tab1').prepend($('#category_item'));
+	$('#tab1').prepend($('#category_item')).append($('#tag_item'));
+	// tag autocomplete 提示
+    var tags = $('#tags'), tagsPre = [];
 
+    if (tags.length > 0) {
+        var items = tags.val().split(','), result = [];
+        for (var i = 0; i < items.length; i ++) {
+            var tag = items[i];
+
+            if (!tag) {
+                continue;
+            }
+
+            tagsPre.push({
+                id      :   tag,
+                tags    :   tag
+            });
+        }
+
+        tags.tokenInput(<?php
+        $data = array();
+        foreach ($alltags as $value) {
+        	$data[] = array('id' => $value['title'], 'tags'=> $value['title']);
+        }
+        echo json_encode($data);
+        ?>, {
+            propertyToSearch:   'tags',
+            tokenValue      :   'tags',
+            searchDelay     :   0,
+            preventDuplicates   :   true,
+            animateDropdown :   false,
+            hintText        :   '请输入标签名',
+            noResultsText   :   '此标签不存在, 按回车创建',
+            prePopulate     :   tagsPre,
+
+            onResult        :   function (result, query) {
+                if (!query) {
+                    return result;
+                }
+
+                if (!result) {
+                    result = [];
+                }
+
+                if (!result[0] || result[0]['id'] != query) {
+                    result.unshift({
+                        id      :   query,
+                        tags    :   query
+                    });
+                }
+
+                return result.slice(0, 5);
+            }
+        });
+
+        // tag autocomplete 提示宽度设置
+        $('#token-input-tags').focus(function() {
+            var t = $('.token-input-dropdown'),
+                offset = t.outerWidth() - t.width();
+            t.width($('.token-input-list').outerWidth() - offset);
+        });
+    }
     $('.time').datetimepicker({
         format: 'yyyy-mm-dd hh:ii',
         language:"zh-CN",

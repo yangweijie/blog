@@ -345,7 +345,7 @@ class DocumentModel extends Model{
 		}
 	 	$tags = trim(I('get.tag'));
         if($tags){
-            $ids = D('DocumentArticle')->where("tags like '{$tags}'")->getField('id', true);
+            $ids = D('DocumentArticle')->where("tags like '%{$tags}%'")->getField('id', true);
             $map = array('id'=>array('in',$ids));
         }
 		$map['_string'] = 'deadline = 0 OR deadline > ' . NOW_TIME;

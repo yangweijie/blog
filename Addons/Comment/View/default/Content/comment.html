@@ -1,6 +1,7 @@
 	<link rel="stylesheet" type="text/css" href="__ADDONS__/comment/style.css" />
 	<div class="clearfix" ></div>
 
+<<<<<<< HEAD
 	<div class="comment-default">
 		<div class="comment-list">
 		<h5>共有{$comments_number}条评论</h5>
@@ -83,6 +84,32 @@
 				}
 		});
 	}
+=======
+<div class="comment-default">
+<div class="comment-list">
+<h5>共有{$comments_number}条评论</h5>
+  <volist name="comments" id="comment">
+  <table width="100%">
+  <tr style="border-top:1px solid #ccc;">
+	  <td rowspan="4" valign="top" class="headimg" style="padding-top:10px;"><img src="__IMG__/default.png" class="img-rounded"></td>
+	  <td class="form-inline" style="padding-top:10px;">
+		<if condition="!empty($comment['uid'])">
+		<label><a href="javascript:void(0);">会员：{:get_username($comment.uid)}</a></label>
+		 <else/>
+		<label><a href="javascript:void(0);">网友：{$comment.uname}</a></label>
+		 </if>
+	  </td>
+  </tr>
+  <tr>
+	  <td>{$comment.comment}</td>
+  </tr>
+  <tr>
+	  <td><label class="pull-left">{$comment.create_time_text}</label> <label class="pull-right"><!--没时间了能提交，但还不能显示 <a href="javascript:void(0);" id="replybutton" onclick="replyclick({$comment.id});">回复</a> | --><a href="javascript:void(0);" id="diggbutton" onclick="diggcomment({$comment.id});">顶 (<span id="diggcont_{$comment.id}">{$comment.digg}</span>)</a></label></div></td>
+  </tr>
+  <tr><td style="padding-bottom:20px;"><div class="replybox" id="replybox_{$comment.id}" style="display:none;"></div></td></tr>
+  </table>
+  </volist>
+>>>>>>> 37815edf1422ed171c17d53ff9756097741a1115
 
 	function replyclick(id){
 		$.each($('.replybox'), function(i,n){
