@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: localhost
--- 生成日期: 2014 年 02 月 22 日 11:29
+-- 生成日期: 2014 年 02 月 22 日 14:47
 -- 服务器版本: 5.5.29
 -- PHP 版本: 5.4.10
 
@@ -78,7 +78,7 @@ CREATE TABLE `onethink_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表' AUTO_INCREMENT=151 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表' AUTO_INCREMENT=152 ;
 
 --
 -- 转存表中的数据 `onethink_action_log`
@@ -95,7 +95,8 @@ INSERT INTO `onethink_action_log` (`id`, `action_id`, `user_id`, `action_ip`, `m
 (147, 1, 1, 2130706433, 'member', 1, 'admin在2014-02-22 14:24登录了后台', 1, 1393050256),
 (148, 1, 1, 2130706433, 'member', 1, 'admin在2014-02-22 14:32登录了后台', 1, 1393050755),
 (149, 10, 1, 2130706433, 'Menu', 125, '操作url：/Admin/Menu/edit', 1, 1393059977),
-(150, 10, 1, 2130706433, 'Menu', 126, '操作url：/Admin/Menu/edit', 1, 1393060009);
+(150, 10, 1, 2130706433, 'Menu', 126, '操作url：/Admin/Menu/edit', 1, 1393060009),
+(151, 10, 1, 2130706433, 'Menu', 69, '操作url：/Admin/Menu/edit', 1, 1393076140);
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,7 @@ INSERT INTO `onethink_addons` (`id`, `name`, `title`, `description`, `status`, `
 (26, 'Ping', '文章发布ping插件', '用于发布文档后的主动ping，主动增加收录', 0, '{"site_name":"\\u535a\\u5ba2","site_url":"blog.cn","update_url":"Archive\\/@blog.cn","update_rss":"feed@blog.cn"}', 'yangweijie', '0.1', 1392009365, 0),
 (27, 'ReturnTop', '返回顶部', '回到顶部美化，随机或指定显示，100款样式，每天一种换，天天都用新样式', 1, '{"random":"0","current":"2"}', 'thinkphp', '0.1', 1392009776, 0),
 (30, 'Timeline', '工作时间轴', '个人工作经历时间轴展示', 1, '{"random":"1"}', 'yangweijie', '0.1', 1392554843, 1),
-(31, 'Bookshell', '书架', '专门展示文档书籍的', 1, '{"random":"1"}', 'yangweijie', '0.1', 1392561469, 1);
+(31, 'Bookshell', '书架', '专门展示文档书籍的', 1, '{"title":"jay\\u2018s\\u5b9e\\u9a8c\\u5ba4"}', 'yangweijie', '0.1', 1392561469, 1);
 
 -- --------------------------------------------------------
 
@@ -736,7 +737,7 @@ CREATE TABLE `onethink_config` (
   `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
 
 --
 -- 转存表中的数据 `onethink_config`
@@ -772,7 +773,11 @@ INSERT INTO `onethink_config` (`id`, `name`, `type`, `title`, `group`, `extra`, 
 (37, 'SHOW_PAGE_TRACE', 4, '是否显示页面Trace', 4, '0:关闭\r\n1:开启', '是否显示页面Trace信息', 1387165685, 1390274668, 1, '1', 10),
 (38, 'VERIFY', 4, '开启验证码', 1, '0:关闭,1:开启', '', 1390611680, 1391997526, 1, '0', 5),
 (41, 'FRONT_THEME', 1, '前台主题', 0, '', '前台主题配置，覆盖系统文件', 1392108077, 1392108077, 1, 'default', 0),
-(40, 'FEEDFULLTEXT', 4, '聚合全文输出', 3, '0:仅输出摘要,1:全文输出', '如果你不希望在聚合中输出文章全文,请使用仅输出摘要选项.\r\n摘要的文字来自description字段，此字段无内容就截取前200个字符.', 1391997436, 1391997436, 1, '1', 0);
+(40, 'FEEDFULLTEXT', 4, '聚合全文输出', 3, '0:仅输出摘要,1:全文输出', '如果你不希望在聚合中输出文章全文,请使用仅输出摘要选项.\r\n摘要的文字来自description字段，此字段无内容就截取前200个字符.', 1391997436, 1391997436, 1, '1', 0),
+(42, 'PICTURE_UPLOAD_DRIVER', 3, '图片上传驱动类型', 4, 'Bcs:Bae-云环境\r\nSae:Sae-Storage\r\nLocal:Local-本地\r\nFtp:Ftp空间\r\nUpyun:有拍云', '需要配置相应的UPLOAD_{driver}_CONFIG 配置 放可使用，不然默认Local本地', 1393073505, 1393073505, 1, 'Sae:Sae-Storage', 0),
+(43, 'UPLOAD_BCS_CONFIG', 3, 'Bae上传配置', 4, '', '', 1393073559, 1393073559, 1, 'AccessKey:3321f2709bffb9b7af32982b1bb3179f\r\nSecretKey:67485cd6f033ffaa0c4872c9936f8207\r\nbucket:jaylab\r\nrename:0', 0),
+(44, 'UPLOAD_SAE_CONFIG', 3, 'Sae上传配置', 4, '', 'sae Domain 配了 用domain ，没配用上传方法的第一个目录', 1393073998, 1393073998, 1, 'domain:123', 0),
+(45, 'UPLOAD_QINIU_CONFIG', 3, '七牛上传配置', 4, '', '', 1393074989, 1393074989, 1, 'accessKey:ODsglZwwjRJNZHAu7vtcEf-zgIxdQAY-QqVrZD\r\nsecrectKey:Z9-RahGtXhKeTUYy9WCnLbQ98ZuZ_paiaoBjByKv\r\nbucket:onethinktest\r\ndomain:onethinktest.u.qiniudn.com\r\ntimeout:3600', 0);
 
 -- --------------------------------------------------------
 
@@ -855,8 +860,8 @@ CREATE TABLE `onethink_document` (
 --
 
 INSERT INTO `onethink_document` (`id`, `uid`, `name`, `title`, `category_id`, `description`, `root`, `pid`, `model_id`, `type`, `position`, `link_id`, `cover_id`, `display`, `deadline`, `attach`, `view`, `comment`, `extend`, `level`, `create_time`, `update_time`, `status`) VALUES
-(1, 1, '', 'OneThink1.0正式版发布', 2, '大家期待的OneThink正式版发布', 0, 0, 2, 1, 0, 0, 1, 1, 0, 0, 51, 0, 0, 0, 1387260660, 1390638860, 1),
-(2, 1, 'document_center', '文档中心', 1, '', 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 92, 0, 0, 0, 1391043840, 1392447774, 1),
+(1, 1, '', 'OneThink1.0正式版发布', 1, '大家期待的OneThink正式版发布', 0, 0, 2, 1, 0, 0, 1, 1, 0, 0, 51, 0, 0, 0, 1387260660, 1393075362, 1),
+(2, 1, 'document_center', '文档中心', 1, '', 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 98, 0, 0, 0, 1391043840, 1392447774, 1),
 (3, 1, '', '123123', 1, '', 0, 0, 2, 1, 0, 0, 0, 1, 0, 0, 80, 0, 0, 0, 1391045400, 1393047618, 1),
 (4, 1, 'experienc', '个人经历', 1, '个人经历的展示', 0, 0, 2, 2, 0, 0, 0, 1, 0, 0, 21, 0, 0, 0, 1392549480, 1392549662, 1);
 
@@ -882,7 +887,7 @@ CREATE TABLE `onethink_document_article` (
 --
 
 INSERT INTO `onethink_document_article` (`id`, `parse`, `content`, `template`, `bookmark`, `tags`) VALUES
-(1, 0, '<img src="/Uploads/Editor/2014-01-24/52e1d78da828b.jpg" alt="" />\r\n<h1>\r\n  OneThink1.0正式版发布 \r\n</h1>\r\n<p>\r\n <br />\r\n</p>\r\n<p>\r\n <strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。 </strong> \r\n</p>\r\n<h2>\r\n  主要特性：\r\n</h2>\r\n<p>\r\n 1. 基于ThinkPHP最新3.2版本。\r\n</p>\r\n<p>\r\n  2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。 \r\n</p>\r\n<p>\r\n  3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。\r\n</p>\r\n<p>\r\n  4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。 \r\n</p>\r\n<p>\r\n 5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。\r\n</p>\r\n<p>\r\n 6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。\r\n</p>\r\n<p>\r\n 7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。\r\n</p>\r\n<p>\r\n 8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。 \r\n</p>\r\n<p>\r\n  9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。 \r\n</p>\r\n<p>\r\n <br />\r\n</p>\r\n<p>\r\n <strong> OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。 </strong> \r\n</p>\r\n<p>\r\n <br />\r\n</p>\r\n<h2>\r\n  后台主要功能：\r\n</h2>\r\n<p>\r\n 1. 用户Passport系统\r\n</p>\r\n<p>\r\n  2. 配置管理系统 \r\n</p>\r\n<p>\r\n 3. 权限控制系统\r\n</p>\r\n<p>\r\n  4. 后台建模系统 \r\n</p>\r\n<p>\r\n 5. 多级分类系统 \r\n</p>\r\n<p>\r\n 6. 用户行为系统 \r\n</p>\r\n<p>\r\n 7. 钩子和插件系统\r\n</p>\r\n<p>\r\n 8. 系统日志系统 \r\n</p>\r\n<p>\r\n 9. 数据备份和还原\r\n</p>\r\n<p>\r\n <br />\r\n</p>\r\n<p>\r\n  [ 官方下载： <a href="http://www.onethink.cn/download.html" target="_blank">http://www.onethink.cn/download.html</a>  开发手册：<a href="http://document.onethink.cn/" target="_blank">http://document.onethink.cn/</a> ] \r\n</p>\r\n<p>\r\n  <br />\r\n</p>\r\n<p>\r\n <strong>OneThink开发团队 2013</strong> \r\n</p>', '', 0, ''),
+(1, 0, '<p><br/></p><h1>OneThink1.0正式版发布&nbsp;</h1><p><br/></p><p><strong>OneThink是一个开源的内容管理框架，基于最新的ThinkPHP3.2版本开发，提供更方便、更安全的WEB应用开发体验，采用了全新的架构设计和命名空间机制，融合了模块化、驱动化和插件化的设计理念于一体，开启了国内WEB应用傻瓜式开发的新潮流。&nbsp;</strong> </p><h2>主要特性：</h2><p>1. 基于ThinkPHP最新3.2版本。</p><p>2. 模块化：全新的架构和模块化的开发机制，便于灵活扩展和二次开发。&nbsp;</p><p>3. 文档模型/分类体系：通过和文档模型绑定，以及不同的文档类型，不同分类可以实现差异化的功能，轻松实现诸如资讯、下载、讨论和图片等功能。</p><p>4. 开源免费：OneThink遵循Apache2开源协议,免费提供使用。&nbsp;</p><p>5. 用户行为：支持自定义用户行为，可以对单个用户或者群体用户的行为进行记录及分享，为您的运营决策提供有效参考数据。</p><p>6. 云端部署：通过驱动的方式可以轻松支持平台的部署，让您的网站无缝迁移，内置已经支持SAE和BAE3.0。</p><p>7. 云服务支持：即将启动支持云存储、云安全、云过滤和云统计等服务，更多贴心的服务让您的网站更安心。</p><p>8. 安全稳健：提供稳健的安全策略，包括备份恢复、容错、防止恶意攻击登录，网页防篡改等多项安全管理功能，保证系统安全，可靠、稳定的运行。&nbsp;</p><p>9. 应用仓库：官方应用仓库拥有大量来自第三方插件和应用模块、模板主题，有众多来自开源社区的贡献，让您的网站“One”美无缺。&nbsp;</p><p><br/></p><p><strong>&nbsp;OneThink集成了一个完善的后台管理体系和前台模板标签系统，让你轻松管理数据和进行前台网站的标签式开发。&nbsp;</strong> </p><p><br/></p><h2>后台主要功能：</h2><p>1. 用户Passport系统</p><p>2. 配置管理系统&nbsp;</p><p>3. 权限控制系统</p><p>4. 后台建模系统&nbsp;</p><p>5. 多级分类系统&nbsp;</p><p>6. 用户行为系统&nbsp;</p><p>7. 钩子和插件系统</p><p>8. 系统日志系统&nbsp;</p><p>9. 数据备份和还原</p><p><br/></p><p>&nbsp;[ 官方下载：&nbsp;<a href="http://www.onethink.cn/download.html" target="_blank">http://www.onethink.cn/download.html</a>&nbsp;&nbsp;开发手册：<a href="http://document.onethink.cn/" target="_blank">http://document.onethink.cn/</a>&nbsp;]&nbsp;</p><p><br/></p><p><strong>OneThink开发团队 2013</strong> </p>', '', 0, ''),
 (2, 2, '# 测试内容', 'Single/shell', 0, ''),
 (3, 2, '# 测试分类', '', 0, '测试分类'),
 (4, 2, '#', 'Single/timeline', 0, '');
@@ -1105,7 +1110,7 @@ INSERT INTO `onethink_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `tip`,
 (66, '改变状态', 63, 0, 'Attribute/setStatus', 0, '', '', 0),
 (67, '保存数据', 63, 0, 'Attribute/update', 0, '', '', 0),
 (68, '系统', 0, 7, 'Config/group', 0, '', '', 0),
-(69, '网站设置', 68, 1, 'Config/group', 0, '', '系统设置', 0),
+(69, '网站设置', 68, 1, 'Config/group?id=1', 0, '', '系统设置', 0),
 (70, '配置管理', 68, 4, 'Config/index', 0, '', '系统设置', 1),
 (71, '编辑', 70, 0, 'Config/edit', 0, '新增编辑和保存配置', '', 0),
 (72, '删除', 70, 0, 'Config/del', 0, '删除配置', '', 0),
