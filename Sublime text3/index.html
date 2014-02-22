@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sublime text3手册</title>
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/facebox.css"/>
+  <link rel="stylesheet" type="text/css" href="css/doc.css"/>
+  <script src="js/modernizr.custom.79639.js"></script>
+</head>
+<body>
+  <div id="container" class="container">
+    <div class="menu-panel">
+      <h3>手册目录</h3>
+      <ul id="menu-toc" class="menu-toc J_Menu"></ul>
+    </div>
+
+    <div class="bb-custom-wrapper">
+      <div id="bb-bookblock" class="bb-bookblock">
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h2>通用</h2>
+              <p>
+                <a href="http://docs.sublimetext.info/en/latest/index.html">Sublime Text 非官方文档</a>
+                是有着巨大Sublime text 3 信息量的优秀资源。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h2>用法</h2>
+              <ul>
+                <li>列选择</li>
+                <li>用键盘多重选择</li>
+                <li>自动完成</li>
+                <li>Tab完成</li>
+                <li>自由模式（沉浸模式）</li>
+                <li>复古模式(vi模式)</li>
+                <li>项目</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h3>列选择</h3>
+              <p> <strong>概述</strong>
+              </p>
+              <p>
+                列选择可以用来选择一个文件中的矩形区域。 列选择不通过一个单独的模式运作，而是使用多重选择。
+你可以添加选取来选择文本的多个代码块或者减少选取去掉一个代码块。
+              </p>
+              <p> <strong>使用鼠标</strong>
+              </p>
+              <p>不同平台使用不同的鼠标键和键盘键:</p>
+              <p> <em>OSX</em>
+              </p>
+              <ul>
+                <li>鼠标左键+Option</li>
+                <li>或者鼠标中键</li>
+                <li>添加至选区：Command</li>
+                <li>从选区减少: Command + Shift</li>
+              </ul>
+              <p> <em>Windows</em>
+              </p>
+              <ul>
+                <li>鼠标右键 + Shift</li>
+                <li>或者鼠标中键</li>
+                <li>添加至选区: Ctrl</li>
+                <li>从选区减少: Alt</li>
+              </ul>
+              <p>
+                <em>Linux</em>
+              </p>
+              <ul>
+                <li>鼠标右键 + Shift</li>
+                <li>添加至选区: Ctrl</li>
+                <li>从选区减少: Alt</li>
+              </ul>
+              <p>
+                <strong>使用键盘</strong>
+              </p>
+              <p>
+                <em>OSX</em>
+              </p>
+              <ul>
+                <li>Ctrl + Shift + Up</li>
+                <li>Ctrl + Shift + Down</li>
+              </ul>
+              <p>
+                <em>Windows</em>
+              </p>
+              <ul>
+                <li>Ctrl + Alt + Up</li>
+                <li>Ctrl + Alt + Down</li>
+              </ul>
+              <p>
+                <em>Linux</em>
+              </p>
+              <ul>
+                <li>Ctrl + Alt + Up</li>
+                <li>Ctrl + Alt + Down</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h3>用键盘多重选择</h3>
+              <p>
+                <strong>添加一行</strong>
+              </p>
+              <p>
+                要向选区添加之上和之下的一行,使用Ctl+Alt+Up 和 Ctrl+Alt+down (OS X: Ctrl+Shift+Up 和 Ctrl+Shift+Down)。
+              </p>
+              <p>
+                如果你走的太远了,使用撤销选区(Ctrl+U， 或者 Command+U 在OS X上)来进行回退。
+                <em>将选区转换成多个单行选区</em>
+              </p>
+              <p>
+                选择一个多行的代码块，然后将其转换为每行一个选区的多个选区，这时候要用Ctrl+Shift+L, 或 Command+Shift+L 在OS X上.
+              </p>
+              <p>
+                <strong>快速添加下一个</strong>
+              </p>
+              <p>
+                为了添加下一个出现的单词到选区，使用快速添加下一个,它绑定到Ctrl+D 在Windows和Linux, 或者 Command+D 在OS X上.
+              </p>
+              <p>重申,如果你走的太远了,使用撤销选区(Ctrl+U， 或者 Command+U 在OS X上)来进行回退。</p>
+              <p>
+                <strong>全选</strong>
+              </p>
+              <p>
+                要添加所有出现的符合选区要求的词到选区，使用全选: Alt+F3在Windows和Linux,或者 Ctrl+Command+G在OS X上.
+              </p>
+              <p>
+                <strong>单选区</strong>
+              </p>
+              <p>要从多重选择回到一个单选区,按Escape.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h3>自动完成</h3>
+              <p>
+                <strong>概述</strong>
+              </p>
+              <p>
+                当你键入完一个键时自动完成会显示可完成的列表，因此你可以只敲几个键完成一些个长的单词。 它在源码和html代码中是默认启用的(但只会在键入 &lt; 字符后起作用).
+              </p>
+              <p>
+                <strong>禁用自动完成</strong>
+              </p>
+              <p>
+                通过auto_complete配置可以禁用自动完成。要禁用的话,把下面这行加入到
+Preferences/File Settings - User:
+              </p>
+              <pre><code>"auto_complete": false</code></pre>
+              <p>在自动完成被禁用的情况下,可以手动显示完成层,或者tab直接插入完成中最靠前的那项而不显示完成列表。</p>
+              <p>
+                <strong>手动显示完成</strong>
+              </p>
+              <p>按Ctrl+Space将会显示完成弹层如果他没被显示的话。如果正在显示,他将选择下一项。</p>
+              <p>
+                <strong>使用tab来提交</strong>
+              </p>
+              <p>
+                默认的，完成中的选中项目将在你键入回车时生效。这会造成完成标签和插入新的一行之间的歧义。同时设置 auto_complete_commit_on_tab 配置为true,回车只会插入新的一行，并且tab将会补全当前的自动完成。这还有其他的好处：因为Sublime Text知道这儿没有歧义，他可能显示更多相关完成的列表，并且极有可能把你想要的排在第一位。
+              </p>
+              <p>推荐启用用tab提交，但是这将话费你一点时间去习惯。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h3>Tab完成</h3>
+              <p>
+                <strong>概述</strong>
+              </p>
+              <p>
+                Tab完成允许通过按tab键快速的完成单词。当启用时按下tab编辑器会使用它的模糊匹配算法展开光标左侧的文本成最佳匹配项。
+              </p>
+              <p>Tab完成默认是启用的。</p>
+              <p>
+                <strong>禁用Tab完成</strong>
+              </p>
+              <p>
+                有时候tab完成不是很需要。要关闭他的话，加入下面这行到Preferences/File Settings - User:
+              </p>
+              <pre><code>"tab_completion": false</code></pre>
+              <p>
+                <strong>插入原生tab</strong>
+              </p>
+              <p>要插入tab而不是补全，按shift+tab.</p>
+              <p>
+                <strong>改变完成</strong>
+              </p>
+              <p>有时候完成的文本不是你想要的：要更换他，按ctrl+space。这将还原完成，并显示标准的自动完成列表。</p>
+              <p>另外，tab可以再次按下去循环下一个完成。</p>
+              <p>
+                <strong>完成源码</strong>
+              </p>
+              <p>
+                关于完成的源码，和创建自己的完成可以访问
+                <a href="http://sublimetext.info/docs/en/extensibility/completions.html">sublimetext.info</a>
+                .
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h3>自由模式（沉浸模式）</h3>
+              <p>
+                <strong>概述</strong>
+              </p>
+              <p>
+                自由模式（沉浸模式）全屏显示你的文件，你的显示器当中除了文本啥也没有。所有的UI chrome是隐藏的，但是可以访问。沉浸模式可以通过View/Enter Distraction Free Mode菜单项进入。
+              </p>
+              <p>
+                当处于沉浸模式时，所有的UI chrome (侧边栏,迷你地图,状态栏,等)将被隐藏。你可以通过View菜单选择性的选择部分UI-你的配置将会在下次进入沉浸模式时生效。
+              </p>
+              <p>
+                <strong>定制化</strong>
+              </p>
+              <p>
+                部分配置将会在进入沉浸模式时应用。这些默认的配置位于Packages/Default/Distraction Free.sublime-settings)他们是:
+              </p>
+              <pre><code>{
+  "line_numbers": false,
+  "gutter": false,
+  "draw_centered": true,
+  "wrap_width": 80,
+  "word_wrap": true,
+  "scroll_past_end": true
+}
+</code></pre>
+              <p>
+                你可以定制这些通过编辑Packages/User/Distraction Free.sublime-settings，这可以通过Preferences/File Settings - More 菜单访问到。
+              </p>
+              <p>
+                上面值得注意的是wrap_width设置。它的值80造成超过80字符时换行。你也许想把它设的高点，或者在窗口宽度是换行（设为0的时候）。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h3>复古模式(vi模式)</h3>
+              <p>
+                <strong>概述</strong>
+              </p>
+              <p>
+                复古是一个Sublime Text 2 的vi模式编辑包。它允许你结合vi的命令行模式和Sublime Text的特性，包括多重选择。
+              </p>
+              <p>
+                复古模式在开放开发和补丁方面更受欢迎。如果你想要贡献，详情可见GitHub页。
+启用复古模式
+              </p>
+              <p>
+                复古模式默认是禁用的，通过ignored_packages配置。 如果你把"Vintage"忽略包列表中移除，你就可以使用vi快捷键编辑了:
+              </p>
+              <ol>
+                <li>选中Preferences/Settings - Default菜单项</li>
+                <li>
+                  <p>编辑ignored_packages配置，把他从:</p>
+                </li>
+                <li>
+                  <p>"ignored_packages": ["Vintage"]</p>
+                </li>
+              </ol>
+              <p>改成:</p>
+              <p>"ignored_packages": []</p>
+              <p>然后保存文件。</p>
+              <ol>
+                <li>现在复古模式就启用了 - 你会看见"INSERT MODE"在任务栏上列出来了。</li>
+              </ol>
+              <p>复古模式默认就是插入模式。这可以通过添加以下来改变:</p>
+              <pre><code>"vintage_start_in_command_mode": true</code></pre>
+              <p>来使用自己的配置。</p>
+              <p>
+                <strong>它包括了</strong>
+              </p>
+              <p>
+                复古模式包括了最基本的操作： d (delete), y (copy), c (change), gu (lower case), gU (upper case), g~ (swap case), g? (rot13), &lt; (unindent), and &gt; (indent).
+              </p>
+              <p>
+                它也包含了许多动作，包括l, h, j, k, W, w, e, E, b, B, alt+w (move by sub-words), alt+W (move backwards by sub-words), $, ^, %, 0, G, gg, f, F, t, T, ^f, ^b, H, M, and L.
+              </p>
+              <p>文本对象是支持的，包括文字，引号，括号和标签。</p>
+              <p>
+                那里重复的('.')，作为被指定命令和动作的计数。 寄存器就像宏和书签是支持的。许多杂项命令也是被支持的，比如 *, /, n, N, s, S 和其他的。
+              </p>
+              <p>
+                <strong>它没有</strong>
+              </p>
+              <p>
+                插入模式是通常Sublime Text 2编辑,通过通常Sublime Text 2 绑定的键位: vi 插入模式键位没有实现。
+              </p>
+              <p>
+                Ex 命令行 没有实现，除了:w and :e, 其他通过控制面板。
+实现的原理
+              </p>
+              <p>
+                复古模式完全是靠快捷键和插件API实现的 - 随意浏览复古包，看看他们是如何组织的。举个例子，你想绑定"jj"到退出插入模式，你可以添加这个快捷键:
+              </p>
+              <pre><code>{ "keys": ["j", "j"], "command": "exit_insert_mode",
+  "context":
+  [
+    { "key": "setting.command_mode", "operand": false },
+    { "key": "setting.is_widget", "operand": false }
+  ]
+}
+</code></pre>
+              <p>
+                <strong>OS X Lion</strong>
+              </p>
+              <p>
+                在狮子中，按住一个键不会重复作用这个键，而是显示出一个弹出菜单供选择字符间的变化。这不能很好的和命令模式工作，因此你也许想禁用它。只要通过在终端里运行下面这句:
+              </p>
+              <pre><code>defaults write com.sublimetext.2 ApplePressAndHoldEnabled -bool false
+</code></pre>
+              <p>
+                <strong>Ctrl键组</strong>
+              </p>
+              <p>复古模式支持这些Ctrl的绑定:</p>
+              <ul>
+                <li>Ctrl+[: Escape</li>
+                <li>Ctrl+R: Redo</li>
+                <li>Ctrl+Y: Scroll down one line</li>
+                <li>Ctrl+E: Scroll up one line</li>
+                <li>Ctrl+F: Page Down</li>
+                <li>Ctrl+B: Page Up</li>
+              </ul>
+              <p>
+                然而，因为他们和其他Sublime Text 2 的快捷键冲突，他们在Windows and Linux上默认是禁用的。他们可以通过设置the vintage_ctrl_keys配置来启用:
+              </p>
+              <pre><code>"vintage_ctrl_keys": true</code></pre>
+              <p>
+                <strong>Ex Mode</strong>
+              </p>
+              <p>
+                请看一下
+                <a href="https://github.com/SublimeText/VintageEx">VintageEx</a>
+                作为一个复古模式的增强。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h3>项目</h3>
+              <p>
+                <strong>概述</strong>
+              </p>
+              <p>
+                Sublime Text 2中的项目是由2个文件构成: sublime-project文件， 它包含了项目定义；还有sublime-workspace文件,它包含了用户指定的数据比如打开的文件以及它们的每个修改之处。
+              </p>
+              <p>
+                按照惯例，sublime-project文件会被迁入到版本控制中，而sublime-workspace文件则不会。
+项目格式
+              </p>
+              <p>
+                sublime-project文件是JSON格式，并且有三个顶级对象: folders,用来包含目录, settings, 文件配置的复写，和build_systems，给项目指定编译系统。下面是个例子:
+              </p>
+              <pre><code>{
+    "folders":
+    [
+        {
+            "path": "src",
+            "folder_exclude_patterns": ["backup"]
+        },
+        {
+            "path": "docs",
+            "name": "Documentation",
+            "file_exclude_patterns": ["*.css"]
+        }
+    ],
+    "settings":
+    {
+        "tab_size": 8
+    },
+    "build_systems":
+    [
+        {
+            "name": "List",
+            "cmd": ["ls"]
+        }
+    ]
+}
+</code></pre>
+              <p>
+                <strong>目录</strong>
+              </p>
+              <p>
+                每个目录必须有一个path， 并且可选的有一个folder_exclude_patterns和file_exclude_patterns配置。path也许相对于项目目录，或者一个全路径。 目录也许也有一个name配置，用来设置在侧边栏显示的名字。
+              </p>
+              <p>
+                早期版本转换的项目也许会有一个mount_points入口在项目目录下。如果你想使用排除匹配模式，你需要将原入口改成上述格式。
+              </p>
+              <p>
+                <strong>配置</strong>
+              </p>
+              <p>这里的Settings可以使用settings键值指定，并且覆盖普通用户的配置。 注意，他们不能覆盖语法的配置。</p>
+              <p>
+                <strong>编译系统</strong>
+              </p>
+              <p>
+                Build Systems指定了一组
+                <a href="http://sublimetext.info/docs/en/reference/build_systems.html">编译系统</a>
+                定义。为了区别普通编译系统，每个编译系统必须指定一个name。 这里列出的编译系统将在普通的Tools/Build Systems菜单上可见。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h2>定制化</h2>
+              <ul>
+                <li>配置</li>
+                <li>改变字体</li>
+                <li>缩进</li>
+                <li>拼写检查</li>
+                <li>包</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="bb-item">
+          <div class="content  J_Content">
+            <div class="scroller">
+              <h3>配置</h3>
+              <p>
+                <strong>概述</strong>
+              </p>
+              <p>
+                Sublime Text 2有许多配置来定制它的行为。通过修改文件来改变配置：尽管这比用一个GUI图形界面有点小麻烦，但是你被奖励了一个灵活的系统。
+配置
+              </p>
+              <p>
+                想了解哪些配置是可用的，每个配置的说明，请看下这个Packages/Default/Preferences.sublime-settings。你可以通过Preferences/Settings - Default菜单打开这个文件。
+              </p>
+              <p>
+                当你发现一些配置要更改的时候，把他们加入到你的用户配置里去 (通过Preferences/Settings - User 菜单可以访问到)，这样在升级时，他们可以被保留下来。
+              </p>
+              <p>
+                <strong>配置文件</strong>
+              </p>
+              <p>配置文件将以一下顺序载入：</p>
+              <ol>
+                <li>Packages/Default/Preferences.sublime-settings</li>
+                <li>
+                  Packages/Default/Preferences (
+                  <platform>).sublime-settings</li>
+                  <li>
+                    <strong>Packages/User/Preferences.sublime-settings</strong>
+                  </li>
+                  <li>&lt;Project Settings></li>
+                  <li>
+                    Packages/
+                    <syntax>
+                      /
+                      <syntax>.sublime-settings</li>
+                      <li>
+                        <strong>Packages/User/
+                          <syntax>.sublime-settings</strong>
+                        </li>
+                        <li>&lt;Buffer Specific Settings></li>
+                      </ol>
+                      <p>
+                        总之，你应该把你的配置放到Packages/User/Preferences.sublime-settings中。如果你想指定某种文件类型的配置，比如，Python，你应该把他们放在Packages/User/Python.sublime-settings中。
+                      </p>
+                      <p>
+                        <strong>示列配置文件</strong>
+                      </p>
+                      <p>试着保存为Packages/User/Preferences.sublime-settings</p>
+                      <pre><code>{
+    "tab_size": 4,
+    "translate_tabs_to_spaces": false
+}
+</code></pre>
+                      <p>每个语法配置</p>
+                      <p>配置也许会为每个语法去指定。通常这样的用户想要给每个文件类型不同的缩进或者语法高亮颜色。</p>
+                      <p>
+                        你可以给当前语法编辑这些配置通过Preferences/Settings - More/Syntax Specific - User菜单。
+                      </p>
+                      <p>
+                        <strong>每个项目配置</strong>
+                      </p>
+                      <p>可以设置一个每个项目基础配置，详细参考Project Documentation</p>
+                      <p>
+                        <strong>沉浸模式配置</strong>
+                      </p>
+                      <p>
+                        Distraction Free Mode有一个额外的配置文件名称为(Distraction Free.sublime-settings)。你可以设置只有沉浸模式有用的文件配置-通过Preferences/Settings - More/Distraction Free - User菜单访问到。
+                      </p>
+                      <p>
+                        <strong>通过快捷键改变设置</strong>
+                      </p>
+                      <p>
+                        toggle_setting命令可以被用来切换设置。比如，给切换word_wrap当前文件设置一个快捷键，你可以使用(在Preferences/Key Bindings - User中的):
+                      </p>
+                      <pre><code>{
+    "keys": ["alt+w"],
+    "command": "toggle_setting",
+    "args":
+    {
+        "setting": "word_wrap"
+    }
+}
+</code></pre>
+                      <p>
+                        set_setting命令可以被用来给某个配置指定一个特殊的值。比如，这个快捷键是当期文件使用Cobalt color scheme语法高亮:
+                      </p>
+                      <pre><code>{
+    "keys": ["ctrl+k", "ctrl+c"],
+    "command": "set_setting",
+    "args":
+    {
+        "setting": "color_scheme",
+        "value": "Packages/Color Scheme - Default/Cobalt.tmTheme"
+    }
+}
+</code></pre>
+                      <p>这里修改的配置是缓冲区的配置：他们重载配置文件中的配置，但是只对当前文件起作用。</p>
+                      <p>
+                        <strong>故障排除</strong>
+                      </p>
+                      <p>由于有好多处可以设置配置的地方，有时候看到当前文件实际使用的配置很有用。你可以在终端里操作以下来查看设置:</p>
+                      <pre><code>view.settings().get('font_face')</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bb-item">
+                  <div class="content  J_Content">
+                    <div class="scroller">
+                      <h3>改变字体</h3>
+                      <p>
+                        <strong>概述</strong>
+                      </p>
+                      <p>可以通过添加这几行到Preferences/Settings - User:</p>
+                      <pre><code>"font_face": "Courier New",
+"font_size": 10
+</code></pre>
+                      <p>改变字体，当你保存时字体就会变了。</p>
+                      <p>你可以通过浏览 Preferences/Settings - Default来查看其它要改变的配置。</p>
+                      <p>在Sublime Text 2中有很多东西可以被定制的。</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bb-item">
+                  <div class="content  J_Content">
+                    <div class="scroller">
+                      <h3>缩进</h3>
+                      <p>
+                        <strong>概述</strong>
+                      </p>
+                      <p>
+                        缩进配置决定了tab停留的大小并且控制是否tab键应该插入tab还是空格。此外，因为自动检测的缘由，他们可以为全局、每个文件类型或者每个文件设置。
+配置
+tab_size
+                        <strong>整数。一个tab和空格相等的数量</strong>
+                      </p>
+                      <p>
+                        translate_tabs_to_spaces  布尔，如果真，当tab键按下时，空格将会被插入到这个新tab停止的地方，而不是插入一个tab字符
+                      </p>
+                      <p>
+                        detect_indentation  布尔，如果真（默认是），当载入一个文件时会自动计算它的tab_size和translate_tabs_to_spaces
+                      </p>
+                      <p>
+                        use_tab_stops   布尔，如果translate_tabs_to_spaces为真，use_tab_stops将使tab和backspace的insert/delete提到下一个制表位
+                      </p>
+                      <p>
+                        <strong>配置文件</strong>
+                      </p>
+                      <p>配置文件将以一下顺序载入:</p>
+                      <ol>
+                        <li>Packages/Default/Preferences.sublime-settings</li>
+                        <li>
+                          Packages/Default/Preferences (
+                          <platform>).sublime-settings</li>
+                          <li>
+                            <strong>Packages/User/Preferences.sublime-settings</strong>
+                          </li>
+                          <li>
+                            Packages/
+                            <syntax>
+                              /
+                              <syntax>.sublime-settings</li>
+                              <li>
+                                <strong>Packages/User/
+                                  <syntax>.sublime-settings</strong>
+                                </li>
+                              </ol>
+                              <p>
+                                一般来说，你应该把你的配置放入Packages/User/Preferences.sublime-settings。如果你想给某个文件类型指定配置,举个例子，Python，你应该把他们放入Packages/User/Python.sublime-settings.
+                              </p>
+                              <p>
+                                <strong>示列配置文件</strong>
+                              </p>
+                              <p>试着保存为Packages/User/Preferences.sublime-settings</p>
+                              <pre><code>{
+  "tab_size": 4,
+  "translate_tabs_to_spaces": false
+}
+</code></pre>
+                              <p>
+                                <strong>每个语法配置</strong>
+                              </p>
+                              <p>
+                                可以设定一个语法配置。你可以给当前语法设置配置通过编辑Preferences/Settings - More/Syntax Specific - User菜单下出现的文件。
+                              </p>
+                              <p>
+                                <strong>缩进检测</strong>
+                              </p>
+                              <p>
+                                当一个文件被载入时，它的文档被审查，并且tab_size和translate_tabs_to_spaces配置将设给那个文件。当这些发生时状态栏区域将会报告这个结果。尽管这事
+                                <em>通常</em>
+                                进行的很好，你也许会想禁用它。你可以改detect_indentation配置实现它。
+                              </p>
+                              <p>
+                                Indentation detection可以手动执行通过View/Indentation/Guess Settings From Buffer菜单，这个会执行detect_indentation命令。
+                              </p>
+                              <p>
+                                <strong>Tabs和空格之间的转换</strong>
+                              </p>
+                              <p>
+                                View/Indentation有把当前文件中的tabs和空格之间互相转换的命令。这些菜单项将会运行expand_tabs和unexpand_tabs命令。
+                              </p>
+                              <p>
+                                <strong>自动缩进</strong>
+                              </p>
+                              <p>
+                                当你按下回车时自动缩进猜测前导空格的数量来插入到每一新生行。它通过以下配置控制:
+auto_indent   布尔，默认启用。启用自动缩进。
+smart_indent  布尔，默认启用。使自动缩进更智能一点，e.g.在C中声明了if后下一行会自动缩进一次。
+trim_automatic_white_space  布尔，默认启用。当移动插入符移出一行时去除auto_indent生成的白空格。
+indent_to_bracket   布尔，默认禁用。缩进时添加白空格到第一个闭包（bracket翻译不准谷歌翻译成托架了，自己理解吧）单词。使用缩进时会像下面这样：
+                              </p>
+                              <pre><code>use_indent_to_bracket(to_indent,like_this);</code></pre>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="bb-item">
+                          <div class="content  J_Content">
+                            <div class="scroller">
+                              <h3>拼写检查</h3>
+                              <p>
+                                <strong>概述</strong>
+                              </p>
+                              <p>
+                                Sublime Text使用Hunspell 作为它的拼写检查器。可替换的字典可以从OpenOffice.org Extension List获取到。
+                              </p>
+                              <p>
+                                <strong>字典</strong>
+                              </p>
+                              <p>
+                                Sublime Text目前只支持UTF-8编码的字典。大多数给问题语言的字典不是用UTF-8编码的而是使用一种更为紧凑的编码。要在Sublime Text中使用一个字典，首先需要把它转成UTF-8。
+                              </p>
+                              <p>
+                                一旦你有了一个用UTF-8编码的字典，他就可以被放到一个包里来安装，举个例子， Packages/User,这个你可以从 Preferences/Browse Packages 菜单项中浏览到。一旦文件放好了模拟就可以从 View/Dictionary 菜单的设置中选择字典了。
+                              </p>
+                              <p>
+                                <strong>配置</strong>
+                              </p>
+                              <p>
+                                我们有2个 配置 影响到拼写检查: spell_check,这控制着拼写检查的启用与否和 dictionary, 这提供了要使用的字典文件的路径。举个例子:
+                              </p>
+                              <pre><code>"spell_check": true,
+"dictionary": "Packages/Language - English/en_US.dic"
+</code></pre>
+                              <p>
+                                <strong>命令</strong>
+                              </p>
+                              <pre><code>next_misspelling: 选择下一个错误拼写
+prev_misspelling: 选择上一个错误拼写
+ignore_word: 添加所选单词通过word参数到ignore list（忽略列表）。
+</code></pre>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="bb-item">
+                          <div class="content  J_Content">
+                            <div class="scroller">
+                              <h3>包</h3>
+                              <p>
+                                <strong>概述</strong>
+                              </p>
+                              <p>
+                                包是被Sublime Text使用的资源文件集合：如插件、语法高亮定义、菜单、Snippet等。Sublime Text附带几个包，其他更多的是用户自己创建的。
+                              </p>
+                              <p>
+                                包被存储在.sublime-package后缀的文件中，其实是zip文件改了个后缀名。包也可以被存储在一个被解压后的目录里，或者二者都有：任何在包目录里的松散文件将会覆盖存储在以.sublime-package后缀的文件。
+                              </p>
+                              <p>
+                                <strong>位置</strong>
+                                Zipped过的包可以存放在:
+                              </p>
+                              <ul>
+                                <li>&lt;executable_path>/Packages</li>
+                                <li>&lt;data_path>/Installed Packages</li>
+                              </ul>
+                              <p>松散的包会被存放在:</p>
+                              <ul>
+                                <li>&lt;data_path>/Packages</li>
+                              </ul>
+                              <p>
+                                举个例子, 包Python存储在 &lt;executable_path>/Packages/Python.sublime-package,并且任何放在&lt;data_path>/Packages/Python 目录的文件将会覆盖那些存储在.sublime-package中的文件.
+                              </p>
+                              <p>
+                                在一般情况下，&lt;executable_path>/Packages下是Sublime Text自带的，而&lt;data_path>/Packages 的包是由用户安装的包。
+                              </p>
+                              <p>
+                                <strong>特殊的包</strong>
+                              </p>
+                              <p>
+                                有2个特殊的包: Default 和 User. Default 总是排在前面顺序的, 然后User总是后面的.Package 顺序在合并包间的文件是起作用, 举个例子 Main.sublime-menu. 任何包也许会包含一个叫做Main.sublime-menu的文件,然而不会覆盖主菜单, 反之，文件将会按照包顺序被合并.
+                              </p>
+                              <p>除了Default 和 User的包按照按字母顺序排序.</p>
+                              <p>
+                                <strong>创建一个新包</strong>
+                              </p>
+                              <p>
+                                要创建一个新包,简单的只要创建一个新的在&lt;data_path>/Installed Packages下的目录.你可以通过 Preferences/Browse Packages菜单访问这个目录.
+                              </p>
+                              <p>
+                                <strong>覆盖压缩的包中文件</strong>
+                              </p>
+                              <p>
+                                要覆盖一个已存在包的文件,只要穿件一个同名文件到 Packages/
+                                <Package Name>目录下.</p>
+                                <p>
+                                  举个例子，要覆盖 在Sublime Text自带的Python.sublime-package 包中的function.sublime-snippet 文件, 创建一个目录叫 Python 到 &lt;data_path>/Packages 目录,然后放置你的function.sublime-snippet 文件到那儿.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="bb-item">
+                            <div class="content  J_Content">
+                              <div class="scroller">
+                                <h2>杂项</h2>
+                                <ul>
+                                  <li>恢复到新安装时的状态</li>
+                                  <li>OSX命令行</li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="bb-item">
+                            <div class="content  J_Content">
+                              <div class="scroller">
+                                <h3>恢复到新安装时的状态</h3>
+                                <p>
+                                  <strong>概述</strong>
+                                </p>
+                                <p>Sublime Text 2可以通过删除你的数据目录恢复到新安装时的状态。根据你的操作系统的不同，这个目录位于:</p>
+                                <ul>
+                                  <li>
+                                    OS X:
+                                    <code>~/Library/Application Support/Sublime Text 3</code>
+                                  </li>
+                                  <li>
+                                    Windows:
+                                    <code>%APPDATA%\Sublime Text 3</code>
+                                  </li>
+                                  <li>
+                                    Linux:
+                                    <code>~/.config/sublime-text-3</code>
+                                  </li>
+                                </ul>
+                                <p>要恢复到新装时的状态，你可以:</p>
+                                <ol>
+                                  <li>退出Sublime Text 3</li>
+                                  <li>删除 (或移动)数据目录,就像上文提到的。</li>
+                                  <li>启动Sublime Text 3</li>
+                                </ol>
+                                <p>
+                                  当重启时，一个全新的数据目录会被创建，就像你装好好首次启动Sublime Text 那样。要注意的是，这样也移除了你所有的配置和安装过的包。
+                                </p>
+                                <p>
+                                  <strong>OS X Lion</strong>
+                                </p>
+                                <p>
+                                  In Lion, ~/Library 目录默认是隐藏的。要定位到那儿， 选中Finder中的Go/Go to Folder菜单项，然后输入 ~/Library.
+                                </p>
+                                <p>
+                                  <strong>Windows</strong>
+                                </p>
+                                <p>
+                                  在Windows中,缓存文件被存储在一个单独的位置, %LOCALAPPDATA%\Sublime Text 3, 通过roaming 配置文件来提高性能.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="bb-item">
+                            <div class="content  J_Content">
+                              <div class="scroller">
+                                <h3>OS X命令行</h3>
+                                <p>
+                                  <strong>概述</strong>
+                                </p>
+                                <p>
+                                  Sublime Text 2有着一个命令行工具，
+                                  <code>subl</code>
+                                  ，来在命令行下处理文件。它可以用来打开Sublime Text 中的文件和项目，也可以作为unix工具的
+                                  <code>编辑器</code>
+                                  比如git和subversion。
+                                </p>
+                                <p>
+                                  <strong>安装</strong>
+                                </p>
+                                <p>
+                                  首要任务是建立一个symlink指向
+                                  <code>subl</code>
+                                  。假设你已经把Sublime Text 放入Applications目录，并且你的path环境变量里有一个
+                                  <code>~/bin</code>
+                                  目录，你可以运行：
+                                </p>
+                                <pre><code>ln -s "/Applications/Sublime Text.app/contents/SharedSupport/bin/subl" ~/bin/subl
+</code></pre>
+                                <p>
+                                  <strong>用途</strong>
+                                </p>
+                                <p>
+                                  运行
+                                  <code>subl --help</code>
+                                  ，ps:mac系统下原生显示的界面不做翻译了，以免引起误会
+                                </p>
+                                <pre><code>Usage: subl [arguments] [files]         edit the given files
+   or: subl [arguments] [directories]   open the given directories
+   or: subl [arguments] -               edit stdin
+
+Arguments:
+  --project &lt;project&gt;: Load the given project
+  --command &lt;command&gt;: Run the given command
+  -n or --new-window:  Open a new window
+  -a or --add:         Add folders to the current window
+  -w or --wait:        Wait for the files to be closed before returning
+  -b or --background:  Don't activate the application
+  -s or --stay:        Keep the application activated after closing the file
+  -h or --help:        Show help (this message) and exit
+  -v or --version:     Show version and exit
+
+--wait is implied if reading from stdin. Use --stay to not switch back
+to the terminal when a file is closed (only relevant if waiting for a file).
+
+Filenames may be given a :line or :line:column suffix to open at a specific
+location.
+</code></pre>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="bb-item">
+                            <div class="content  J_Content">
+                              <div class="scroller">
+                                <h2>编辑器</h2>
+                                <p>
+                                  要使用Sublime Text作为许多命令的输入提交编辑器，设置你的
+                                  <code>EDITOR</code>
+                                  环境变量：
+                                </p>
+                                <pre><code>export EDITOR='subl -w'</code></pre>
+                                <p>
+                                  指定 -w 将会使
+                                  <code>subl</code>
+                                  命令不会退出直到文件被关闭。
+                                  <br />
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="bb-item">
+                            <div class="content  J_Content">
+                              <div class="scroller">
+                                <h2>API</h2>
+                                <ul>
+                                  <li>
+                                    <a href="http://www.sublimetext.com/docs/3/api_reference.html">API接口</a>
+                                  </li>
+                                  <li>移植指南</li>
+                                  <li>
+                                    <a href="http://net.tutsplus.com/tutorials/python-tutorials/how-to-create-a-sublime-text-2-plugin">如何创建一个Sublime Text插件</a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="bb-item">
+                            <div class="content  J_Content">
+                              <div class="scroller">
+                                <h3>移植指南</h3>
+                                <p>
+                                  <strong>概述</strong>
+                                </p>
+                                <p>
+                                  Sublime Text 3 与Sublime Text 2在插件上有很多重要的不同之处,并且大多数插件将需要小数量的移植工作.这些变化是:
+                                </p>
+                                <ul>
+                                  <li>Python 3.3</li>
+                                  <li>线程之外的插件</li>
+                                  <li>异步事件</li>
+                                  <li>受限的 begin_edit() 和 end_edit()</li>
+                                  <li>压缩的包</li>
+                                  <li>导入模块</li>
+                                </ul>
+                                <p>
+                                  <strong>Python 3.3</strong>
+                                </p>
+                                <p>
+                                  Sublime Text 3 使用Python 3.3, 而Sublime Text 2使用Python 2.6. 而且,在 OS X, 系统内建的Python不再被使用,Sublime Text使用自带的版本. Windows和 Linux也使用自带的版本,因为它们太旧了.
+                                </p>
+                                <p>
+                                  <strong>线程之外的插件</strong>
+                                </p>
+                                <p>
+                                  插件现在运行在一个单独的线程,
+                                  <code>plugin_host</code>
+                                  . 从一个插件作者的角度来看，他们之间没有明显的差异,除了插件host的一个崩溃将不会拖垮主程序.
+                                </p>
+                                <p>
+                                  <strong>异步事件</strong>
+                                </p>
+                                <p>
+                                  在Sublime Text 2中,只有set_timeout method是进程安全的. 在Sublime Text 3, 每个API method 都是进程安全的。更重要的是，有异步事件处理,来使块写非块编码更容易:
+                                </p>
+                                <ul>
+                                  <li>on_modified_async</li>
+                                  <li>on_selection_modified_async</li>
+                                  <li>on_pre_save_async</li>
+                                  <li>on_post_save_async</li>
+                                  <li>on_activated_async</li>
+                                  <li>on_deactivated_async</li>
+                                  <li>on_new_async</li>
+                                  <li>on_load_async</li>
+                                  <li>on_clone_async</li>
+                                  <li>set_timeout_async</li>
+                                </ul>
+                                <p>当写线程的代码时，牢记当你的函数执行时，缓冲去会在下面改变.</p>
+                                <p>
+                                  <strong>受限的 begin_edit() 和 end_edit()</strong>
+                                </p>
+                                <p>
+                                  begin_end() 和 end_edit()将不再可以访问目录, 除了在一些特殊情况下. 唯一的获取一个有效Edit对象的实例的途径是，把你的代码放到一个 TextCommand 子类中.一般，大多数代码在begin_edit() 和 end_edit()之间可以放到一个TextCommand中来 重构， 然后用run_command 调用那个TextCommand.
+                                </p>
+                                <p>这一举措消除了Edit对象晃来晃去的问题，同时保证重复的command 和 macros在正常工作。</p>
+                                <p>
+                                  <strong>压缩的包</strong>
+                                </p>
+                                <p>
+                                  Sublime Text 3 中的包可以从
+                                  <code>.sublime-package</code>
+                                  (i.e., 重命名的
+                                  <code>.zip</code>
+                                  files) 文件直接被运行, 不像Sublime Text 2,它必须运行前解压他们.
+                                </p>
+                                <p>虽然大多数的改变应当不会导致差异，但是重要的是牢记如果你在访问包中的文件这点区别.</p>
+                                <p>
+                                  <strong>导入模块</strong>
+                                </p>
+                                <p>
+                                  导入其他插件变得更简单和更健壮在Sublime Text 3中,并且通过一个正常的导入声明就可实现, e.g.,
+                                  <code>import Default.comment</code>
+                                  将会导入
+                                  <code>Packages/Default/Comment.py</code>
+                                </p>
+                                <p>
+                                  <strong>启动时受限的 API 使用</strong>
+                                </p>
+                                <p>
+                                  由于
+                                  <code>plugin_host</code>
+                                  是异步加载的, 在导入的时候不可能使用Sublime Text API.这意味着你模块中所有顶级声明一定不能调用任何
+                                  <code>sublime</code>
+                                  模块中的方法.在启动时,  API处于休眠状态，并且沉默的忽略任何请求.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        <span id="bb-nav-prev" class="page-arrow">&larr;</span>
+                        <span id="bb-nav-next" class="page-arrow">&rarr;</span>
+                        <span id="tblcontents" class="menu-button tb-btn" title="目录">目录</span>
+                        <a id="J_Keyboard" href="#J_KeyBoardDec" class="menu-button keyboard" title="快捷键" rel="keyboard">
+                          <img src="images/keyboard.png" width="22" />
+                        </a>
+                        <div id="J_KeyBoardDec" class="shortcuts">
+                          <h4>快捷键说明</h4>
+
+                          <div class="columns threecols">
+                            <div class="column first">
+                              <dl class="keyboard-mappings">
+                                <dt>m</dt>
+                                <dd>拆合教程目录</dd>
+                              </dl>
+                              <dl class="keyboard-mappings">
+                                <dt>—></dt>
+                                <dd>下一页</dd>
+                              </dl>
+                              <dl class="keyboard-mappings">
+                                <dt>
+                                  <—</dt>
+                                    <dd>上一页</dd>
+                                  </dl>
+                                </div>
+
+                              </div>
+                              <!-- /.column.first --> </div>
+                            <!-- /.columns.equacols --> </div>
+                        </div>
+    <!-- /container -->
+    <!-- 代码高亮 START  -->
+
+    <!-- 代码高亮 END  -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.plugins.js"></script>
+    <script src="js/facebox.js"></script>
+    <script src="./js/page.js"></script>
+    <script>
+    /* Initialization */
+    function addPrettify() {
+      var els = document.querySelectorAll('pre');
+      for (var i = 0, el; el = els[i]; i++) {
+        if (!el.classList.contains('noprettyprint')) {
+          el.classList.add('prettyprint');
+        }
+      }
+      
+      var el = document.createElement('script');
+      el.type = 'text/javascript';
+      /* el.src = PERMANENT_URL_PREFIX + 'prettify.js'; */ /* ogom commented out */
+      el.src = 'js/prettify.js'; /* ogom added */
+      el.onload = function() {
+        prettyPrint();
+      }
+      document.body.appendChild(el);
+    };
+    $(function(){
+      $('#J_KeyBoardDec').hide();
+      Page.init();
+      addPrettify();
+    })
+    </script>
+  </body>
+</html>

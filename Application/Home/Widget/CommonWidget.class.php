@@ -44,7 +44,6 @@ class CommonWidget extends Action{
 			$category[$key]['article_num'] = (int)$count[$value['id']];
 		}
         $this->assign('category', D('Category')->toFormatTree($category));
-		$this->assign('current', $cate);
 		$this->display('Common/lists');
 	}
 

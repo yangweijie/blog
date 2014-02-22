@@ -18,6 +18,14 @@ use Think\Model;
  * 评论模型
  */
 class CommentModel extends Model{
+	public $model = array(
+		'title'=>'评论',
+		'template_add'=>'',
+		'template_edit'=>'',
+		'search_key'=>'',
+		'extend'=>0,
+	);
+
 
 	protected $_validate = array(
 		array('comment','require','评论内容不能为空！'), //默认情况下用正则进行验证
@@ -42,8 +50,6 @@ class CommentModel extends Model{
 	protected function _after_find(&$result,$options) {
 		$result['create_time_text'] = date('Y-m-d H:i:s', $result['create_time']);
 		$result['ip'] = long2ip($result['com_ip']);
-
-
 	}
 
 	protected function _after_select(&$result,$options){

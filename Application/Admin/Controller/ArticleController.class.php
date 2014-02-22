@@ -357,7 +357,7 @@ class ArticleController extends AdminController {
         $model = get_document_model($model_id);
 
         //处理结果
-        $info['pid']            =   $_GET['pid']?$_GET['pid']:0;
+        $info['pid']            =   I('get.pid', 0);
         $info['model_id']       =   $model_id;
         $info['category_id']    =   $cate_id;
         if($info['pid']){

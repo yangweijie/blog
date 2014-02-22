@@ -35,13 +35,13 @@ use Common\Controller\Addon;
 			'fields'=>'*',			//要查的字段
 			'map'=>'',				//查询条件, 如果需要可以再插件类的构造方法里动态重置这个属性
 			'order'=>'id desc',		//排序,
-			'listKey'=>array( 		//这里定义的是除了id序号外的表格里字段显示的表头名
-				'uid'=>'登录用户ID',
-				'uname'=>'用户名',
-				'uemail'=>'用户邮箱',
-				'comment'=>'内容',
-				'create_time_text'=>'时间',
-				'ip'=>'IP',
+			'list_grid'=>array( 		//这里定义的是除了id序号外的表格里字段显示的表头名
+				'uid:登录用户ID',
+				'uname:用户名',
+				'uemail:用户邮箱',
+				'comment:内容',
+				'create_time_text:时间',
+				'ip:IP',
 			),
         );
 

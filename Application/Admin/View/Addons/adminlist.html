@@ -8,12 +8,12 @@
 
 	<div class="cf">
 		<div class="fl">
-		<empty name="model.extend">
+		<eq name="model.extend" value="1">
 			<div class="tools">
 				<a class="btn" href="{:U('edit',array('name'=>$name))}">新 增</a>
 				<button class="btn ajax-post confirm" target-form="ids" url="{:U('del?name='.$name)}">删 除</button>
 			</div>
-		</empty>
+		</eq>
 		</div>
 		<!-- 高级搜索 -->
 		<div class="search-form fr cf">

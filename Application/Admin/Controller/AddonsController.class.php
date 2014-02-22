@@ -251,15 +251,20 @@ str;
             $map[$key] = array('like', '%'.$_GET[$key].'%');
             unset($_REQUEST[$key]);
         }
-        // 条件搜索
-        foreach($_REQUEST as $name=>$val){
-            if(in_array($name,$fields)){
-                $map[$name] = $val;
-            }
-        }
+
+
 
         if(isset($model)){
             $model = D("Addons://{$name}/{$model}");
+            // 条件搜索
+            foreach($_REQUEST as $name=>$val){
+                if($fields == '*'){
+                    $fields = $model->getDbFields();
+                }
+                if(in_array($name, $fields)){
+                    $map[$name] = $val;
+                }
+            }
             $list = $this->lists($model->field($fields),$map);
             $fields = array();
             foreach ($list_grid as &$value) {

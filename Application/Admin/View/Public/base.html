@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <meta name="renderer" content="webkit">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <title>{$meta_title}|OneThink管理平台</title>
+        <title>{$meta_title|default=''}|Blog管理平台</title>
         <link href="__ROOT__/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
         <meta name="robots" content="noindex, nofollow">
         <link rel="stylesheet" href="__CSS__/normalize.css?v={$Think.const.ONETHINK_VERSION}">
@@ -40,7 +40,7 @@
                     {// 动态扩展菜单 //}
                 </notempty>
                 <volist name="__MENU__.main" id="menu">
-                    <ul class="root <eq name="menu.class" value="current">focus</eq>">
+                    <ul class="root <if condition="(isset($menu['class']) && $menu['class'] == 'current')">focus</if>">
                         <li class="parent"><a href="{$menu.url|U}">{$menu.title}</a></li>
                         <php>
                             $where          =   array();
@@ -80,7 +80,7 @@
                             $menuList = M('Menu')->where($map)->field('id,pid,title,url,tip')->order('sort asc')->select();
                         </php>
                         <ul class="child">
-                            <php>$sub_menu_length = count($sub_menu);</php>
+                            <php>$sub_menu_length = isset($sub_menu)? count($sub_menu) : 0;</php>
                             <volist name="menuList" id="sub_menu">
                                 <li><a href="{$sub_menu.url|U}">{$sub_menu.title}</a></li>
                             </volist>
@@ -103,7 +103,6 @@
                         {// 动态扩展菜单 //}
                         {:extra_menu($_extra_menu,$__MENU__)}
                     </notempty>
-                    {:trace($__MENU__)}
                     <volist name="__MENU__.child" id="sub_menu">
                         <!-- 子导航 -->
                         <notempty name="sub_menu">

@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 
 namespace Home\Controller;
+use Michelf\MarkdownExtra;
 
 /**
  * 前台首页控制器
@@ -32,6 +33,10 @@ class IndexController extends HomeController {
         /* 获取详细信息 */
         $Document = D('Document');
         $info = $Document->detail($id);
+        if($info['parse'] == 2){
+            $markdown = new MarkdownExtra;
+            $info['content'] = $markdown->transform($info['content']);
+        }
         if(!$info){
             $this->error($Document->getError());
         }
@@ -48,9 +53,7 @@ class IndexController extends HomeController {
         $Document->where($map)->setInc('view');
 
         /* 模板赋值并渲染模板 */
-        $this->assign('category', $category);
         $this->assign('info', $info);
-        $this->assign('page', $p); //页码
         $this->display($tmpl);
     }
 
