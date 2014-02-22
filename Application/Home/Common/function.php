@@ -82,7 +82,7 @@ function get_tag($id, $link = true){
         foreach ($tags as $value) {
             $link[] = '<a href="'.U('/').'?tag='.$value.'">'.$value.'</a>';
         }
-        return join($link, ',');
+        return join($link);
     }else{
         return $tags? $tags : 'none';
     }
