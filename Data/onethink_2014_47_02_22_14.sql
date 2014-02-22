@@ -7,25 +7,12 @@
 -- 服务器版本: 5.5.29
 -- PHP 版本: 5.4.10
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET FOREIGN_KEY_CHECKS = 0;
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- 数据库: `onethink`
---
-
--- --------------------------------------------------------
-
---
--- 表的结构 `onethink_action`
---
-
+-- -----------------------------
+-- Table structure for `onethink_action`
+-- -----------------------------
 DROP TABLE IF EXISTS `onethink_action`;
 CREATE TABLE `onethink_action` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
@@ -38,7 +25,7 @@ CREATE TABLE `onethink_action` (
   `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
   `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表' AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
 
 --
 -- 转存表中的数据 `onethink_action`
@@ -162,7 +149,6 @@ CREATE TABLE `onethink_attachment` (
   KEY `idx_record_status` (`record_id`,`status`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='附件表' AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
 
 --
 -- 表的结构 `onethink_attribute`
@@ -704,23 +690,15 @@ CREATE TABLE `onethink_comment` (
   KEY `uid` (`uid`),
   KEY `model_id` (`model_id`),
   KEY `cid` (`cid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- 转存表中的数据 `onethink_comment`
 --
 
-INSERT INTO `onethink_comment` (`id`, `pid`, `model_id`, `cid`, `comment`, `digg`, `com_ip`, `create_time`, `status`, `uid`, `uname`, `uemail`, `uurl`) VALUES
-(1, 0, 2, 2, 'qweqwe', 1, 2130706433, 1391604570, 1, 0, '123', '917647288@qq.com', ''),
-(2, 0, 2, 1, '请问', 1, 2130706433, 1393040811, 1, 1, 'admin', NULL, NULL),
-(3, 0, 2, 1, '123', 0, 2130706433, 1393052032, 1, 1, 'admin', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `onethink_config`
---
-
+-- -----------------------------
+-- Table structure for `onethink_config`
+-- -----------------------------
 DROP TABLE IF EXISTS `onethink_config`;
 CREATE TABLE `onethink_config` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',
@@ -808,7 +786,7 @@ CREATE TABLE `onethink_contents` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug` (`slug`),
   KEY `created` (`created`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- 转存表中的数据 `onethink_contents`
@@ -1012,19 +990,10 @@ CREATE TABLE `onethink_member` (
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='会员表' AUTO_INCREMENT=2 ;
 
---
--- 转存表中的数据 `onethink_member`
---
 
-INSERT INTO `onethink_member` (`uid`, `nickname`, `sex`, `birthday`, `qq`, `score`, `login`, `reg_ip`, `reg_time`, `last_login_ip`, `last_login_time`, `status`) VALUES
-(1, 'admin', 0, '0000-00-00', '', 40, 9, 0, 1392205938, 2130706433, 1393050755, 1);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `onethink_menu`
---
-
+-- -----------------------------
+-- Table structure for `onethink_menu`
+-- -----------------------------
 DROP TABLE IF EXISTS `onethink_menu`;
 CREATE TABLE `onethink_menu` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',
@@ -1405,7 +1374,6 @@ CREATE TABLE `onethink_ucenter_app` (
   KEY `status` (`status`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='应用表' AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
 
 --
 -- 表的结构 `onethink_ucenter_member`
@@ -1434,15 +1402,9 @@ CREATE TABLE `onethink_ucenter_member` (
 -- 转存表中的数据 `onethink_ucenter_member`
 --
 
-INSERT INTO `onethink_ucenter_member` (`id`, `username`, `password`, `email`, `mobile`, `reg_time`, `reg_ip`, `last_login_time`, `last_login_ip`, `update_time`, `status`) VALUES
-(1, 'admin', '1f5bfd93891c766f8c0e1234b77e3e47', '917647288@qq.com', '', 1392205938, 2130706433, 1393050755, 2130706433, 1392205938, 1);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `onethink_ucenter_setting`
---
-
+-- -----------------------------
+-- Table structure for `onethink_ucenter_setting`
+-- -----------------------------
 DROP TABLE IF EXISTS `onethink_ucenter_setting`;
 CREATE TABLE `onethink_ucenter_setting` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '设置ID',
@@ -1451,7 +1413,6 @@ CREATE TABLE `onethink_ucenter_setting` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='设置表' AUTO_INCREMENT=1 ;
 
--- --------------------------------------------------------
 
 --
 -- 表的结构 `onethink_url`
@@ -1506,6 +1467,3 @@ CREATE TABLE `onethink_userdata` (
   UNIQUE KEY `uid` (`uid`,`type`,`target_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
