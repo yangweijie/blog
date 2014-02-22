@@ -54,7 +54,7 @@
 			</div>
 			<div class="header_content mauto ption_r">
 				<div class="title f_l">
-					<h1><a class="t_shadow_3 fs14 f_w" href="http://www.liushichao.cn/" title="关注互联网，专注CMS建站！">{:C('WEB_SITE_TITLE')}</a>
+					<h1><a class="t_shadow_3 fs14 f_w" href="{:U('/')}" title="关注互联网，专注CMS建站！">{:C('WEB_SITE_TITLE')}</a>
 					</h1>
 					<div class="sub_title pl10">
 						<div class="mobile_nav_buttons"></div>
@@ -158,7 +158,7 @@
 										<a href="{:U('archive/'.$article['id'].'#commentformbox')}">评论</a>
 									</span>
 								</p>
-								<p class="meta_tag"><span>TAGS:</span> <a href="http://www.liushichao.cn/tag/qq" rel="tag">qq</a>, <a href="http://www.liushichao.cn/tag/%e7%be%a4" rel="tag">群</a></p>
+								<p class="meta_tag"><span>TAGS:</span>{$article.id|get_tag}</p>
 
 								<div class="meta_content">
 									<p>{$article.description}</p>

@@ -73,6 +73,11 @@ class HomeController extends Controller {
 		if($cate_id)
 			$map['category_id'] = $cate_id;
 		$cate_id = $cate_id? $cate_id : NULL;
+        $tags = I('get.tag');
+        if($tags){
+            $ids = M('DocumentArticle')->where("tags like '{$tags}'")->getField('id', true);
+            $map = array('id'=>array('in',$ids));
+        }
 		$list = $Document->page($page, $list_row)->lists($cate_id);
 
 		/* 分页 */

@@ -72,3 +72,18 @@ function get_nav_url($url){
 function category_name($id){
     return M('Category')->getFieldById($id, 'name');
 }
+
+//获取标签
+function get_tag($id, $link = true){
+    $tags = M('DocumentArticle')->getFieldById($id, 'tags');
+    if($link && $tags){
+        $tags = split(',', $tags);
+        $link = array();
+        foreach ($tags as $value) {
+            $link[] = '<a href="'.U('/').'?tag='.$value.'">'.$value.'</a>';
+        }
+        return join($link);
+    }else{
+        return $tags? $tags : 'none';
+    }
+}
