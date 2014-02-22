@@ -95,3 +95,26 @@ body {
 	background-color: inherit !important;
 	border: 0;
 }
+.comment-default {
+	padding: 5px 0 20px 40px;
+	margin: 0 0 20px;
+}
+.comment-list h5 {
+	font-family: "Microsoft Yahei",Verdana;
+	line-height: 33px;
+	margin: 0 0 18px;
+	font-size: 22px;
+	letter-spacing: 1px;
+	color: #C05732;
+}
+#commentformbox .btn {
+	background: url(../images/btn_submit.png) no-repeat scroll left top rgba(0, 0, 0, 0);
+    border: medium none;
+    cursor: pointer;
+    display: block;
+    height: 54px;
+    text-indent: -9999px;
+    width: 135px;
+    float: right;
+    margin-top: 10px;
+}

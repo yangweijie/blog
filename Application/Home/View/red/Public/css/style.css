@@ -202,7 +202,7 @@ a.nivo-nextNav {right:-4px; background:url(../images/slider_next.png) no-repeat;
 
 /* content left */
 .main {height:auto; z-index:2; max-width:1103px; left:50%; margin:0 0 0 -550px;}
-.left_top_bg {background:url(../images/left_top_bg.jpg) right top no-repeat; width:739px; height:670px; top:0; right:0;}
+.left_top_bg {background:url(../images/left_top_bg.jpg) right top no-repeat; width:739px; height:670px; top:0; right:0;z-index: -1;}
 #content {height: auto; padding: 90px 25px 20px 24px; width: 726px;}
 #content .circle { background: url(../images/circle_left.png) no-repeat scroll center top transparent; border: medium none; display: block; height: 48px; width: 48px; left: -24px; position: absolute; top: 0; z-index:99999;}
 #content div[class^="post"] {background:url(../images/sep_post.png) 40px bottom no-repeat; padding:5px 0 20px 40px; margin:0 0 20px 0;}

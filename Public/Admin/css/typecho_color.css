@@ -309,6 +309,7 @@ textarea {
 }
 
 input[type="text"], input[type="password"], input[type="email"], textarea {
+
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #D9D9D6;
     border-radius: 2px;
