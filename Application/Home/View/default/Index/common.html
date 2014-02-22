@@ -74,9 +74,6 @@
             <div class="colgroup">
                 <div class="col-mb-12 col-8" id="main" role="main">
                     <block name="main">
-                    <present name="_GET.tag">
-                        <h3 class="archive-title">标签为 {$_GET.tag} 的文章</h3>
-                    </present>
                     <volist name="list" id="article">
                         <article class="post">
                         <h2 class="post-title">
@@ -117,7 +114,6 @@
                         </section>
 
                         {:W('Common/archive')}
-                        {:W('Common/tags')}
                         <section class="widget">
                             <h3 class="widget-title">其它</h3>
                             <ul class="widget-list">

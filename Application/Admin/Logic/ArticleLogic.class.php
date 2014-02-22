@@ -63,20 +63,14 @@ class ArticleLogic extends BaseLogic{
 			}
 
 			foreach ($orignal_tags as $value) {
-				if($tag = M('Tags')->where("title = '{$value}'")->find()){
-					if($tag['count'] == 1){
-						M('Tags')->where("id = '{$tag['id']}'")->setField('count', 0);
-					}else{
-						M('Tags')->where("title = '{$value}'")->setDec('count');
-					}
-
-				}
+				if(M('Tags')->where("name = '{$value}'")->find())
+					M('Tags')->where("name = '{$value}'")->setDec('count');
 			}
 		}
 
 		foreach ($tags as $value) {
-			if(M('Tags')->where("title = '{$value}'")->find())
-				M('Tags')->where("title = '{$value}'")->setInc('count');
+			if(M('Tags')->where("name = '{$value}'")->find())
+				M('Tags')->where("name = '{$value}'")->setInc('count');
 			else
 				if($value)
 					M('Tags')->add(array('title'=>$value, 'count'=>1));
