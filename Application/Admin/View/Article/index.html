@@ -67,6 +67,7 @@
 					</ul>
 				</div>
 				<input type="text" name="title" class="search-input" value="{:I('title')}" placeholder="请输入标题文档">
+				<input type="hidden" name="type" value="{:I('get.type')}">
 				<a class="sch-btn" href="javascript:;" id="search" url="{:U('Article/index','pid='.I('pid',0).'&cate_id='.$cate_id,false)}"><i class="btn-search"></i></a>
 			</div>
             <div class="btn-group-click adv-sch-pannel fl">

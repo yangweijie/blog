@@ -16,3 +16,10 @@ str;
 	}
 
 }
+
+function get_book_cover($cover_id){
+ 	$src = __ROOT__ . get_cover($cover_id,'path');
+	    if($src == __ROOT__)
+	    	$src = ltrim(ONETHINK_ADDON_PATH.'Bookshell/static/images/cover.jpg','.');
+	return $src;
+}

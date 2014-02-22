@@ -66,6 +66,7 @@ use Common\Controller\Addon;
         public function single($param){
             if($param['name'] == 'Bookshell'){
                 $list = D('Addons://Bookshell/Bookshell')->select();
+                $this->assign('addon_config', $this->getConfig());
                 $this->assign('list', $list);
                 $this->display('single');
             }
