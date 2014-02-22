@@ -35,13 +35,13 @@ body {
 	font-size: 28px;
 	font-weight: bolder;
 }
-.widget ul{
+.widget ul.widget-list{
 	clear: both;
 	overflow: hidden;
 	width: 287px;
 	padding: 0 0 0 30px;
 }
-.widget ul li{
+.widget ul.widget-list li{
 	padding: 10px 10px 0 0;
 	border-bottom: 1px dashed #d08364;
 	-webkit-transition: all 0.2s ease 0s;
@@ -50,13 +50,41 @@ body {
 	transition: all 0.2s ease 0s;
 }
 
-.widget ul li:hover{
+.widget ul.widget-list li:hover{
 	background-color: #c85e39;
 	padding: 10px 2px 0 8px;
 	border-left: 4px solid #813A22;
 }
 .widget a{
 	color:#FFF;
+}
+
+.widget .wp-tag-cloud{
+	clear: both;
+	overflow: hidden;
+	width: 287px;
+	padding: 0 0 0 30px;
+}
+.widget .wp-tag-cloud li {
+	display: block;
+	float: left;
+}
+
+.widget .wp-tag-cloud li a{
+	background: url(../images/dot.gif) no-repeat scroll right 11px #E6E5CC;
+	-webkit-border-radius: 2px 15px 15px 2px;
+	-moz-border-radius: 2px 15px 15px 2px;
+	border-radius: 2px 15px 15px 2px;
+	box-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+	color: #813A22;
+	font-weight: bold;
+	display: block;
+	letter-spacing: 1px;
+	margin: 0 5px 5px 0;
+	padding: 2px 18px 1px 10px;
+	text-shadow: 1px 1px #FFFFFF;
+	text-transform: uppercase;
+	line-height: 22px;
 }
 
 /* 分页 */

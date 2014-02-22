@@ -308,6 +308,7 @@ textarea {
 }
 
 .widget {
+    clear: both;
     margin-bottom: 30px;
 }
 
@@ -320,6 +321,7 @@ textarea {
     margin: 5px 0;
     line-height: 1.5;
 }
+.wp-tag-cloud li{float: left;display: block;}
 
 #footer {
     padding: 3em 0;

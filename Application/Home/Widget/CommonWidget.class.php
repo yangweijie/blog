@@ -72,4 +72,10 @@ class CommonWidget extends Action{
 		$this->display('Common/archive');
 	}
 
+	public function tags(){
+		$tags = M('Tags')->getField('title',true);
+		$this->assign('tags',$tags);
+		$this->display('Common/tags');
+	}
+
 }

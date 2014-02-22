@@ -9,7 +9,7 @@
   <tr style="border-top:1px solid #ccc;">
 	  <td rowspan="4" valign="top" class="headimg" style="padding-top:10px;"><img src="__IMG__/default.png" class="img-rounded"></td>
 	  <td class="form-inline" style="padding-top:10px;">
-		 <if condition="!empty($comment['uid'])">
+		<if condition="!empty($comment['uid'])">
 		<label><a href="javascript:void(0);">会员：{:get_username($comment.uid)}</a></label>
 		 <else/>
 		<label><a href="javascript:void(0);">网友：{$comment.uname}</a></label>
