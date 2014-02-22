@@ -2,17 +2,6 @@
 
 <block name="main">
 	<article class="post">
-        <!-- <h1 class="post-title"><a href="__SELF__">{$info.title}</a></h1>
-        <ul class="post-meta">
-            <li>作者：{$info.uid|get_username}</li>
-            <li>时间：发表于 {$info.create_time|date='Y-m-d H:i',###}</li>
-            <li>分类：<a href="{:U('category/'.category_name($info['category_id']))}">{$info.category_id|get_category_title}</a></li>
-        </ul>
-        <div class="post-content">
-            <p>{$info.content}</p>
-        </div>
-        <p class="tags">标签：{$info.tags|default='none'}</p> -->
-
         <div class="left_top_bg ption_a"></div>
         <div class="post ption_r" id="post-760">
             <div class="circle">
@@ -25,10 +14,10 @@
                     <span class="mr10">时间: {$info.create_time|date='Y-m-d H:i',###}</span>
                     <span class="mr10">分类: <a href="{:U('category/'.category_name($info['category_id']))}">{$info.category_id|get_category_title}</a></span>
                     <span class="mr10">作者: l{$info.uid|get_username}</span>
-                    <span class="mr10">178 次浏览</span>
+                    <span class="mr10">{$info.view} 次浏览</span>
                 </p>
                 <p class="meta_tag">
-                    <span>TAGS:</span> <a href="http://www.liushichao.cn/tag/discuz" rel="tag">Discuz!</a>, <a href="http://www.liushichao.cn/tag/qq%e7%99%bb%e5%bd%95" rel="tag">QQ登录</a> 
+                    <span>TAGS:</span> {$info.id|get_tag}
                 </p>
                 <div class="clear"></div>
             </div>
@@ -37,8 +26,8 @@
             </div>
         </div>
     </article>
-    
-    
+
+
     {:hook('documentDetailAfter',$info)}
 
 </block>

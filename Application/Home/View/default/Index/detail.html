@@ -11,7 +11,7 @@
         <div class="post-content">
             <p>{$info.content}</p>
         </div>
-        <p class="tags">标签：{$info.tags|default='none'}</p>
+        <p class="tags">标签：{$info.id|get_tag}</p>
     </article>
 
     {:hook('documentDetailAfter',$info)}
