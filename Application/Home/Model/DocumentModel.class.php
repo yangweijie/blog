@@ -318,7 +318,7 @@ class DocumentModel extends Model{
 	private function listMap($category, $status = 1, $type = 1){
 		/* 设置状态 */
 		$map = array('status' => $status, 'pid' => 0);
-
+		$map['type'] = $type;
 		/* 设置分类 */
 		if(!is_null($category)){
 			if(is_numeric($category)){

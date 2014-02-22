@@ -132,7 +132,11 @@
 				<div class="left_top_bg ption_a"></div>
 				<block name="main">
 					<present name="_GET.tag">
-                        <h3 class="archive-title">标签为 {$_GET.tag} 的文章</h3>
+						<div id="announcement_box" class="ption_a">
+					        <div id="announcement">
+					            <div style="margin-top: 0px;">标签为 {$_GET.tag} 的文章</div>
+					        </div>
+					    </div>
                     </present>
 					<volist name="list" id="article">
 						<div class="post ption_r" id="post-797">
@@ -260,6 +264,11 @@
 				       $(this).stop().fadeTo(300, .6);
 				    }
 				);
+				$('#searchform').submit(function(){
+                    var url = '/search/'+ $('#searchform input[name="kw"]').val();
+                    location.href = url;
+                    return false;
+                });
 			})
 		</script>
 		{:hook('pageFooter')}
