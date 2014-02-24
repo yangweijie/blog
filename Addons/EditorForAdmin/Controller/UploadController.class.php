@@ -20,14 +20,16 @@ class UploadController extends AddonsController{
 		session('upload_error', null);
 		/* 上传配置 */
 		$setting = C('EDITOR_UPLOAD');
-
+		$pic_driver = C('PICTURE_UPLOAD_DRIVER');
 		/* 调用文件上传组件上传文件 */
-		$this->uploader = new Upload($setting, 'Local');
-		$info   = $this->uploader->upload($_FILES);
+		$this->uploader = new Upload($setting, $pic_driver,
+            C("UPLOAD_{$pic_driver}_CONFIG"));
+		$info = $this->uploader->upload($_FILES);
 		if($info){
 			$url = C('EDITOR_UPLOAD.rootPath').$info['imgFile']['savepath'].$info['imgFile']['savename'];
 			$url = str_replace('./', '/', $url);
-			$info['fullpath'] = __ROOT__.$url;
+			trace($info);
+			$info['fullpath'] = $pic_driver == 'local'? __ROOT__.$url : $info['url'];
 		}
 		session('upload_error', $this->uploader->getError());
 		return $info;

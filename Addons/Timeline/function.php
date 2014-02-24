@@ -3,7 +3,7 @@
 if(!function_exists('preview_pic')){
 
 	function preview_pic($cover_id, $height=50){
-	    $src = __ROOT__ . get_cover($cover_id,'path');
+	    $src = get_cover($cover_id,'path');
 	    return <<<str
 <div class="upload-img-box">
 	<div class="upload-pre-item">
