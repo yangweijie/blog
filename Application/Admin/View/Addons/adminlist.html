@@ -28,12 +28,12 @@
 	<div class="data-table table-striped">
 		<empty name="custom_adminlist">
 			<!-- 数据列表 -->
-	        <table>
+			<table>
 				<thead>
 					<tr>
 						<th width="40">
-						 	<input class="check-all" type="checkbox">序号
-	                    </th>
+							<input class="check-all" type="checkbox">序号
+						</th>
 						<volist name="list_grid" id="vo">
 							<th>{$vo.title}</th>
 						</volist>
@@ -57,34 +57,34 @@
 		</empty>
 	</div>
 	<!-- 分页 -->
-    <div class="page">
-        {$_page}
-    </div>
+	<div class="page">
+		{$_page}
+	</div>
 </block>
 <block name="script">
 	<script type="text/javascript">
 		$(function(){
 
-	        //搜索功能
+			//搜索功能
 			$("#search").click(function(){
 				var url = $(this).attr('url');
-		        var query  = $('.search-form').find('input').serialize();
-		        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
-		        query = query.replace(/^&/g,'');
-		        if( url.indexOf('?')>0 ){
-		            url += '&' + query;
-		        }else{
-		            url += '?' + query;
-		        }
+				var query  = $('.search-form').find('input').serialize();
+				query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+				query = query.replace(/^&/g,'');
+				if( url.indexOf('?')>0 ){
+					url += '&' + query;
+				}else{
+					url += '?' + query;
+				}
 				window.location.href = url;
 			});
-
-		    //回车自动提交
-		    $('.search-form').find('input').keyup(function(event){
-		        if(event.keyCode===13){
-		            $("#search").click();
-		        }
-    });
+			$('.data-table th:last').attr('width',52);
+			//回车自动提交
+			$('.search-form').find('input').keyup(function(event){
+				if(event.keyCode===13){
+					$("#search").click();
+				}
+			});
 		})
 	</script>
 </block>
