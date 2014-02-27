@@ -31,7 +31,7 @@
 			<table>
 				<thead>
 					<tr>
-						<th width="40">
+						<th width="50">
 							<input class="check-all" type="checkbox">序号
 						</th>
 						<volist name="list_grid" id="vo">
@@ -42,7 +42,7 @@
 				<tbody>
 					<volist name="_list" id="lv" key="vo">
 					<tr>
-						<td><input class="ids" type="checkbox" value="{$lv.id}" name="id[]">{$lv.id}</td>
+						<td><input class="ids" type="checkbox" value="{$lv.id}" name="ids[]">{$lv.id}</td>
 						<volist name="list_grid" id="lk">
 							<td>{:get_addonlist_field($lv, $lk, $name)}</td>
 						</volist>
@@ -78,7 +78,7 @@
 				}
 				window.location.href = url;
 			});
-			$('.data-table th:last').attr('width',52);
+			$('.data-table th:last').attr('width',70);
 			//回车自动提交
 			$('.search-form').find('input').keyup(function(event){
 				if(event.keyCode===13){
