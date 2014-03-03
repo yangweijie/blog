@@ -28,7 +28,7 @@ class Think {
      */
     static public function start() {
       // 注册AUTOLOAD方法
-      spl_autoload_register('Think\Think::autoload');      
+      spl_autoload_register('Think\Think::autoload');
       // 设定错误和异常处理
       register_shutdown_function('Think\Think::fatalError');
       set_error_handler('Think\Think::appError');
@@ -61,7 +61,7 @@ class Think {
 
           // 读取当前应用模式对应的配置文件
           if('common' != APP_MODE && is_file(CONF_PATH.'config_'.APP_MODE.'.php'))
-              C(include CONF_PATH.'config_'.APP_MODE.'.php');  
+              C(include CONF_PATH.'config_'.APP_MODE.'.php');
 
           // 加载模式别名定义
           if(isset($mode['alias'])){
@@ -80,7 +80,7 @@ class Think {
           // 加载应用行为定义
           if(is_file(CONF_PATH.'tags.php'))
               // 允许应用增加开发模式配置定义
-              Hook::import(include CONF_PATH.'tags.php');   
+              Hook::import(include CONF_PATH.'tags.php');
 
           // 加载框架底层语言包
           L(include THINK_PATH.'Lang/'.strtolower(C('DEFAULT_LANG')).'.php');
@@ -94,13 +94,13 @@ class Think {
             C(include THINK_PATH.'Conf/debug.php');
             // 读取应用调试配置文件
             if(is_file(CONF_PATH.'debug.php'))
-                C(include CONF_PATH.'debug.php');           
+                C(include CONF_PATH.'debug.php');
           }
       }
 
       // 读取当前应用状态对应的配置文件
       if(APP_STATUS && is_file(CONF_PATH.APP_STATUS.'.php'))
-          C(include CONF_PATH.APP_STATUS.'.php');   
+          C(include CONF_PATH.APP_STATUS.'.php');
 
       // 设置系统时区
       date_default_timezone_set(C('DEFAULT_TIMEZONE'));
@@ -123,7 +123,7 @@ class Think {
             self::$_map = array_merge(self::$_map, $class);
         }else{
             self::$_map[$class] = $map;
-        }        
+        }
     }
 
     /**
@@ -137,7 +137,7 @@ class Think {
             include self::$_map[$class];
         }else{
           $name           =   strstr($class, '\\', true);
-          if(in_array($name,array('Think','Org','Behavior','Com','Vendor')) || is_dir(LIB_PATH.$name)){ 
+          if(in_array($name,array('Think','Org','Behavior','Com','Vendor')) || is_dir(LIB_PATH.$name)){
               // Library目录下面的命名空间自动定位
               $path       =   LIB_PATH;
           }else{
@@ -232,7 +232,7 @@ class Think {
             break;
       }
     }
-    
+
     // 致命错误捕获
     static public function fatalError() {
         Log::save();
@@ -242,7 +242,7 @@ class Think {
               case E_PARSE:
               case E_CORE_ERROR:
               case E_COMPILE_ERROR:
-              case E_USER_ERROR:  
+              case E_USER_ERROR:
                 ob_end_clean();
                 self::halt($e);
                 break;
@@ -289,7 +289,7 @@ class Think {
         $TMPL_EXCEPTION_FILE=C('TMPL_EXCEPTION_FILE');
         if(!$TMPL_EXCEPTION_FILE){
             //显示在加载配置文件之前的程序错误
-            exit('<b>Error:</b>'.$e['message'].' in <b> '.$e['file'].' </b> on line <b>'.$e['line'].'</b>'); 
+            exit('<b>Error:</b>'.$e['message'].' in <b> '.$e['file'].' </b> on line <b>'.$e['line'].'</b>');
         }
         include $TMPL_EXCEPTION_FILE;
         exit;
