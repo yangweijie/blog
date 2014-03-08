@@ -2,7 +2,7 @@
     <h3 class="widget-title">最近回复</h3>
     <ul class="widget-list">
     	<volist name="addon_comment" id="vo">
-    		<li><a href="http://localhost/typecho/index.php/archives/1/#comment-1"><present name="vo.uid">{$vo.uid|get_username}<else />{$vo.uname}</present></a>：{$vo.comment}</li>
+    		<li><a href="{:U('/archive/1/#comment-list')}"><present name="vo.uid">{$vo.uid|get_username}<else />{$vo.uname}</present></a>：{$vo.comment}</li>
     	</volist>
 
     </ul>
