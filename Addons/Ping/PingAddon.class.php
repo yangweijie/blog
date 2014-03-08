@@ -35,7 +35,7 @@ use Common\Controller\Addon;
         public function documentSaveComplete($param){
             list($id, $model_id) = $param;
             $config = $this->getConfig();
-            $ping = new ping();
+            $ping = new Ping();
             $ping->method(
                 $config['site_name'],
                 $config['site_url'],

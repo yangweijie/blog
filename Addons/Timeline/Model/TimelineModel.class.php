@@ -8,10 +8,6 @@ use Think\Model;
  */
 class TimelineModel extends Model{
 
- 	public function __construct(){
-		parent::__construct();
-		$this->model['template_add'] = $this->model['template_edit'] = ONETHINK_ADDON_PATH.'Timeline/edit.html';
-    }
 
 	protected $_validate = array(
 		array('title','require','事件名'),
@@ -20,8 +16,8 @@ class TimelineModel extends Model{
 
 	public $model = array(
 		'title'=>'时间轴事件',
-		'template_add'=>'',
-		'template_edit'=>'',
+		'template_add'=>'edit.html',
+		'template_edit'=>'edit.html',
 		'search_key'=>'',
 		'extend'=>1,
 	);
@@ -48,7 +44,7 @@ class TimelineModel extends Model{
 			'title'=>'ID',
 			'type'=>'num',
 			'remark'=>'',
-			'is_show'=>2,
+			'is_show'=>0,
 			'value'=>0,
 		),
 		'title'=>array(
@@ -56,14 +52,14 @@ class TimelineModel extends Model{
 			'title'=>'事件名',
 			'type'=>'string',
 			'remark'=>'',
-			'is_show'=>3,
+			'is_show'=>1,
 			'is_must'=>1,
 		),'startDate'=>array(
 			'name'=>'startDate',
 			'title'=>'开始日期',
 			'type'=>'datetime',
 			'remark'=>'',
-			'is_show'=>3,
+			'is_show'=>1,
 			'value'=>0,
 			'is_must'=>1,
 		),'endDate'=>array(
@@ -71,7 +67,7 @@ class TimelineModel extends Model{
 			'title'=>'结束日期',
 			'type'=>'datetime',
 			'remark'=>'',
-			'is_show'=>3,
+			'is_show'=>1,
 			'value'=>0,
 			'is_must'=>0,
 		),
@@ -80,7 +76,7 @@ class TimelineModel extends Model{
 			'title'=>'描述',
 			'type'=>'editor',
 			'remark'=>'',
-			'is_show'=>3,
+			'is_show'=>1,
 			'value'=>0,
 			'is_must'=>1,
 		),
@@ -89,7 +85,7 @@ class TimelineModel extends Model{
 			'title'=>'媒体',
 			'type'=>'picture',
 			'remark'=>'',
-			'is_show'=>3,
+			'is_show'=>1,
 			'value'=>0,
 			'is_must'=>0,
 		),'author'=>array(
@@ -97,7 +93,7 @@ class TimelineModel extends Model{
 			'title'=>'媒体作者',
 			'type'=>'string',
 			'remark'=>'',
-			'is_show'=>3,
+			'is_show'=>1,
 			'value'=>0,
 			'is_must'=>1,
 		),
@@ -106,7 +102,7 @@ class TimelineModel extends Model{
 			'title'=>'媒体标题',
 			'type'=>'string',
 			'remark'=>'',
-			'is_show'=>3,
+			'is_show'=>1,
 			'value'=>0,
 			'is_must'=>1,
 		),

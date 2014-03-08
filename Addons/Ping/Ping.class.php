@@ -8,7 +8,7 @@ namespace Addons\Ping;
  * 目前仅支持Google和Baidu
   +------------------------------------------------------------------------------
  */
-class ping {
+class Ping {
 
     public $method, $callback;
 
