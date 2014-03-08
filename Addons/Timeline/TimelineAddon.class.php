@@ -28,7 +28,7 @@ use Common\Controller\Addon;
             'model'=>'Timeline',		//要查的表
 			'fields'=>'*',			//要查的字段
 			'map'=>'',				//查询条件, 如果需要可以再插件类的构造方法里动态重置这个属性
-			'order'=>'id desc',		//排序,
+			'order'=>'id asc',		//排序,
             'list_grid'=>array(//这里定义的是除了id序号外的表格里字段显示的表头名，规则和模型里的规则一样
                 'cover_id|preview_pic:媒体',
                 'title:事件名',
