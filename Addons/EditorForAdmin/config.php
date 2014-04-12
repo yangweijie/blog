@@ -27,6 +27,16 @@
 			),
 			'value'=>1
 		),
+		'editor_markdownpreview'=>array(
+			'title'=>'markdown预览:',
+			'type'=>'radio',
+			'options'=>array(
+				'1'=>'开启',
+				'0'=>'关闭',
+			),
+			'value'=>'1',
+			'tip'=>'启用后，双列同步预览'
+		),
 		'editor_height'=>array(
 			'title'=>'编辑器高度:',
 			'type'=>'text',
@@ -40,6 +50,6 @@
 				'1'=>'允许'
 			),
 			'value'=>'1',
-			'tip'=>'ubb和markdown编辑器不支持此功能'
+			'tip'=>'markdown编辑器不支持此功能'
 		),
 	);

@@ -60,34 +60,26 @@
 	</case>
 	<case value="4">
 		{// markdown }
-		<div id="epiceditor"></div>
-		<script type="text/javascript" src="__STATIC__/epiceditor-v0.2.2/js/epiceditor.min.js?v={$Think.const.ONETHINK_VERSION}"></script>
-
+		<link rel="stylesheet" href="__STATIC__/thinkeditor/skin/default/style.css">
+		<script type="text/javascript" src="__STATIC__/jquery-migrate-1.2.1.min.js"></script>
+		<script type="text/javascript" src="__ADDONROOT__/marked.js"></script>
+		<script type="text/javascript" src="__ADDONROOT__/thinkeditor/jquery.thinkeditor.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				$('textarea[name="{$addons_data.name}"]').attr({
-					'id':'editor_id_{$addons_data.name}',
-					'style':'display:none'
-				});
-				var opts = {
-					container: 'epiceditor',
-					basePath:'__STATIC__/epiceditor-v0.2.2',
-					textarea: 'editor_id_{$addons_data.name}',
-					button: {
-						preview: true,
-						fullscreen: true,
-						bar: true
-					},
-					autogrow: {
-						minHeight: parseInt('{$addons_config.editor_height}')
-					}
-				}
-				var editor = new EpicEditor(opts).load();
+				$('textarea[name="{$addons_data.name}"]').attr('id', 'editor_id_{$addons_data.name}');
+				var options = {
+					"items"  : "h1,h2,h3,h4,h5,h6,-,link,image,-,bold,italic,code,-,ul,ol,blockquote,hr,-,fullscreen",
+			        "width"  : "100%", //宽度
+			        "height" : "{$addons_config.editor_height}", //高度
+			        "lang"   : "zh-cn", //语言
+			        "tab"    : "    ", //Tab键插入的字符， 默认为四个空格
+					"uploader": "{:addons_url('Editor://Upload/upload')}",
+					"preview": {$addons_config.editor_markdownpreview}
+			    };
+			    $('#editor_id_{$addons_data.name}').thinkeditor(options);
 
-			});
-
+			})
 		</script>
-
 		<input type="hidden" name="parse" value="2">
 	</case>
 </switch>
