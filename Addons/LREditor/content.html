@@ -1,0 +1,247 @@
+<script type="text/javascript" src="__ADDONROOT__/static/js/pagedown.js"></script>
+<script type="text/javascript" src="__ADDONROOT__/static/js/pagedown-extra.js"></script>
+<script type="text/javascript" src="__ADDONROOT__/static/js/diff.js"></script>
+<link rel="stylesheet" type="text/css" href="__ADDONROOT__/static/css/style.css">
+<link rel="stylesheet" type="text/css" href="__ADDONROOT__/static/css/lr.css">
+<script type="text/javascript" src="__ADDONROOT__/static/js/prettify.js"></script>
+
+<script type="text/javascript">
+	var textarea = $('textarea[name="{$addons_data.name}"]'),
+        toolbar = $('<div class="editor" id="wmd-button-bar" />').insertBefore(textarea)
+        preview = $('<div id="wmd-preview" class="wmd-hidetab" />').insertAfter('.editor');
+    textarea.attr('id', 'text');
+    textarea.height('{$addons_config.editor_height}');
+    var options = {};
+
+    options.strings = {
+        bold: '加粗 <strong> Ctrl+B',
+        boldexample: '加粗文字',
+
+        italic: '斜体 <em> Ctrl+I',
+        italicexample: '斜体文字',
+
+        link: '链接 <a> Ctrl+L',
+        linkdescription: '请输入链接描述',
+
+        quote:  '引用 <blockquote> Ctrl+Q',
+        quoteexample: '引用文字',
+
+        code: '代码 <pre><code> Ctrl+K',
+        codeexample: '请输入代码',
+
+        image: '图片 <img> Ctrl+G',
+        imagedescription: '请输入图片描述',
+
+        olist: '数字列表 <ol> Ctrl+O',
+        ulist: '普通列表 <ul> Ctrl+U',
+        litem: '列表项目',
+
+        heading: '标题 <h1>/<h2> Ctrl+H',
+        headingexample: '标题文字',
+
+        hr: '分割线 <hr> Ctrl+R',
+        more: '摘要分割线 <!--more--> Ctrl+M',
+
+        undo: '撤销 - Ctrl+Z',
+        redo: '重做 - Ctrl+Y',
+        redomac: '重做 - Ctrl+Shift+Z',
+
+        fullscreen: '全屏 - Ctrl+J',
+        exitFullscreen: '退出全屏 - Ctrl+E',
+        fullscreenUnsupport: '此浏览器不支持全屏操作',
+
+        imagedialog: '<p><b>插入图片</b></p><p>请在下方的输入框内输入要插入的远程图片地址</p><p>您也可以使用编辑器下方的文件上传功能插入本地图片</p>',
+        linkdialog: '<p><b>插入链接</b></p><p>请在下方的输入框内输入要插入的链接地址</p>',
+
+        ok: '确定',
+        cancel: '取消',
+
+        help: 'Markdown语法帮助'
+    };
+
+    var converter = new Markdown.Converter(),
+        editor = new Markdown.Editor(converter, '', options),
+        diffMatch = new diff_match_patch(), last = '', preview = $('#wmd-preview'),
+        mark = '@mark' + Math.ceil(Math.random() * 100000000) + '@',
+        span = '<span class="diff" />';
+
+    // 设置markdown
+    Markdown.Extra.init(converter, {
+        extensions  :   ["tables", "fenced_code_gfm", "def_list", "attr_list", "footnotes"]
+    });
+
+    // 自动跟随
+    converter.hooks.chain('postConversion', function (html) {
+        // clear special html tags
+        html = html.replace(/<\/?(\!doctype|html|head|body|link|title|input|select|button|textarea|style|noscript)[^>]*>/ig, function (all) {
+            return all.replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/'/g, '&#039;')
+                .replace(/"/g, '&quot;');
+        });
+
+        // clear hard breaks
+        html = html.replace(/\s*((?:<br>\n)+)\s*(<\/?(?:p|div|h[1-6]|blockquote|pre|table|dl|ol|ul|address|form|fieldset|iframe|hr|legend|article|section|nav|aside|hgroup|header|footer|figcaption|li|dd|dt)[^\w])/gm, '$2');
+
+        var diffs = diffMatch.diff_main(last, html);
+
+        last = html;
+
+        if (diffs.length > 0) {
+            var stack = [], markStr = mark;
+
+            for (var i = 0; i < diffs.length; i ++) {
+                var diff = diffs[i], op = diff[0], str = diff[1]
+                    sp = str.lastIndexOf('<'), ep = str.lastIndexOf('>');
+
+                if (op != 0) {
+                    if (sp >=0 && sp > ep) {
+                        if (op > 0) {
+                            stack.push(str.substring(0, sp) + markStr + str.substring(sp));
+                        } else {
+                            var lastStr = stack[stack.length - 1], lastSp = lastStr.lastIndexOf('<');
+                            stack[stack.length - 1] = lastStr.substring(0, lastSp) + markStr + lastStr.substring(lastSp);
+                        }
+                    } else {
+                        if (op > 0) {
+                            stack.push(str + markStr);
+                        } else {
+                            stack.push(markStr);
+                        }
+                    }
+
+                    markStr = '';
+                } else {
+                    stack.push(str);
+                }
+            }
+
+            html = stack.join('');
+
+            if (!markStr) {
+                var pos = html.indexOf(mark), prev = html.substring(0, pos),
+                    next = html.substr(pos + mark.length),
+                    sp = prev.lastIndexOf('<'), ep = prev.lastIndexOf('>');
+
+                if (sp >= 0 && sp > ep) {
+                    html = prev.substring(0, sp) + span + prev.substring(sp) + next;
+                } else {
+                    html = prev + span + next;
+                }
+            }
+        }
+
+        return html;
+    });
+
+    editor.hooks.chain('onPreviewRefresh', function () {
+        var diff = $('.diff', preview), scrolled = false;
+
+        $('img', preview).load(function () {
+            if (scrolled) {
+                preview.scrollTo(diff, {
+                    offset  :   - 50
+                });
+            }
+        });
+        console.log(diff)
+        if (diff.length > 0) {
+            var p = diff.position(), lh = diff.parent().css('line-height');
+            lh = !!lh ? parseInt(lh) : 0;
+
+            if (p.top < 0 || p.top > preview.height() - lh) {
+                preview.scrollTo(diff, {
+                    offset  :   - 50
+                });
+                scrolled = true;
+            }
+        }
+    });
+
+    var input = $('#text'), th = textarea.height(), ph = preview.height();
+
+    editor.hooks.chain('enterFakeFullScreen', function () {
+        th = textarea.height();
+        ph = preview.height();
+        $(document.body).addClass('fullscreen');
+        var h = $(window).height() - toolbar.outerHeight();
+
+        textarea.css('height', h);
+        preview.css('height', h);
+    });
+
+    editor.hooks.chain('enterFullScreen', function () {
+        $(document.body).addClass('fullscreen');
+
+        var h = window.screen.height - toolbar.outerHeight();
+        textarea.css('height', h);
+        preview.css('height', h);
+    });
+
+    editor.hooks.chain('exitFullScreen', function () {
+        $(document.body).removeClass('fullscreen');
+        textarea.height(th);
+        preview.height(ph);
+    });
+
+    editor.run();
+
+    var imageButton = $('#wmd-image-button'),
+        linkButton = $('#wmd-link-button');
+
+    textarea.scroll(function(){
+        fix_img_scroll();
+    })
+
+    var fix_img_scroll = function(){
+        imgs = preview.find("img") //获取预览下所有图片
+        if (imgs.length > 0){
+            imgs_height = 0
+            for (var i in imgs){
+                tm = new Image()
+                tm.src = this.src
+                tow = tm.width
+                toh = tm.height
+                var limit_width = preview.width()*0.5 //父容器50%的宽度
+                if (tow > limit_width){ //如果原始图片宽度大于限制宽度，真实rh高度也要缩放比例
+                    r = tow / limit_width
+                    rh = toh / r
+                }else{
+                    rh = toh
+                }
+                imgs_height += rh //这个就是得到所有图片的高度
+            }
+        }
+        caculate_and_scroll(textarea, preview, imgs_height);
+    }
+
+    var caculate_and_scroll = function(editor, preview, imgs_height){ //这里只要再按比例计算一下滚动高度就行
+        real_height = preview[0].scrollHeight + imgs_height;
+
+        setTimeout(function(){
+            if (real_height > editor[0].scrollHeight){
+                r = real_height / editor[0].scrollHeight;
+                preview.prop('scrollTop', editor.scrollTop() * r);
+            }else{
+                r = editor[0].scrollHeight / real_height;
+                preview.prop('scrollTop', editor.scrollTop() / r);
+            }
+        }, 500);
+    }
+</script>
+
+<script type="text/javascript">
+ 	function prettify() {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    }
+	$(function() {
+		/*Show wmd-preview DOM*/
+		$('.wmd-edittab').remove();
+		$('#wmd-preview').removeClass('wmd-hidetab');
+		setInterval("$('#wmd-preview').css('height', (parseInt($('#text').height()) - 5)+'px');", 500);
+    	setInterval("prettify()", 10);
+	});
+
+</script>

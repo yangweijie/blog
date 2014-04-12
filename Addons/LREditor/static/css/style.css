@@ -1,0 +1,219 @@
+
+.wmd-button-row {
+    height: 26px;
+    line-height: 1;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.wmd-button-row li {
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 4px;
+    padding: 3px;
+}
+.wmd-button-row li:hover {
+    background-color: #E9E9E6;
+}
+.wmd-button-row li.wmd-spacer {
+    background: none repeat scroll 0 0 #E9E9E6;
+    cursor: default;
+    height: 20px;
+    margin: 0 10px 0 6px;
+    padding: 3px 0;
+    width: 1px;
+}
+#wmd-button-row span {
+    background: url("../img/editor.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 20px;
+    width: 20px;
+}
+.wmd-edittab {
+    float: right;
+    font-size: 0.92857em;
+    margin-top: 3px;
+}
+.wmd-edittab a {
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 5px;
+    padding: 0 8px;
+}
+.wmd-edittab a:hover {
+    text-decoration: none;
+}
+.wmd-edittab a.active {
+    background: none repeat scroll 0 0 #E9E9E6;
+    color: #999999;
+}
+.wmd-hidetab {
+    display: none;
+}
+.wmd-visualhide {
+    visibility: hidden;
+}
+.wmd-prompt-background {
+    background-color: #000000;
+}
+.wmd-prompt-dialog {
+    background: none repeat scroll 0 0 #F6F6F3;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -95px;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    width: 360px;
+    z-index: 1001;
+}
+.wmd-prompt-dialog p {
+    margin: 0 0 5px;
+}
+.wmd-prompt-dialog form {
+    margin-top: 10px;
+}
+.wmd-prompt-dialog input[type="text"] {
+    margin-bottom: 10px;
+    width: 100%;
+}
+.wmd-prompt-dialog button {
+    margin-right: 10px;
+}
+#wmd-preview {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 2px;
+    margin: 1em 0;
+    overflow: auto;
+    padding: 0 15px;
+    word-wrap: break-word;
+}
+#wmd-preview img {
+    max-width: 100%;
+}
+#wmd-preview code, #wmd-preview pre {
+    background: none repeat scroll 0 0 #F3F3F0;
+    font-size: 0.92857em;
+    padding: 2px 4px;
+}
+#wmd-preview code {
+    color: #B94A48;
+}
+#wmd-preview pre {
+    padding: 1em;
+}
+#wmd-preview pre code {
+    color: #444444;
+    padding: 0;
+}
+#wmd-preview blockquote {
+    border-left: 4px solid #E9E9E6;
+    color: #777777;
+    margin: 1em 1.5em;
+    padding-left: 1.5em;
+}
+#wmd-preview hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #E9E9E6;
+    border-image: none;
+    border-style: solid;
+    border-width: 2px 0 0;
+    margin: 2em auto;
+    width: 100px;
+}
+#wmd-preview .summary:after {
+    background: none repeat scroll 0 0 #FFF9E8;
+    color: #CE9900;
+    content: "- more -";
+    display: block;
+    font-size: 0.85714em;
+    margin: 2em 0;
+    text-align: center;
+}
+.fullscreen #wmd-button-bar, .fullscreen #text, .fullscreen #wmd-preview, .fullscreen .submit {
+    -moz-box-sizing: border-box;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 0;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    z-index: 999;
+}
+.fullscreen #wmd-button-bar {
+    border-bottom: 1px solid #F3F3F0;
+    left: 0;
+    padding: 13px 20px;
+    z-index: 1000;
+}
+.fullscreen #text {
+    border: medium none;
+    left: 0;
+    outline: medium none;
+    padding: 20px;
+    top: 53px;
+}
+.fullscreen #wmd-preview {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #F6F6F3;
+    border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color #F3F3F0;
+    border-image: none;
+    border-style: none none none solid;
+    border-width: medium medium medium 1px;
+    margin: 0;
+    overflow: auto;
+    padding: 5px 20px;
+    right: 0;
+    top: 53px;
+}
+.fullscreen #wmd-preview code, .fullscreen #wmd-preview pre {
+    background: none repeat scroll 0 0 #F0F0EC;
+}
+.fullscreen .submit {
+    border-bottom: 1px solid #F3F3F0;
+    margin: 0;
+    padding: 10px 20px;
+    right: 0;
+}
+.fullscreen .wmd-edittab, .fullscreen .typecho-post-option, .fullscreen .title, .fullscreen .url-slug, .fullscreen .typecho-page-title, .fullscreen .typecho-head-nav, .fullscreen .message, .fullscreen #upload-panel {
+    display: none;
+}
+.fullscreen .wmd-hidetab {
+    display: block;
+}
+.fullscreen .wmd-visualhide {
+    visibility: visible;
+}
+
+
+.wmd-prompt-dialog button {
+    margin-right: 10px;
+}
+.primary {
+    background-color: #467B96;
+    border: medium none;
+    border-radius: 2px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.btn-s {
+    height: 28px;
+}
+button {
+    background-color: #E9E9E6;
+    border: medium none;
+    border-radius: 2px;
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    padding: 0 12px;
+    vertical-align: middle;
+}
