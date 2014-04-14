@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Settings &mdash; Sublime Text Unofficial Documentation</title>
+<!-- RTD <head> -->
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="//media.readthedocs.org/javascript/underscore.js"></script>
+<script type="text/javascript" src="//media.readthedocs.org/javascript/doctools.js"></script>
+<script type="text/javascript" src="//media.readthedocs.org/javascript/searchtools.js"></script>
+
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+  <script type="text/javascript">
+    var doc_version = "latest";
+    var doc_slug = "sublime-text-unofficial-documentation";
+  </script>
+  <script type="text/javascript" src="//media.readthedocs.org/javascript/rtd.js"></script>
+<!-- end RTD <head> -->
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <link rel="top" title="Sublime Text Unofficial Documentation" href="../index.html" />
+    <link rel="up" title="Customizing Sublime Text" href="customization.html" />
+    <link rel="next" title="Indentation" href="indentation.html" />
+    <link rel="prev" title="Customizing Sublime Text" href="customization.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="indentation.html" title="Indentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="customization.html" title="Customizing Sublime Text"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Sublime Text Docs</a> &raquo;</li>
+          <li><a href="customization.html" accesskey="U">Customizing Sublime Text</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="settings">
+<h1>配置<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<p>Sublime Text在<em>.sublime-settings</em>文件中存储的数据。
+以稍微复杂地设置配置的代价实现了灵活性。当然，有一条黄金原则:</p>
+<p>永远把你个人的配置文件放在<em>Packages/User</em>下来保证他们将会优先覆盖其他冲突的配置文件。</p>
+<p>有了这样的方式，让我们来揭开的奥秘，如何设置工作，满足自虐的读者。</p>
+<div class="section" id="format">
+<h2>格式<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
+<p>配置文件使用JSON并且以<em>.sublime-settings</em>为扩展名。</p>
+</div>
+<div class="section" id="types-of-settings">
+<h2>配置的类型<a class="headerlink" href="#types-of-settings" title="Permalink to this headline">¶</a></h2>
+<p>每个<em>.sublime-settings</em>文件的用途有它的名字决定了。这些名字可以是描述性的(像<em>Preferences (Windows).sublime-settings</em>
+或<em>Minimap.sublime-settings</em>), 也可以是和它所控制的相关。举个例子,用来加载与<em>.tmLanguage</em>语法定义文件类型同名的文件类型的配置文件。因此对于
+<em>.py</em>文件类型, 它的语法定义在<em>Python.tmLanguage</em>中,
+它相关的配置文件就会是<em>Python.sublime-settings</em>。</p>
+<p>当然,一些配置文件只适用于指定平台。这个可以通过文件名识别: <em>Preferences (Windows).sublime-settings</em>,
+<em>Preferences (Linux).sublime-settings</em>, 等等。</p>
+<p>这是很<strong>重要的</strong>: 位于<em>Packages/User</em>目录的特定平台的配置文件
+将被忽略。 通过这种方式，你可以确保一个配置文件覆盖其他所有的配置。</p>
+</div>
+<div class="section" id="how-to-access-and-edit-common-settings-files">
+<h2>如何编辑普通的配置文件<a class="headerlink" href="#how-to-access-and-edit-common-settings-files" title="Permalink to this headline">¶</a></h2>
+<p>除非你想要通过配置文件实现粒度非常细的控制，你可以访问主要的配置文件通过<strong>Preferences | Settings - User</strong> 和<strong>Preferences | Settings - More</strong> 菜单项目。修改<strong>Preferences - Settings Default</strong>不是一件明智的事情,因为每次升级软件它都会被覆盖。然而你可以把它当做参考:它包含了解释所有全局和文件类型配置的注释。</p>
+</div>
+<div class="section" id="order-of-precedence-of-sublime-settings-files">
+<h2><em>.sublime-settings</em>文件的顺序<a class="headerlink" href="#order-of-precedence-of-sublime-settings-files" title="Permalink to this headline">¶</a></h2>
+<p>The same settings file (such as <em>Python.sublime-settings</em>) can appear in multiple
+places. All settings defined in identically named files will be merged together
+and overwritten according to predefined rules. See
+<a class="reference internal" href="../extensibility/packages.html#merging-and-order-of-precedence"><em>Merging and Order of Precedence</em></a> for more information.</p>
+<p>Let us remember again that any given settings file in <em>Packages/User</em> ultimately
+overrides every other settings file of the same name.</p>
+<p>In addition to settings files, Sublime Text maintains <em>session</em> data &#8211;settings
+for the particular set of files being currently edited. Session data is updated
+as you work on files, so if you adjust settings for a particular file in any
+way (mainly through API calls), they will be recorded in the session and will
+take precedence over any applicable <em>.sublime-settings</em> files.</p>
+<p>To check the value of a setting in effect for a particular file, use
+<em>view.settings().get(&lt;setting_name&gt;)</em> from the console.</p>
+<p>Lastly, it&#8217;s also worth noting that some settings may be adjusted automatically
+for you. Keep this is mind if you&#8217;re puzzled about some setting&#8217;s value. For
+instance, this is the case for certain whitespace-related settings and the
+<tt class="docutils literal"><span class="pre">syntax</span></tt> setting.</p>
+<p>Below, you can see the order in which Sublime Text would process a
+hypothetical hierarchy of settings for Python files on Windows:</p>
+<ul class="simple">
+<li><em>Packages/Default/Preferences.sublime-settings</em></li>
+<li><em>Packages/Default/Preferences (Windows).sublime-settings</em></li>
+<li><em>Packages/User/Preferences.sublime-settings</em></li>
+<li><em>Packages/Python/Python.sublime-settings</em></li>
+<li><em>Packages/User/Python.sublime-settings</em></li>
+<li>Session data for the current file</li>
+<li>Auto adjusted settings</li>
+</ul>
+</div>
+<div class="section" id="global-editor-settings-and-global-file-settings">
+<h2>Global Editor Settings and Global File Settings<a class="headerlink" href="#global-editor-settings-and-global-file-settings" title="Permalink to this headline">¶</a></h2>
+<p>These settings are stored in <em>Preferences.sublime-settings</em> and
+<em>Preferences (&lt;platform&gt;).sublime-settings</em> files. The defaults can be
+found in <em>Packages/Default</em>.</p>
+<p>Valid names for <em>&lt;platform&gt;</em> are <tt class="docutils literal"><span class="pre">Windows</span></tt>, <tt class="docutils literal"><span class="pre">Linux</span></tt>, <tt class="docutils literal"><span class="pre">OSX</span></tt>.</p>
+</div>
+<div class="section" id="file-type-settings">
+<h2>File Type Settings<a class="headerlink" href="#file-type-settings" title="Permalink to this headline">¶</a></h2>
+<p>If you want to target a specific file type, name the <em>.sublime-settings</em> file
+after the file type&#8217;s syntax definition. For example, if our syntax definition
+was called <em>Python.tmLanguage</em>, we&#8217;d need to call our settings file
+<em>Python.sublime-settings</em>.</p>
+<p>Settings files for specific file types usually live in packages, like
+<em>Packages/Python</em>, but there can be multiple settings files for the same
+file type in separate locations.</p>
+<p>Similarly to global settings, one can establish platform-specific settings for
+file types. For example, <em>Python (Linux).sublime-settings</em> would only be
+consulted under Linux.</p>
+<p>Also, let us emphasize that under <em>Pakages/User</em> only <em>Python.sublime-settings</em>
+would be read, but not any <em>Python (&lt;platform&gt;).sublime-settings</em> variant.</p>
+<p>Regardless of its location, any file-type-specific settings file has precedence
+over every global settings file affecting file types.</p>
+</div>
+<div class="section" id="where-to-store-user-settings-once-again">
+<h2>Where to Store User Settings (Once Again)<a class="headerlink" href="#where-to-store-user-settings-once-again" title="Permalink to this headline">¶</a></h2>
+<p>Whenever you want to save settings, especially if they should be preserved
+between software updates, place the corresponding <em>.sublime-settings</em> file in
+<em>Packages/User</em>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+
+
+
+    <h3>Project Versions</h3>
+    <ul id="sidebar_versions">
+
+  <li><a href="//readthedocs.org/docs/sublime-text-unofficial-documentation/en/latest/">latest</a></li>
+
+    </ul>
+
+<div id="searchbox" style="">
+  <h3>RTD Search</h3>
+    <form class="search" action="//readthedocs.org/search/project/" method="get">
+      <input type="text" name="q" size="18">
+      <input type="submit" value="Go">
+      <input type="hidden" name="selected_facets" value="project:Sublime Text Unofficial Documentation">
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+        Full-text doc search.
+    </p>
+</div>
+
+
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Settings</a><ul>
+<li><a class="reference internal" href="#format">Format</a></li>
+<li><a class="reference internal" href="#types-of-settings">Types of Settings</a></li>
+<li><a class="reference internal" href="#how-to-access-and-edit-common-settings-files">How to Access and Edit Common Settings Files</a></li>
+<li><a class="reference internal" href="#order-of-precedence-of-sublime-settings-files">Order of Precedence of <em>.sublime-settings</em> Files</a></li>
+<li><a class="reference internal" href="#global-editor-settings-and-global-file-settings">Global Editor Settings and Global File Settings</a></li>
+<li><a class="reference internal" href="#file-type-settings">File Type Settings</a></li>
+<li><a class="reference internal" href="#where-to-store-user-settings-once-again">Where to Store User Settings (Once Again)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="customization.html"
+                        title="previous chapter">Customizing Sublime Text</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="indentation.html"
+                        title="next chapter">Indentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/customization/settings.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="indentation.html" title="Indentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="customization.html" title="Customizing Sublime Text"
+             >previous</a> |</li>
+        <li><a href="../index.html">Sublime Text Docs</a> &raquo;</li>
+          <li><a href="customization.html" >Customizing Sublime Text</a> &raquo;</li> 
+      </ul>
+    </div>
+
+    <div class="footer">
+        &copy; Copyright 2012, Sublime Text Community.
+    </div>
+ <!-- End original user content -->
+
+
+
+<style type="text/css">
+  .badge {
+    position: fixed;
+    display: block;
+    bottom: 5px;
+    height: 40px;
+    text-indent: -9999em;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  }
+  #version_menu {
+    position: fixed;
+    display: none;
+    bottom: 11px;
+    right: 166px;
+    list-style-type: none;
+    margin: 0;
+  }
+  .footer_popout:hover #version_menu {
+    display: block;
+  }
+  #version_menu li {
+    display: block;
+    float: right;
+  }
+  #version_menu li a {
+    display: block;
+    padding: 6px 10px 4px 10px;
+    margin: 7px 7px 0 0;
+    font-weight: bold;
+    font-size: 14px;
+    height: 20px;
+    line-height: 17px;
+    text-decoration: none;
+    color: #fff;
+    background: #8ca1af url(../images/gradient-light.png) bottom left repeat-x;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    box-shadow: 0 1px 1px #465158;
+    -moz-box-shadow: 0 1px 1px #465158;
+    -webkit-box-shadow: 0 1px 1px #465158;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  }
+  #version_menu li a:hover {
+    text-decoration: none;
+    background-color: #697983;
+    box-shadow: 0 1px 0px #465158;
+    -moz-box-shadow: 0 1px 0px #465158;
+    -webkit-box-shadow: 0 1px 0px #465158;
+  }
+  .badge.rtd {
+    background: #257597 url(//media.readthedocs.org/images/badge-rtd.png) top left no-repeat;
+    border: 1px solid #282E32;
+    width: 160px;
+    right: 5px;
+  }
+  .badge.revsys { background: #465158 url(//media.readthedocs.org/images/badge-revsys.png) top left no-repeat;
+    border: 1px solid #1C5871;
+    width: 290px;
+    right: 173px;
+  }
+  .badge.revsys-inline-sponsored {
+    position: inherit;
+    margin-left: auto;
+    margin-right: 175px;
+    margin-bottom: 5px;
+    background: #465158 url(//media.readthedocs.org/images/badge-revsys.png) top left no-repeat;
+    border: 1px solid #1C5871;
+    width: 290px;
+    right: 173px;
+  }
+  .badge.revsys-inline {
+    position: inherit;
+    margin-left: auto;
+    margin-right: 175px;
+    margin-bottom: 5px;
+    background: #465158 url(//media.readthedocs.org/images/badge-revsys-sm.png) top left no-repeat;
+    border: 1px solid #1C5871;
+    width: 205px;
+    right: 173px;
+  }
+
+.rtd_doc_footer { background-color: #465158;}
+
+</style>
+<div class="rtd_doc_footer">
+  <div class="footer_popout">
+    <a href="//readthedocs.org/projects/sublime-text-unofficial-documentation/?fromdocs=sublime-text-unofficial-documentation" class="badge rtd"> TEST Brought to you by Read the Docs</a>
+    <ul id="version_menu">
+      
+        <li><a href="//readthedocs.org/docs/sublime-text-unofficial-documentation/en/latest/">latest</a></li>
+      
+    </ul>
+  </div>
+</div>
+<!-- RTD Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17997319-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<!-- User Analytics Code -->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-29682491-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>

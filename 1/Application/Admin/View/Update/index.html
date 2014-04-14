@@ -1,0 +1,38 @@
+<extend name="Public/base" />
+
+<block name="style">
+	<style>
+	.red{color:red;!important}
+	</style>
+</block>
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>在线版本</h2>
+	</div>
+
+	<!-- 数据列表 -->
+	<div class="data-table table-striped">
+		<ul>
+			<li>
+			当前版本{$config.version}。 <notempty name="config.new_version">您有新版本<span class="red">{$config.new_version}</span><a href="javascript:;" id="update" ver="{$config.new_version}">想升级吗？</a></notempty>
+			</li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		$(function(){
+			$('#update').click(function(){
+				var version = $(this).attr('ver');
+				if(confirm('您确定要升级吗？')){
+					if(confirm('您要自动升级吗？还是手动升级？')){
+						location.href = Think.U('Admin/Update/autoUpdate','version='+ version +'&step=0');
+					}else{
+						location.href = Think.U('Admin/Update/manual','version=' + version);
+					}
+				}
+			});
+		})
+	</script>
+</block>

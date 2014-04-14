@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/external.css" />
+	<link rel="stylesheet" href="css/cover.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed" class="ui-nodisc-icon">
+		<h1>订单填写</h1>
+		<a href="#" data-icon="arrow-l" data-iconpos="notext" data-shadow="false" data-rel="back">返回</a>
+        <a href="index.html" data-icon="home" data-iconpos="notext" data-shadow="false">首页</a>
+		<div class="div-line"></div>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		
+		<div class="order-box-a">
+			<div class="air-info blue-bg">
+                <span class="f-qucheng">去程</span>
+				<span>2013-12-25</span>
+				<span>北京-首尔</span>
+			</div>
+			<ul data-role="listview" data-theme="d" data-inset="true" data-shadow="false" class="ui-nodisc-icon">
+				<li>
+					<div class="f-info">
+						<div class="hkgs"><span>中国国航 CA137</span> <span>经济舱</span></div>
+					</div>
+				</li>
+				<li>
+					<div class="f-info">
+						<div class="city-a"><span class="time">06:35</span><span class="city">首都机场</span></div>
+						<div class="city-b"><span class="time">09:55</span><span class="city">金铺机场</span></div>
+						<div class="flight-time">约1小时55分钟</div>		
+					</div>
+					
+					<div data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
+						<h4 class="ui-collapsible-heading ui-collapsible-heading-collapsed ui-alt-icon">
+							<a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-icon-carat-d ui-btn-inline">
+							查看退改签
+							</a>
+						</h4>
+						<div class="ui-collapsible-content ui-collapsible-content-collapsed" aria-hidden="true">
+							<dl>
+								<dt>更改条件:</dt>
+								<dd>阿萨德发射点发</dd>
+								<dt>退票条件：</dt>
+								<dd>阿萨德发射点发</dd>
+								<dt>签证条件：</dt>
+								<dd>12312312313</dd>
+							</dl>
+						</div>
+					</div>					
+					
+				</li>
+
+			</ul>
+		</div>
+        
+        <div class="order-box-a">
+			<div class="air-info green-bg">
+                <span class="f-fancheng">返程</span>
+				<span>2013-12-25</span>
+				<span>北京-首尔</span>
+			</div>
+			<ul data-role="listview" data-theme="d" data-inset="true" data-shadow="false" class="ui-nodisc-icon">
+				<li>
+					<div class="f-info">
+						<div class="hkgs"><span>中国国航 CA137</span> <span>经济舱</span></div>
+					</div>
+				</li>
+				<li>
+					<div class="f-info">
+						<div class="city-a"><span class="time">06:35</span><span class="city">首都机场</span></div>
+						<div class="city-b"><span class="time">09:55</span><span class="city">金铺机场</span></div>
+						<div class="flight-time">约1小时55分钟</div>		
+					</div>
+					
+					<div data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" class="ui-collapsible ui-collapsible-inset ui-collapsible-collapsed">
+						<h4 class="ui-collapsible-heading ui-collapsible-heading-collapsed ui-alt-icon">
+							<a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-icon-carat-d ui-btn-inline">
+							查看退改签
+							</a>
+						</h4>
+						<div class="ui-collapsible-content ui-collapsible-content-collapsed" aria-hidden="true">
+							<dl>
+								<dt>更改条件:</dt>
+								<dd>阿萨德发射点发</dd>
+								<dt>退票条件：</dt>
+								<dd>阿萨德发射点发</dd>
+								<dt>签证条件：</dt>
+								<dd>12312312313</dd>
+							</dl>
+						</div>
+					</div>					
+					
+				</li>
+
+			</ul>
+		</div>
+        
+        <div class="pic-gj">
+            <span>往返票价<i>₩</i><em>475000</em></span>
+            <span>税费<i>₩</i><em>600000</em></span>
+        </div>
+        
+		<div class="order-box-b">
+			<ul data-role="listview" data-inset="true" data-shadow="false">
+				<li class="blacktext"><a href="add-list.html" class="ui-icon-plus ui-nodisc-icon"><p>乘机人</p></a></li>
+				<li class="blacktext lxr-title"><a href="addlx.html" class="ui-icon-plus ui-nodisc-icon"><p>联系人</p></a></li>
+			</ul>
+			<!--弹窗删除提问-->
+			<div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content">
+				<p>确定要删除乘机人吗？</p>
+				<a href="#" data-rel="back" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline">删除</a>
+				<a href="#" data-rel="back" class="ui-btn ui-icon-delete ui-btn-icon-left ui-btn-inline">取消</a>
+			</div>
+				
+        </div>
+		
+		<div class="order-box-c">			
+			<form>
+				<ul data-role="listview" data-inset="true" data-shadow="false" class="ui-nosvg">
+					<li class="ui-field-contain">
+						 <input name="checkbox-1a" id="checkbox-1a" checked type="checkbox" data-iconpos="right">
+ 					     <label for="checkbox-1a">购买保险</label>
+						 <span class="bxpic"><i>₩</i>3500 x 4</span>
+					</li>
+					<li class="ui-field-contain">
+						<label for="email">行程单</label>
+						<input name="email" id="email" value="" type="email"  placeholder="请输入邮箱">
+					</li>
+					<li class="ui-field-contain" >
+						<label for="number">优惠码</label>
+						<input name="number" id="number" value="" type="number"  placeholder="请输入优惠码">
+					</li>
+				</ul>
+			</form>
+        </div>
+		<div class="yhm-tips">输入优惠码可以优惠2000元。非必填</div>
+
+		
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" class="order-foot">
+        <div class="ui-grid-a order-foot ui-nodisc-icon">
+            <div class="ui-block-a"><a href="#allmoney" class="ui-btn ui-icon-carat-u ui-btn-icon-right" data-transition="slideup" data-rel="popup" data-position-to="window">总金额：<i>₩</i>320000</a></div>
+
+            <div data-role="popup" id="allmoney" data-overlay-theme="b" data-theme="a">
+                <div data-role="header" data-theme="a">
+                	<h1>详细金额</h1>
+                </div>
+                <div role="main" class="ui-content">
+                 <table class="money-table">
+                      <tr>
+                        <td>成人票</td>
+                        <td><i>₩</i>250000</td>
+                        <td>x2</td>
+                      </tr>
+                      <tr>
+                        <td>보험</td>
+                        <td><i>₩</i>50000</td>
+                        <td>x2</td>
+                      </tr>
+                      <tr>
+                        <td>优惠吗</td>
+                        <td><i>₩</i>2000</td>
+                        <td>a1234</td>
+                      </tr>
+                      <tr>
+                        <td>总金额</td>
+                        <td><i>₩</i>27000</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="ui-block-b"><a href="order-ok.html" class="ui-btn">下一步</a></div>
+        </div>	
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+</body>
+</html>

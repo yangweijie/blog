@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>{$addon_config.title}</title>
+	<link rel="stylesheet" type="text/css" href="__ADDONROOT__/static/css/basic.css">
+	<link rel="stylesheet" type="text/css" href="__ADDONROOT__/static/css/book.css">
+	<link rel="stylesheet" type="text/css" href="__ADDONROOT__/static/css/demo.css">
+	<link rel="stylesheet" type="text/css" href="__ADDONROOT__/static/css/normalize.css">
+	<script type="text/javascript" src="__ADDONROOT__/static/js/modernizr.custom.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div id="header_content">
+			<h1>{$addon_config.title}</h1>
+			<a id="about_me" href="about_me" title="关于我"></a>
+		</div>
+	</div>
+	<div id="content">
+		<div class="component">
+			<ul class="align">
+				<volist name="list" id="vo">
+				<li>
+					<figure class='book'>
+					<!-- Front -->
+						<ul class='hardcover_front'>
+							<li>
+								<img src="{$vo.cover_id|get_book_cover}" alt="" width="100%" height="100%">
+							</li>
+							<li></li>
+						</ul>
+					<!-- Pages -->
+						<ul class='page'>
+							<li></li>
+							<li>
+								<a class="btn" href="{$vo.link_id}">查看</a>
+							</li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					<!-- Back -->
+						<ul class='hardcover_back'>
+							<li></li>
+							<li></li>
+						</ul>
+						<ul class='book_spine'>
+							<li></li>
+							<li></li>
+						</ul>
+						<figcaption>
+							<h1>{$vo.title}</h1>
+							<span>{$vo.author}</span>
+							<p>{$vo.description}</p>
+						</figcaption>
+					</figure>
+				</li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("#about_me").bind('mouseenter',function(){
+			$(this).addClass("me_hover");
+		}).bind('mouseleave',function(){
+			$(this).removeClass("me_hover");
+		})
+	</script>
+</body>
+</html>
+
+<!-- 	<ul>
+		<li><a href="/about_me">关于我</a></li>
+		<li><a href="http://rogerdudler.github.com/git-guide/index.zh.html">git - 简易指南</a></li>
+		<li><a href="{:U('Lab/diandian_search')}" id="link1">点点搜索</a></li>
+		<li><a href="/Sublime" id="link2">Sublime Text2 中文文档</a></li>
+		<li><a href="/Sublime Guide/Sublime text2 使用.html" id="link2">Sublime Text新手入门</a></li>
+		<li>
+			<a href="http://docs.sublimetext.tw/">台湾版Sublime Text2 中文文档手册</a>
+		</li>
+		<li><a href="/Sublime_unofficial" id="link3">Sublime Text2 非官方中文文档</a></li>
+		<li><a href="/Sublime text3" id="link4">Sublime Text3 中文文档</a></li>
+		<li><a href="http://xiemin.me/bootstrap-2.3.0/index.html" id="link3">Twitter Bootstrap中文版/中文翻译:</a></li>
+		<li><a href="http://www.css88.com/EasyTools/javascript/jQueryPlugin/imgAreaSelect/index.html" id="link4">jquery imgareaselect 插件中文文档</a></li>
+		<li>
+			<a href="http://www.phptogether.com/pclzipdoc/usage.html">PclZip使用指南</a>
+		</li>
+		<li><a href="http://learn-python-the-hard-way-zh_cn-translation.readthedocs.org/cn/latest/index.html" id="link5">笨办法学 Python （Learn Python The Hard Way）</a></li>
+		<li><a href="http://ued.github.com/emberjs-doc-cn">Ember.js 中文文档文档</a></li>
+		<li><a href="http://www.cnblogs.com/pchmonster/archive/2011/12/13/2285811.html">C、Delphi和PHP的基本语法对照表</a></li>
+		<li><a href="http://www.css88.com/doc/underscore1.4.2/">Underscore.js Version (1.4.2) 中文文档</a></li>
+		<li>
+			<a href="http://www.yauld.cn/uploadifydoc">Uploadify在线中文手册</a>
+		</li>
+		<li>
+			<a href="https://github.com/nixzhu/HelloMou/blob/master/HelloMou.md">Mou中文使用指南</a>
+		</li>
+		<li>
+			<a href="http://www.bootcss.com">Bootstrap中文网</a>
+		</li>
+	</ul> -->

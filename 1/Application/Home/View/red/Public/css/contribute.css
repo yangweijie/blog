@@ -1,0 +1,52 @@
+﻿@charset "utf-8";
+/*
+Theme URI: http://www.jiawin.com
+Author: Javin
+*/
+.article_contribute {padding:5px 0 20px 40px; margin:0 0 20px 0;}
+#article_contribute_from ul li{padding-bottom:20px; width:302px;}
+#article_contribute_from label{display:block; line-height:38px; width:100%;}
+#article_contribute_from .contribute_w686{width:686px;}
+#article_contribute_from .contribute_w686 #contribute_title {width:664px;}
+#article_contribute_from .contribute_w686 #contribute_tags {width:318px;}
+#article_contribute_from input[type="text"]{background-color:#F5F5EB; border-color:#BCBCA7 #FFFFFF #FFFFFF #BCBCA7; border-style:solid; border-width:1px;box-shadow:1px 1px 1px #DDDDDD inset; height:16px; line-height:16px; padding:10px; width:280px;}
+#article_contribute_from textarea{background-color:#F5F5EB; border:1px solid #BCBCA7; line-height:20px; width:684px; height:500px;}
+#article_contribute_from select{background-color:#F5F5EB; height:38px; padding:10px; width:302px; border-color:#BCBCA7 #FFFFFF #FFFFFF #BCBCA7; border-style:solid;border-width:1px; box-shadow:1px 1px 1px #DDDDDD inset;}
+.right_info{background:url(img/valid.png) center center no-repeat; padding:12px 10px; margin-top:8px; padding-top:0px \9;}
+.error_info{color:#C05732; text-shadow:none;}
+.contribute_info, .contribute_author_info{padding:5px; color:#666; border:1px dashed #C1C0AB; margin-bottom:20px; background-color:#f0efd7; text-align:center;}
+.contribute_instruction {color:#666; width:330px; float:right; border:1px dashed #a6a386; padding:5px; border-radius:10px;}
+.contribute_instruction h2 {font-weight:bolder; margin-left:5px;}
+.contribute_instruction ul li {list-style:outside circle; margin-left:20px;}
+#article_contribute_from input[type="submit"] {background:url(img/btn_submit.png) no-repeat scroll left top transparent; border:medium none; cursor:pointer; height:54px; width:135px; text-indent:-9999px;}
+#article_contribute_from input[type="submit"]:hover {background-position:0 -54px;}
+#article_contribute_from input[type="reset"] {border:0 none; background: none transparent; line-height:24px; float:right; cursor:pointer; margin-left:5px;}
+@media screen and (max-width:1103px){
+	.contribute_instruction {float:left; margin:20px auto; width:90%;}
+	#article_contribute_from ul li, #article_contribute_from .contribute_w686, #article_contribute_from select, #article_contribute_from textarea {width:820px;}
+	#article_contribute_from input[type="text"], #article_contribute_from .contribute_w686 #contribute_tags, #article_contribute_from .contribute_w686 #contribute_title {width:800px;}
+}
+@media screen and (max-width:940px){
+	#article_contribute_from ul li, #article_contribute_from .contribute_w686, #article_contribute_from select, #article_contribute_from textarea {width:650px;}
+	#article_contribute_from input[type="text"], #article_contribute_from .contribute_w686 #contribute_tags, #article_contribute_from .contribute_w686 #contribute_title {width:630px;}
+}
+@media screen and (max-width:760px){
+	#article_contribute_from ul li, #article_contribute_from .contribute_w686, #article_contribute_from select, #article_contribute_from textarea {width:450px;}
+	#article_contribute_from input[type="text"], #article_contribute_from .contribute_w686 #contribute_tags, #article_contribute_from .contribute_w686 #contribute_title {width:430px;}
+}
+@media screen and (max-width:550px){
+	#article_contribute_from ul li, #article_contribute_from .contribute_w686, #article_contribute_from select, #article_contribute_from textarea {width:320px;}
+	#article_contribute_from input[type="text"], #article_contribute_from .contribute_w686 #contribute_tags, #article_contribute_from .contribute_w686 #contribute_title {width:300px;}
+}
+@media screen and (max-width:380px){
+	#article_contribute_from ul li, #article_contribute_from .contribute_w686, #article_contribute_from select, #article_contribute_from textarea {width:280px;}
+	#article_contribute_from input[type="text"], #article_contribute_from .contribute_w686 #contribute_tags, #article_contribute_from .contribute_w686 #contribute_title {width:260px;}
+}
+@media screen and (max-width:350px){
+	#article_contribute_from ul li, #article_contribute_from .contribute_w686, #article_contribute_from select, #article_contribute_from textarea {width:220px;}
+	#article_contribute_from input[type="text"], #article_contribute_from .contribute_w686 #contribute_tags, #article_contribute_from .contribute_w686 #contribute_title {width:200px;}
+}
+@media screen and (max-width:260px){
+	#article_contribute_from ul li, #article_contribute_from .contribute_w686, #article_contribute_from select, #article_contribute_from textarea {width:190px;}
+	#article_contribute_from input[type="text"], #article_contribute_from .contribute_w686 #contribute_tags, #article_contribute_from .contribute_w686 #contribute_title {width:170px;}
+}

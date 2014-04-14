@@ -1,0 +1,21 @@
+﻿@charset "utf-8";
+/*
+Theme Name: 觉唯
+Theme URI: http://www.jiawin.com
+Description: 觉唯是一个分享设计博客，推崇以用户为中心的设计，专注于用户体验设计。觉唯致力于互联网视觉设计、交互设计、前端开发、用户研究。
+Author: Javin
+E-mail: jwzhong@foxmail.com
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+p {margin:0;padding:0;} 
+img,fieldset {border:0;}
+body {font:14px/1.5 Verdana, Geneva, sans-serif; background:url(img/ie_bg.png) repeat;}
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+input,select,form img,button {vertical-align:middle;}
+img {border:0 none;}
+button {cursor:pointer;}
+#tips-ie {line-height:24px; background:#884A35; color:#ffe6dd; text-align:center; padding:10px 0; margin:0;}
+#tips-ie a {color:#ffe6dd; padding:0 2px;}

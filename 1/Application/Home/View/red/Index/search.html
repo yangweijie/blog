@@ -1,0 +1,45 @@
+<extend name="Index/common" />
+
+<block name="main">
+    <div id="announcement_box" class="ption_a">
+        <div id="announcement">
+            <div style="margin-top: 0px;">包含关键字 {$kw} 的文章</div>
+        </div>
+    </div>
+    <volist name="list" id="article">
+        <div class="post ption_r" id="post-797">
+            <div class="circle">
+                <div class="type"><span>{$article.create_time|date='j',###}<small>{$article.create_time|date='M',###}</small></span></div>
+            </div>
+            <h1 class="post_title fs24 f_w"><a href="{:U('archive/'.$article['id'])}">{$article.title}</a>
+            </h1>
+
+            <div class="meta">
+                <div class="thumb f_l">
+                    <a href="{:U('archive/'.$article['id'])}" title="{$article.title}">
+                        <img width="126" height="126" src="{$article.cover_id|get_cover='path'}" title="{$article.title}" alt="{$article.title}"/>
+                    </a>
+                </div>
+                <p class="meta_info">
+                    <span class="mr10">时间: {$article.create_time|date='Y-m-d',###}</span>
+                    <span class="mr10">分类:
+                        <a href="{:U('category/'.category_name($article['category_id']))}">{$article.category_id|get_category_title}</a>
+                    </span>
+                    <span class="mr10">作者: {$article.uid|get_username}</span>
+                    <span class="mr10">{$article.view} 次浏览</span>
+                    <span class="mr10">
+                        <a href="{:U('archive/'.$article['id'].'#commentformbox')}">评论</a>
+                    </span>
+                </p>
+                <p class="meta_tag"><span>TAGS:</span>{$article.id|get_tag}</p>
+
+                <div class="meta_content">
+                    <p>{$article.description}</p>
+                </div>
+                <div class="mt20"><a class="more_link" href="{:U('archive/'.$article['id'])}"><em>Read more&gt;&gt;</em></a></div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </volist>
+    <div class="page">{$_page}</div>
+</block>

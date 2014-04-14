@@ -1,0 +1,22 @@
+<extend name="Index/common" />
+
+<block name="main">
+    <h3 class="archive-title">{$year}年{$month}月</h3>
+    <volist name="list" id="article">
+        <article class="post">
+        <h2 class="post-title">
+            <a href="{:U('archive/'.$article['id'])}">{$article.title}</a>
+        </h2>
+        <ul class="post-meta">
+            <li>作者：<a href="javascript:;">{$article.uid|get_username}</a></li>
+            <li>时间：{$article.create_time|date='F j, Y',###}</li>
+            <li>分类：<a href="{:U('category/'.category_name($article['category_id']))}">{$article.category_id|get_category_title}</a></li>
+            <li><a href="{:U('archive/'.$article['id'].'#commentformbox')}">评论</a></li>
+        </ul>
+        <div class="post-content">
+            <p>{$article.description}</p>
+        </div>
+        </article>
+    </volist>
+    <div class="page">{$_page}</div>
+</block>

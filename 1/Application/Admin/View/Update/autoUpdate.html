@@ -1,0 +1,188 @@
+<extend name="Public/base" />
+
+<block name="style">
+	<style>
+	.red{color:red;!important}
+	</style>
+</block>
+
+<block name="body">
+	<switch name="step">
+		<case value="1">
+			<style type="text/css">
+			#preview_window{
+				width:854px;
+				height:500px;
+			}
+			#preview_window.loading{
+				background: url('__STATIC__/thinkbox/skin/default/tips_loading.gif') no-repeat center;
+			}
+			</style>
+			<link rel="stylesheet" href="__JS__/codemirror/codemirror.css">
+			<link rel="stylesheet" href="__JS__/mergely.css">
+			<!-- 标题栏 -->
+			<div class="main-title">
+				<h2>自动更新-更新预览({$version})</h2>
+			</div>
+			<!-- 数据列表 -->
+			<div class="data-table table-striped">
+				<table id="file_list">
+					<thead>
+						<tr>
+							<th>文件名</th>
+							<th>MD5</th>
+							<th>类型</th>
+							<th>是否被修改过</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="list" id="vo">
+						<tr>
+							<td>./{$vo.filename}</td>
+							<td>{$vo.md5}</td>
+							<td>
+								<switch name="vo.opt">
+									<case value="add">新增</case>
+									<case value="modify">修改</case>
+									<case value="del">删除</case>
+								</switch>
+							</td>
+							<td>
+								<a href="javascript:;" class="compare" lhs="{$vo.filename}" rhs="{$domain}/Update/{$version}/{$vo.filename}">对比更改</a>
+								<eq name="vo.changed" value="1"><span class="red">是</span><else/>否</eq>
+							</td>
+						</tr>
+						</volist>
+					</tbody>
+				</table>
+			</div>
+			<div class="form-item">
+				<button class="btn submit-btn" id="submit" type="submit">升 级</button>
+				<button class="btn btn-return" onclick="javascript:location.href=Think.U('Admin/Update/index')">取 消</button>
+			</div>
+			<script type="text/javascript" src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+			<script type="text/javascript" src="__JS__/codemirror/codemirror.js"></script>
+			<script type="text/javascript" src="__JS__/mergely.min.js"></script>
+			<script type="text/javascript">
+				$(function(){
+					$('#submit').click(function(){
+						if($('.data-table tr span.red').length){
+							if(confirm('有升级文件中被修改过，你还要升级吗？')){
+								location.href = Think.U('Admin/Update/autoUpdate', 'version={$version}&step=2');
+							}
+						}else{
+							location.href = Think.U('Admin/Update/autoUpdate', 'version={$version}&step=2');
+						}
+						return false;
+					});
+
+					$('.compare').click(function(){
+						var lhs = $(this).attr('lhs');
+						var rhs = $(this).attr('rhs');
+						$.thinkbox('<div id="preview_window" class="loading"></div>',{
+							afterShow:function(){
+								$('#preview_window').removeClass('loading');
+								$('#preview_window').mergely({
+									cmsettings: {
+										readOnly: true,
+										lineWrapping:true
+									},
+									height: 600
+								});
+								$('#preview_window .codemirror').css('height', $('.preview_window-editor-rhs').height());
+								$.ajax({
+									type: 'GET', async: true, dataType: 'text',
+									url: '/'+lhs,
+									success: function (response) {
+										$('#preview_window').mergely('lhs', response);
+									}
+								});
+								$.ajax({
+									type: 'GET', async: true, dataType: 'text',
+									data:{file: rhs},
+									url: '{:U("preview")}',
+									success: function (response) {
+										$('#preview_window').mergely('rhs', response);
+									}
+								});
+							},
+							title:'对比文件更改',
+							unload: true,
+							actions:['close'],
+							drag:true
+						});
+					});
+				});
+			</script>
+
+		</case>
+		<case value="2">
+			<script type="text/javascript" src="__JS__/common.js"></script>
+			<style type="text/css">
+			#file_list td.success{
+				color: green;
+			}
+			#file_list td.error{
+				color: red;
+			}
+			</style>
+			<div class="main-title">
+				<h2>自动更新-下载文件({$version})</h2>
+			</div>
+			<!-- 数据列表 -->
+			<div class="data-table table-striped">
+				<table id="file_list">
+					<thead>
+						<tr>
+							<th>序号</th>
+							<th>文件名</th>
+							<th>下载结果</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<script type="text/javascript">
+				var top_alert = $('#top-alert');
+			    window.updateAlert = function (text,c) {
+					text = text||'default';
+					c = c||false;
+					if ( c!=false ) {
+			            top_alert.removeClass('alert-error alert-warn alert-info alert-success').addClass(c);
+			        }else{
+			            top_alert.removeClass('alert-error alert-warn alert-info alert-success').addClass('alert-error');
+			        }
+			        if ( text!='default' ) {
+			            top_alert.find('li').text(text);
+						if (top_alert.hasClass('block')) {
+			                top_alert.slideDown(2000);
+						} else {
+							top_alert.addClass('block').slideDown(2000);
+						}
+					} else {
+						if (top_alert.hasClass('block')) {
+							top_alert.removeClass('block').slideUp(2000);
+						}
+					}
+
+				};
+				function showmsg(msg){
+					console.log(msg);
+					if(msg !== 1){
+						$('#file_list tbody').append(msg);
+					}else{
+						if($('#file_list tbody td span.error').length){
+							updateAlert('更新文件部分下载失败！，请刷新重新尝试此步骤');
+						}else{
+							updateAlert('更新文件全部下载成功， 页面即将自动跳转~','alert-success');
+		                    setTimeout(function(){
+	                            location.href= '{:U("Update/autoUpdate?version=".$version."&step=3")}';
+		                    },1500);
+						}
+					}
+				}
+			</script>
+		</case>
+	</switch>
+</block>

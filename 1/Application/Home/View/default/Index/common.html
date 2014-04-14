@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+ <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{:C('WEB_SITE_TITLE')}</title>
+
+    <!-- 使用url函数转换相关路径 -->
+    <link rel="stylesheet" href="__CSS__/normalize.css">
+    <link rel="stylesheet" href="__CSS__/grid.css">
+    <link rel="stylesheet" href="__CSS__/default.css">
+    <script type="text/javascript" src="__JS__/jquery.js"></script>
+    <block name="style"></block>
+
+    <!--[if lt IE 9]>
+    <script src="__JS__/html5shiv.js"></script>
+    <script src="__JS__/respond.js"></script>
+    <![endif]-->
+
+    <!-- 通过自有函数输出HTML头部信息 -->
+    <meta name="description" content="{:C('WEB_SITE_DESCRIPTION')}" />
+    <meta name="keywords" content="{:C('WEB_SITE_KEYWORD')}" />
+    <meta name="generator" content="onethink,{$Think.ONETHINK_VERSION}" />
+    <meta name="template" content="default" />
+    <!-- <link rel="pingback" href="http://localhost/typecho/index.php/action/xmlrpc" />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost/typecho/index.php/action/xmlrpc?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://localhost/typecho/index.php/action/xmlrpc?wlw" /> -->
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{:U('/feed')}" />
+    <link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="{:U('/feed/rss')}" />
+    <link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="{:U('/feed/atom')}" />
+
+    {:hook('pageHeader')}
+</head>
+<body>
+    <!--[if lt IE 8]>
+    <div class="browsehappy">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+    <![endif]-->
+    <block name="header">
+    <header id="header" class="clearfix">
+        <div class="container">
+            <div class="colgroup">
+                <div class="site-name col-mb-12 col-9">
+                    <a id="logo" href="{:U('/')}">
+                        {:C('WEB_SITE_TITLE')}
+                    </a>
+                    <p class="description">Just So So ...</p>
+                </div>
+                <div class="site-search col-3 kit-hidden-tb">
+                    <form id="search" method="post" action="/" role="search">
+                        <label for="kw" class="sr-only">搜索关键字</label>
+                        <input type="text" name="kw" class="text" placeholder="输入关键字搜索" />
+                        <button type="submit" class="submit">搜索</button>
+                    </form>
+                </div>
+                <div class="col-mb-12">
+                    <nav id="nav-menu" class="clearfix" role="navigation">
+                        <a class="current" href="{:U('/')}">首页</a>
+                        {:W('Common/single')}
+                    </nav>
+                </div>
+            </div><!-- end .colgroup -->
+        </div>
+    </header><!-- end #header -->
+    </block>
+    <div id="body">
+        <div class="container">
+            <div class="colgroup">
+                <div class="col-mb-12 col-8" id="main" role="main">
+                    <block name="main">
+                    <volist name="list" id="article">
+                        <article class="post">
+                        <h2 class="post-title">
+                            <a href="{:U('archive/'.$article['id'])}">{$article.title}</a>
+                        </h2>
+                        <ul class="post-meta">
+                            <li>作者：<a href="javascript:;">{$article.uid|get_username}</a></li>
+                            <li>时间：{$article.create_time|date='F j, Y',###}</li>
+                            <li>分类：<a href="{:U('category/'.category_name($article['category_id']))}">{$article.category_id|get_category_title}</a></li>
+                            <li><a href="{:U('archive/'.$article['id'].'#commentformbox')}">评论</a></li>
+                        </ul>
+                        <div class="post-content">
+                            <p>{$article.description}</p>
+                        </div>
+                        </article>
+                    </volist>
+                    <div class="page">{$_page}</div>
+                    </block>
+
+                    </div><!-- end #main-->
+
+                    <block name="sidebar">
+                    <div class="col-mb-12 col-offset-1 col-3 kit-hidden-tb" id="secondary" role="complementary">
+                        <section class="widget">
+                            <h3 class="widget-title">最新文章</h3>
+                            <ul class="widget-list">
+                                {:W('Common/new_article')}
+                            </ul>
+                        </section>
+
+                        {:hook('sidebar')}
+
+                        <section class="widget">
+                            <h3 class="widget-title">分类</h3>
+                            <ul class="widget-list">
+                               {:W('Common/cates')}
+                            </ul>
+                        </section>
+
+                        {:W('Common/archive')}
+                        <section class="widget">
+                            <h3 class="widget-title">其它</h3>
+                            <ul class="widget-list">
+                            <if condition="is_login()">
+                                <li class="last"><a href="{:U('/Admin')}">进入后台 (admin)</a></li>
+                                <li><a class="exit" href="{:U('/Admin/Public/logout')}">登出</a></li>
+                            <else />
+                                <li><a href="{:U('/Admin/Public/login')}">登录</a></li>
+                            </if>
+                                <li><a href="/feed">文章 RSS</a></li>
+                                <li><a href="http://www.onethink.cn">onethink</a></li>
+                            </ul>
+                        </section>
+                    </div><!-- end #sidebar -->
+                    </block>
+                </div><!-- end .colgroup -->
+            </div>
+        </div><!-- end #body -->
+
+        <footer id="footer" role="contentinfo">
+            &copy; 2014 <a href="/">Hello World</a>.
+            由 <a href="http://www.onethink.cn">onethink</a> 强力驱动.
+        </footer><!-- end #footer -->
+
+        <script type="text/javascript">
+            var url = window.location.pathname + window.location.search;
+            url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+            (function(){
+                var ThinkPHP = window.Think = {
+                    "ROOT"   : "__ROOT__", //当前网站地址
+                    "APP"    : "__APP__", //当前项目地址
+                    "PUBLIC" : "__PUBLIC__", //项目公共目录地址
+                    "DEEP"   : "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
+                    "MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+                    "VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+                }
+            })();
+            $(function(){
+                 //单页高亮
+                $('#nav-menu a').removeClass('current');
+                $('#nav-menu a[href="'+url+'"]').addClass('current');
+                $('#search').submit(function(){
+                    var url = '/search/'+ $('#search input[name="kw"]').val();
+                    location.href = url;
+                    return false;
+                });
+            })
+        </script>
+        {:hook('pageFooter')}
+    </body>
+</html>

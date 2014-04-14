@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html class="no-js">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <meta name="renderer" content="webkit">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>{$meta_title|default=''}|Blog管理平台</title>
+        <link href="__ROOT__/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+        <meta name="robots" content="noindex, nofollow">
+        <link rel="stylesheet" href="__CSS__/normalize.css?v={$Think.const.ONETHINK_VERSION}">
+        <link rel="stylesheet" href="__CSS__/grid.css?v={$Think.const.ONETHINK_VERSION}">
+        <link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">
+        <link rel="stylesheet" type="text/css" href="__CSS__/common.css" media="all">
+        <link rel="stylesheet" type="text/css" href="__CSS__/module.css">
+        <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
+        <link rel="stylesheet" type="text/css" href="__CSS__/{$Think.config.COLOR_STYLE}.css?v={$Think.const.ONETHINK_VERSION}" media="all">
+        <script src="__JS__/jquery.js?v={$Think.const.ONETHINK_VERSION}"></script>
+        <script src="__JS__/jquery-ui.js?v={$Think.const.ONETHINK_VERSION}"></script>
+
+        <script type="text/javascript" src="__JS__/jquery.mousewheel.js"></script>
+        <!--[if lt IE 9]>
+        <script src="__JS__/html5shiv.js?v={$Think.const.ONETHINK_VERSION}"></script>
+        <script src="__JS__/respond.js?v={$Think.const.ONETHINK_VERSION}"></script>
+        <![endif]-->
+        <block name="style"></block>
+    </head>
+    <body>
+    <!--[if lt IE 9]>
+        <div class="message error browsehappy">'当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.</div>
+    <![endif]-->
+
+        <div class="typecho-head-nav clearfix" role="navigation">
+            <div class="message popup hidden" id="top-alert">
+                <button class="close fixed" onclick="return false;">&times;</button>
+                <ul><li>插件已经被禁用</li></ul>
+            </div>
+            <nav id="typecho-nav-list">
+                <notempty name="_extra_menu">
+                    {// 动态扩展菜单 //}
+                </notempty>
+                <volist name="__MENU__.main" id="menu">
+                    <ul class="root <if condition="(isset($menu['class']) && $menu['class'] == 'current')">focus</if>">
+                        <li class="parent"><a href="{$menu.url|U}">{$menu.title}</a></li>
+                        <php>
+                            $where          =   array();
+                            $where['pid']   =   $menu['id'];
+                            $where['hide']  =   0;
+                            if(!C('DEVELOP_MODE')){ // 是否开发者模式
+                                $where['is_dev']    =   0;
+                            }
+                            $second_urls = M('Menu')->where($where)->getField('id,url');
+
+                            if(!IS_ROOT){
+                                // 检测菜单权限
+                                $to_check_urls = array();
+                                foreach ($second_urls as $key=>$to_check_url) {
+                                    if( stripos($to_check_url,MODULE_NAME)!==0 ){
+                                        $rule = MODULE_NAME.'/'.$to_check_url;
+                                    }else{
+                                        $rule = $to_check_url;
+                                    }
+                                    if($this->checkRule($rule, AuthRuleModel::RULE_URL,null))
+                                        $to_check_urls[] = $to_check_url;
+                                }
+                            }
+                            if(isset($to_check_urls)){
+                                if(empty($to_check_urls)){
+                                    // 没有任何权限
+                                    continue;
+                                }else{
+                                    $map['url'] = array('in', $to_check_urls);
+                                }
+                            }
+                            $map['pid'] = $menu['id'];
+                            $map['hide']    =   0;
+                            if(!C('DEVELOP_MODE')){ // 是否开发者模式
+                                $map['is_dev']  =   0;
+                            }
+                            $menuList = M('Menu')->where($map)->field('id,pid,title,url,tip')->order('sort asc')->select();
+                        </php>
+                        <ul class="child">
+                            <php>$sub_menu_length = isset($sub_menu)? count($sub_menu) : 0;</php>
+                            <volist name="menuList" id="sub_menu">
+                                <li><a href="{$sub_menu.url|U}">{$sub_menu.title}</a></li>
+                            </volist>
+                        </ul>
+                    </ul>
+                </volist>
+            </nav>
+            <div class="operate">
+                {:hook('admin_navbar')}
+                <a title="最后登录:{:session('user_auth.last_login_time')}" href="javascript:;" class="author">{:session('user_auth.username')}</a><a href="{:U('User/updatepassword')}" class="exit">修改密码</a><a href="{:U('User/updatenickname')}" class="exit">修改昵称</a><a class="exit" href="{:U('Public/logout')}">登出</a><a href="{:U('/')}">网站</a>
+            </div>
+        </div>
+
+        <!-- 边栏 -->
+        <div class="sidebar">
+            <!-- 子导航 -->
+            <block name="sidebar">
+                <div id="subnav" class="subnav">
+                    <notempty name="_extra_menu">
+                        {// 动态扩展菜单 //}
+                        {:extra_menu($_extra_menu,$__MENU__)}
+                    </notempty>
+                    <volist name="__MENU__.child" id="sub_menu">
+                        <!-- 子导航 -->
+                        <notempty name="sub_menu">
+                            <notempty name="key"><h3><i class="icon icon-unfold"></i>{$key}</h3></notempty>
+                            <ul class="side-sub-menu">
+                                <volist name="sub_menu" id="menu">
+                                    <li>
+                                        <a class="item" href="{$menu.url|U}">{$menu.title}</a>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </notempty>
+                        <!-- /子导航 -->
+                    </volist>
+                </div>
+            </block>
+            <!-- /子导航 -->
+        </div>
+        <!-- /边栏 -->
+
+        <div class="main">
+
+            <div class="container typecho-dashboard">
+            <block name="nav">
+            <!-- nav -->
+            <notempty name="_show_nav">
+            <div class="breadcrumb">
+                <span>您的位置:</span>
+                <assign name="i" value="1" />
+                <foreach name="_nav" item="v" key="k">
+                    <if condition="$i eq count($_nav)">
+                    <span>{$v}</span>
+                    <else />
+                    <span><a href="{$k}">{$v}</a>&gt;</span>
+                    </if>
+                    <assign name="i" value="$i+1" />
+                </foreach>
+            </div>
+            </notempty>
+            <!-- nav -->
+            </block>
+            <div class="colgroup typecho-page-main">
+                <block name="body"> </block>
+            </div>
+            </div>
+
+        </div>
+
+        <div class="typecho-foot" role="contentinfo">
+            <div class="copyright">
+                <p>感谢使用<a href="http://www.onethink.cn" target="_blank">OneThink</a>管理平台</p>
+                <p>V{$Think.const.ONETHINK_VERSION}</p>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        (function(){
+            var ThinkPHP = window.Think = {
+                "ROOT"   : "__ROOT__", //当前网站地址
+                "APP"    : "__APP__", //当前项目地址
+                "PUBLIC" : "__PUBLIC__", //项目公共目录地址
+                "DEEP"   : "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
+                "MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+                "VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+            }
+        })();
+        </script>
+        <script type="text/javascript" src="__STATIC__/think.js"></script>
+        <script type="text/javascript" src="__JS__/common.js"></script>
+        <script>
+            (function () {
+                $(document).ready(function() {
+
+                    // 导航菜单 tab 聚焦时展开下拉菜单
+                    (function () {
+                        $('#typecho-nav-list').find('.parent a').focus(function() {
+                            $('#typecho-nav-list').find('.child').hide();
+                            $(this).parents('.root').find('.child').show();
+                        });
+                        $('#typecho-nav-list').find('.child li:last-child a').blur(function() {
+                            $(this).parents('.child').hide();
+                        });
+                    })();
+                });
+            })();
+        </script>
+        <script type="text/javascript">
+        +function(){
+            var $window = $(window), $subnav = $("#typecho-nav-list"), url;
+            $window.resize(function(){
+                $("#main").css("min-height", $window.height() - 130);
+            }).resize();
+
+            $('#subnav a').each(function(){
+                var url = this.href;
+                var _this = this;
+                var urls = $('#typecho-nav-list ul.child li a');
+                urls.each(function(){
+                    if(this.href == _this.href)
+                        $(_this).remove();
+                })
+            });
+
+
+
+
+            /* 左边菜单高亮 */
+            url = window.location.pathname + window.location.search;
+            url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+            highlight_subnav(url);
+
+            $('#typecho-nav-list .child .focus').parents('.root').addClass('focus');
+
+            $('#subnav a').each(function(){
+                console.log(this.href)
+                $('#typecho-nav-list .focus .child').append('<li>'+'<a href="'+this.href+'">'+$(this).text()+'</a>'+'</li>');
+            })
+
+            $('.sidebar').remove();
+            /* 表单获取焦点变色 */
+            $("form").on("focus", "input", function(){
+                $(this).addClass('focus');
+            }).on("blur","input",function(){
+                $(this).removeClass('focus');
+            });
+            $("form").on("focus", "textarea", function(){
+                $(this).closest('label').addClass('focus');
+            }).on("blur","textarea",function(){
+                $(this).closest('label').removeClass('focus');
+            });
+
+            // 导航栏超出窗口高度后的模拟滚动条
+            var sHeight = $(".sidebar").height();
+            var subHeight  = $(".subnav").height();
+            var diff = subHeight - sHeight; //250
+            var sub = $(".subnav");
+            if(diff > 0){
+                $(window).mousewheel(function(event, delta){
+                    if(delta>0){
+                        if(parseInt(sub.css('marginTop'))>-10){
+                            sub.css('marginTop','0px');
+                        }else{
+                            sub.css('marginTop','+='+10);
+                        }
+                    }else{
+                        if(parseInt(sub.css('marginTop'))<'-'+(diff-10)){
+                            sub.css('marginTop','-'+(diff-10));
+                        }else{
+                            sub.css('marginTop','-='+10);
+                        }
+                    }
+                });
+            }
+        }();
+    </script>
+    <block name="script"></block>
+    </body>
+</html>

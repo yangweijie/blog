@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport"
+			  content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="keywords" content="觉唯, 用户体验设计, 以用户为中心, 视觉设计, 交互设计, 前端开发, 用户研究, 博客, UED, Javin, HTML, CSS, javascript"/>
+		<meta name="description" content="觉唯是一个分享设计博客，推崇以用户为中心的设计，专注于用户体验设计。觉唯致力于互联网视觉设计、交互设计、前端开发、用户研究。"/>
+		<title>{:C('WEB_SITE_TITLE')}</title>
+		<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{:U('/feed')}" />
+		<link rel="alternate" type="application/rdf+xml" title="RSS 1.0" href="{:U('/feed/rss')}" />
+		<link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="{:U('/feed/atom')}" />
+		<!--[if lt IE 9]>
+		<script src="__JS__/html5.js" type="text/javascript"></script>
+		<![endif]-->
+		<link rel='stylesheet' id='codecolorer-css' href='__CSS__/codecolorer.css' type='text/css' media='screen'/>
+		<script type='text/javascript' src='__JS__/jquery.js'></script>
+		<link rel="stylesheet" href="__CSS__/jquery.lightbox.css" type="text/css" media="all"/>
+		<!--[if IE 6]>
+		<link rel="stylesheet" type="text/css" href="style/css/jquery.lightbox.ie6.css"/><![endif]-->
+		<style type="text/css">.jquery-lightbox-overlay {background: #000;}</style>
+		<!--[if gte IE 7]><!-->
+		<link href="__CSS__/style.css" rel="stylesheet" type="text/css" media="all"/>
+		<!--<![endif]-->
+		<!--[if lt IE 7]>
+		<link href="style/css/ie.css" rel="stylesheet" type="text/css"/>
+		<![endif]-->
+		<link rel="stylesheet" href="__CSS__/red.css">
+	</head>
+
+	<body>
+		<!--[if lt IE 7]>
+		<div id="tips-ie">
+			<p>欢迎来到<strong><a title="Liushichao" href="http://www.liushichao.cn/">Liushichao</a></strong></p>
+
+			<p>很抱歉，您正在使用的是一个古代的浏览器浏览网页，本站无法在IE6（包含IE6）以下版本的IE系列浏览器中正常访问。</p>
+
+			<p>您所看到的内容为本站的裸奔状态（纯文本，无样式无脚本）为了获得更好的浏览体验，请升级到更高级的浏览器或下载其他现代浏览器。</p>
+		</div>
+		<![endif]-->
+		<div class="left ption_f">
+			<p class="left_line_y f_r"></p>
+		</div>
+		<div class="right ption_f">
+			<p class="right_line_y f_l"></p>
+		</div>
+		<div class="header ption_r">
+			<div class="progress ption_a">
+				<p id="prog-p" class="ption_a">&nbsp;</p>
+				<progress value="0" max="100" id="prog-bar" class="ption_a"></progress>
+			</div>
+			<div class="header_content mauto ption_r">
+				<div class="title f_l">
+					<h1><a class="t_shadow_3 fs14 f_w" href="{:U('/')}" title="关注互联网，专注CMS建站！">{:C('WEB_SITE_TITLE')}</a>
+					</h1>
+					<div class="sub_title pl10">
+						<div class="mobile_nav_buttons"></div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="connect ption_r f_r" id="connect">
+					<ul>
+						<li><a rel="external nofollow" id="connect_rss" title="RSS订阅本站点内容" target="_blank"
+							   href="http://www.liushichao.cn/feed/">Rss订阅</a></li>
+						<li><a rel="external nofollow" id="connect_email" title="邮件订阅本站内容" target="_blank" href="http://list.qq.com/cgi-bin/qf_invite?id=3f1e4284f67ac58eba6908943c6039272b70d281a7439a21">邮件订阅</a>
+						</li>
+						<li><a id="connect_add" class="add_menu" href="javascript:void(0)">关注本站</a>
+							<div class="clear"></div>
+							<div class="add_menu_list" style="display: none; ">
+								<p><span id="add_icon_xwei"></span><a rel="external nofollow" title="关注新浪微博" target="_blank" href="http://www.liushichao.cn/">关注新浪微博</a></p>
+
+								<p><span id="add_icon_twei"></span><a rel="external nofollow" title="关注腾讯微博" target="_blank" href="http://www.liushichao.cn/">关注腾讯微博</a></p>
+							</div>
+						</li>
+						<li>
+							<a id="load_icon" href="javascript:void(0)">登录</a>
+							<div class="clear"></div>
+							<div id="custom-loginform-box" class="ption_a t_shadow">
+								<div id="custom-loginform">
+									<form name="loginform-custom" id="loginform-custom"
+										  action="http://www.liushichao.cn/wp-login.php" method="post">
+										<p class="login-username">
+											<label for="user_login">用户名</label>
+											<input type="text" name="log" id="user_login" class="input" value="" size="20"/>
+										</p>
+										<p class="login-password">
+											<label for="user_pass">密码</label>
+											<input type="password" name="pwd" id="user_pass" class="input" value="" size="20"/>
+										</p>
+										<p class="login-submit">
+											<input type="submit" name="wp-submit" id="wp-submit" class="button-primary"
+												   value="登录网站"/>
+											<input type="hidden" name="redirect_to" value="http://www.liushichao.cn"/>
+										</p>
+									</form>
+									<p class="loginform-custom-other text_c">
+										<a href="http://www.liushichao.cn/wp-login.php?action=register" title="Register">注册</a>
+										或者
+										<a href="http://www.liushichao.cn/wp-login.php?action=lostpassword">忘记密码？</a>
+									</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="navigation f_l fs16 f_w t_shadow ption_r mt10">
+					<div id="menu" class="f_l">
+						<ul id="nav" class="menu">
+							{:W('Common/single')}
+						</ul>
+					</div>
+					<div class="search f_r pr20">
+						<form method="get" id="searchform" action="/">
+							<input type="text" class="search_text f_l" name="kw" id="search_text" value="输入搜索内容……"
+								   onfocus="if (this.value == '输入搜索内容……') {
+											   this.value = '';
+										   }"
+								   onblur="if (this.value == '') {
+											   this.value = '输入搜索内容……';
+										   }"/>
+							<input type="submit" class="search_bon f_l" name="submit" id="search_bon" value="搜索"/>
+						</form>
+					</div>
+				</div>
+				<div class="logo ption_a"><a href="{:U('/')}" title="Liushichao">Liushichao</a></div>
+				<div class="jian ption_a"></div>
+			</div>
+		</div>
+		<div class="main ption_a">
+			<div id="content" class="f_l t_shadow ption_r">
+				<div class="left_top_bg ption_a"></div>
+				<block name="main">
+					<present name="_GET.tag">
+						<div id="announcement_box" class="ption_a">
+							<div id="announcement">
+								<div style="margin-top: 0px;">标签为 {$_GET.tag} 的文章</div>
+							</div>
+						</div>
+					</present>
+					<volist name="list" id="article">
+						<div class="post ption_r" id="post-797">
+							<div class="circle">
+								<div class="type"><span>{$article.create_time|date='j',###}<small>{$article.create_time|date='M',###}</small></span></div>
+							</div>
+							<h1 class="post_title fs24 f_w"><a href="{:U('archive/'.$article['id'])}">{$article.title}</a>
+							</h1>
+
+							<div class="meta">
+								<div class="thumb f_l">
+									<a href="{:U('archive/'.$article['id'])}" title="{$article.title}">
+										<img width="126" height="126" src="{$article.cover_id|get_cover='path'}" title="{$article.title}" alt="{$article.title}"/>
+									</a>
+								</div>
+								<p class="meta_info">
+									<span class="mr10">时间: {$article.create_time|date='Y-m-d',###}</span>
+									<span class="mr10">分类:
+										<a href="{:U('category/'.category_name($article['category_id']))}">{$article.category_id|get_category_title}</a>
+									</span>
+									<span class="mr10">作者: {$article.uid|get_username}</span>
+									<span class="mr10">{$article.view} 次浏览</span>
+									<span class="mr10">
+										<a href="{:U('archive/'.$article['id'].'#commentformbox')}">评论</a>
+									</span>
+								</p>
+								<p class="meta_tag"><span>TAGS:</span>{$article.id|get_tag}</p>
+
+								<div class="meta_content">
+									<p>{$article.description}</p>
+								</div>
+								<div class="mt20"><a class="more_link" href="{:U('archive/'.$article['id'])}"><em>Read more&gt;&gt;</em></a></div>
+								<div class="clear"></div>
+							</div>
+							<!-- <div class="comments ption_a fs20"><em><a href="http://www.liushichao.cn/797.html#comments" class="comments-link" title="《【隐私】QQ隐私泄露，群关系查询》上的评论">1</a></em>
+							</div> -->
+						</div>
+					</volist>
+					<div class="page">{$_page}</div>
+				</block>
+			</div>
+			<div id="sidebar" class="f_l ption_r">
+				<div class="right_top_bg ption_a"></div>
+				<div class="box">
+					<h3 class="box_title ption_r mb20 f_l"><span>关于我</span></h3>
+
+					<div class="box_content ption_r" id="about">
+						<p>收集与分享的快乐！如果你能在这里找到对你有用的东西，那太好了！希望我的文章能帮助到你。<br/>——关注互联网，专注CMS建站</p>
+
+						<div class="icons ption_r" id="icons">
+							<ul>
+								<li><a rel="external nofollow" class="about_icon_qq" title="QQ联系" target="_blank"
+									   href="http://www.liushichao.cn">腾讯QQ</a></li>
+								<li><a rel="external nofollow" class="about_icon_xwei" title="新浪微博" target="_blank"
+									   href="http://www.liushichao.cn/">新浪微博</a></li>
+								<li><a rel="external nofollow" class="about_icon_qwei" title="腾讯微博" target="_blank"
+									   href="http://www.liushichao.cn/">腾讯微博</a></li>
+								<li><a class="about_icon_weixin">添加微信</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="box">
+					<h3 class="box_title ption_r mb20 f_l"><span>最新文章</span></h3>
+					<div class="box_content" id="hot">
+						<ul>
+							{:W('Common/new_article')}
+						</ul>
+					</div>
+				</div>
+				{:hook('sidebar')}
+				{:W('Common/archive')}
+				<div class="box">
+					<h3 class="box_title ption_r mb20 f_l"><span>分类</span></h3>
+					<div class="box_content" id="feat">
+						<ul>
+							{:W('Common/cates')}
+						</ul>
+					</div>
+				</div>
+				{:W('Common/tags')}
+				<div class="box" id="widget_tag_cloud">
+					<h3 class="box_title ption_r mb20 f_l"><span>功能</span></h3>
+					<div class="box_content" id="feat">
+						<ul class="widget-list">
+							<if condition="is_login()">
+								<li class="last"><a href="{:U('/Admin')}">进入后台 (admin)</a></li>
+								<li><a class="exit" href="{:U('/Admin/Public/logout')}">登出</a></li>
+								<else/>
+								<li><a href="{:U('/Admin/Public/login')}">登录</a></li>
+							</if>
+							<li><a href="/feed">文章 RSS</a></li>
+							<li><a href="http://www.onethink.cn">onethink</a></li>
+						</ul>
+					</div>
+					<div class="footer">
+						<p class="footer_wline">Powered by Wordpress. <a>Theme by <strong>Javin</strong></a>.</p>
+						<p>Copyright &copy; 2012-2014 <a class="f_w" href="http://www.liushichao.cn/" title="关注互联网，专注CMS建站！">Liushichao</a></p>
+						<p>All Rights Reserved.</p>
+						<p>浙ICP备06013870号-1</p>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<script type="text/javascript">
+			var url = window.location.pathname + window.location.search;
+				url = url.replace(/(\/(p)\/\d+)|(&p=\d+)|(\/(id)\/\d+)|(&id=\d+)|(\/(group)\/\d+)|(&group=\d+)/, "");
+			(function(){
+				var ThinkPHP = window.Think = {
+					"ROOT"   : "__ROOT__", //当前网站地址
+					"APP"    : "__APP__", //当前项目地址
+					"PUBLIC" : "__PUBLIC__", //项目公共目录地址
+					"DEEP"   : "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
+					"MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
+					"VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+				}
+			})();
+			$(function(){
+				// tag
+				$(".wp-tag-cloud li a").css({'opacity':'.6'})
+				$(".wp-tag-cloud li a").hover(
+					function() {
+					   $(this).stop().fadeTo(300, 1);
+					},
+					function() {
+					   $(this).stop().fadeTo(300, .6);
+					}
+				);
+				$('#searchform').submit(function(){
+					var url = '/search/'+ $('#searchform input[name="kw"]').val();
+					location.href = url;
+					return false;
+				});
+			})
+		</script>
+	</body>
+</html>

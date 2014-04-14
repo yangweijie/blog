@@ -1,0 +1,16 @@
+name: jaylabs
+version: 1
+handle:
+- compress: if ( out_header["Content-type"] ~ "text/css" ) compress
+- compress: if ( out_header["Content-type"] ~ "text/javascript" ) compress
+- compress: if ( out_header["Content-type"] ~ "text/html" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/octet-stream" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/jpeg" ) compress
+- compress: if ( out_header["Content-type"] ~ "text/plain" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/jpeg" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/png" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/gif" ) compress
+- compress: if ( out_header["Content-type"] ~ "image/bmp" ) compress
+- compress: if ( out_header["Content-type"] ~ "application/x-shockwave-flash" ) compress
+
+- rewrite:  if(!is_dir() && !is_file()) goto "index.php?%{QUERY_STRING}"

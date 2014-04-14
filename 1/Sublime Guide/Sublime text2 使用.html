@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sublime text2 使用</title>
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap-responsive.css"/>
+  <link rel="stylesheet" type="text/css" href="./css/facebox.css"/>
+  <link rel="stylesheet" type="text/css" href="css/doc.css"/>
+  <script src="js/modernizr.custom.79639.js"></script>
+</head>
+<body>
+  <div id="container" class="container">
+    <div class="menu-panel">
+      <h3>教程目录</h3>
+      <ul id="menu-toc" class="menu-toc J_Menu">
+      </ul>
+    </div>
+
+    <div class="bb-custom-wrapper">
+      <div id="bb-bookblock" class="bb-bookblock">
+        
+<div class="bb-item">
+   <div class="content  J_Content">
+       <div class="scroller">
+<h2>什么是Sublime Text2</h2>
+<p><img alt="Sublime Text2" src="http://docs.sublimetext.tw/images/sublime-text-cover.png" /></p>
+<p>Sublime Text 是一款非常优秀的跨平台编辑器，拥有漂亮的用户界面和强大的功能，例如代码缩略图，多重选择，快捷命令等。还可自定义键绑定，菜单和工具栏。Sublime Text 的主要功能包括：拼写检查，书签，完整的 Python API ，Goto 功能，即时项目切换，多选择，多窗口等等。</p>
+<p>另外，Sublime Text 插件众多，通过包管理工具可以方便安装和管理
+<a href="http://www.sublimetext.com">Sublime Text</a>是一个用于写代码和散文的文本编辑器。它免去了许多重复的任务,这样你就能专注于你的工作。使用它很有趣!</p>
+<p>Sublime Text是一个非常容易扩展和定制化的编辑器。它的许多事情开箱即用，但是如果你花一些时间修理它适应你的需要，它会给你超强的能力。</p>
+<p>Sublime Text对于程序员来说无疑是个多功能的工具，但是你也可以不用它，甚至配置它使其成为你写作的完美工具。如果你是一个黑客，然而你会愿意花一整天玩弄这个编辑器。</p>
+<p>个人非常同意“<a href="http://web.cutt.com/article/topic/3288574/1451069175">究竟什么是开发人员眼中最好的代码编辑器？</a>”里的观点,Sublime Text是能够堪比Vim的神器，既有快捷键的高效，又有平易近人的美丽界面。并且它的定制灵活，一切皆可配置。符合linux核心思想，由多个小命令组成。</p>
+       </div>
+   </div>
+</div>
+
+<div class="bb-item">
+   <div class="content  J_Content">
+       <div class="scroller">
+<h2>如何安装</h2>
+<p><a href="http://www.sublimetext.com">官网</a></p>
+<p><a href="http://shenyongsi.cn">国人汉化绿色版</a></p>
+<p><a href="http://qianduanblog.com/1887.html">Sublime text3 的安装和汉化</a></p>
+<p>linux下安装可以@<a href="930664@qq.com">朱亚杰</a> 
+或看这篇文章<a href="http://code-tech.diandian.com/post/2012-11-29/40043724758">《在 Ubuntu 12 下安装 Sublime Text 2》</a></p>
+<p>linux输入法问题可以看这两篇：<a href="http://code-tech.diandian.com/post/2012-11-14/40042622351">Ubuntu 下Sublime Text 2 输入中文解决方法</a>、<a href="sublime text 中文输入解决完整步骤">sublime text 中文输入解决完整步骤</a></p>
+<p>mac下安装可以@<a href="917647288@qq.com">杨维杰</a></p>
+<p><a href="http://code-tech.diandian.com/post/2012-10-15/40039775371">在Sublime Text2中设置python的第三方库路径</a></p>
+       </div>
+   </div>
+</div>
+
+<div class="bb-item">
+   <div class="content  J_Content">
+       <div class="scroller">
+<h2>主要的功能</h2>
+<p><strong><a href="http://baelabs.duapp.com/Sublime/column_selection.html">列选择</a></strong></p>
+<p>列选择可以用来选择一个文件中的矩形区域。 </p>
+<p>列选择不通过一个单独的模式运作，而是使用多重选择。</p>
+<p>你可以添加选取来选择文本的多个代码块或者减少选取去掉一个代码块。 </p>
+<p><strong><a href="http://baelabs.duapp.com/Sublime/multiple_selection_with_the_keyboard.html">用键盘多重选择</a></strong></p>
+<p><a style="padding:0; margin:0; font-size:0;" target="_blank" title="Screencast: Quick Demo of Multi-Selection" href="http://www.screencast-o-matic.com/watch/cXj0Fr3TV">
+    <div style="width:320px; height:365px; background:url(http://www.screencast-o-matic.com/images/embed_overlay.png); position: absolute;">
+    </div>
+    <div style="width:320px; height:365px; text-align:center; background:black;">
+            <img alt="[Screencast: Quick Demo of Multi-Selection]" title="Screencast: Quick Demo of Multi-Selection" src="http://data.screencast-o-matic.com/IJU/2011/08/23/18/21/cXj0Fr3TV/preview.jpg" style="width:320px; height:365px;">
+    </div>
+</a></p>
+<p><strong><a href="http://baelabs.duapp.com/Sublime/auto_complete.html">自动完成</a></strong></p>
+<p>当你键入完一个键时自动完成会显示可完成的列表，因此你可以只敲几个键完成一些个长的单词。 它在源码和html代码中是默认启用的(但只会在键入 &lt; 字符后起作用)。</p>
+<p><strong><a href="http://baelabs.duapp.com/Sublime/tab_completion.html">Tab完成</a></strong></p>
+<p>Tab完成允许通过按tab键快速的完成单词。当启用时按下tab编辑器会使用它的模糊匹配算法展开光标左侧的文本成最佳匹配项。</p>
+<p>Tab完成默认是启用的。 </p>
+<p><strong><a href="http://baelabs.duapp.com/Sublime/distraction_free.html">自由模式（沉浸模式）</a></strong></p>
+<p><strong><a href="http://baelabs.duapp.com/Sublime/vintage.html">复古模式</a></strong></p>
+<p><strong>热保存</strong></p>
+<p>Sublime中，打开的文件会自动备份一份，当你编辑后即使没有保存，关闭它后，再打开原来的打开的标签仍然存在，这样就不怕失误关闭按Sublime或者停电导致的文件新增丢失了。</p>
+<p><strong>即时的文件切换</strong></p>
+<p>按下 <code>Command + P</code>(Mac) 或是 <code>Ctrl + P</code>(Windows)，输入想要切换到的文件的文件名，都不用按下回车键，目标文件就已经展现在眼前了，虽然 Vim 配合 PeepOpen 也可以实现同样的功能，但速度却远没有这么迅速。
+随心所欲的跳转</p>
+<p><code>Ctrl+P</code> 之所以被叫做 Goto Anything 并不是虚名：</p>
+<pre><code>用 Ctrl+P 可以快速跳转到当前项目中的任意文件，可进行关键词匹配。
+用 Ctrl+P 后 @ (或是Ctrl+R)可以快速列出/跳转到某个函数（很爽的是在 markdown 当中是匹配到标题，而且还是带缩进的！）。
+用 Ctrl+P 后 # 可以在当前文件中进行搜索。
+用 Ctrl+P 后 : (或是Ctrl+G)加上数字可以跳转到相应的行。
+而更酷的是你可以用 Ctrl+P 加上一些关键词跳转到某个文件同时加上 @ 来列出/跳转到目标文件中的某个函数，或是同时加上 # 来在目标文件中进行搜索，或是同时加上 : 和数字来跳转到目标文件中相应的行。
+</code></pre>
+<p><strong><a href="http://baelabs.duapp.com/Sublime/projects.html">项目</a></strong></p>
+<p>Sublime Text 2中的项目是由2个文件构成: sublime-project文件， 它包含了项目定义；还有sublime-workspace文件,它包含了用户指定的数据比如打开的文件以及它们的每个修改之处。</p>
+<p>按照惯例，sublime-project文件会被迁入到版本控制中，而sublime-workspace文件则不会。 </p>
+       </div>
+   </div>
+</div>
+
+<div class="bb-item">
+   <div class="content  J_Content">
+       <div class="scroller">
+<h2>目录结构</h2>
+<pre><code>C:\PROGRAM FILES\SUBLIMETEXT 2
+│  bz2.pyd
+│  Microsoft.VC90.CRT.manifest
+│  msvcp90.dll
+│  msvcr90.dll
+│  PackageSetup.py
+│  PackageSetup.pyc
+│  pyexpat.pyd
+│  python26.dll
+│  python26.zip         `绿色win版带的python版本 linux会用系统的`
+│  select.pyd
+│  sublime_plugin.py
+│  sublime_plugin.pyc
+│  sublime_text.exe
+│  unicodedata.pyd
+│  _ctypes.pyd
+│  _elementtree.pyd
+│  _hashlib.pyd
+│  _socket.pyd
+│  _ssl.pyd
+├─Data                  `用户数据目录`
+│  │  KEEPME
+│  ├─Installed Packages `安装的插件`
+│  │      Emmet.sublime-package
+│  ├─Packages           `默认绿色版插件目录`
+│  │  ├─AAAPackageDev
+│  │  ├─Abacus  
+│  │  ├─ActionScript
+│  │  ├─Alignment       
+│  │  ├─AppleScript  
+│  │  ├─ASP    
+│  │  ├─Batch File    
+│  │  ├─BracketHighlighter`选中高亮插件`              
+│  │  ├─C#
+│  │  ├─C++
+│  │  ├─Clojure     
+│  │  ├─Color Scheme - Default `配色方案`
+│  │  ├─ColorPicker         `拾色器`  
+│  │  ├─CSS      
+│  │  ├─D     
+│  │  ├─default             `系统默认包目录，有菜单和快捷键及配置文件`   
+│  │  ├─Diff   
+│  │  ├─Edit History   
+│  │  ├─Emmet     
+│  │  ├─EncodingHelper
+│  │  ├─Erlang
+│  │  ├─ExportHtml            
+│  │  ├─FindKeyConflicts
+│  │  ├─Gist
+│  │  ├─GitHub Flavored Markdown Preview
+│  │  ├─Go
+│  │  ├─Graphviz
+│  │  ├─Groovy
+│  │  ├─Haskell
+│  │  ├─HTML
+│  │  ├─HTML5
+│  │  ├─Java
+│  │  ├─JavaScript
+│  │  ├─Language - English  `字典`
+│  │  ├─LaTeX
+│  │  ├─Lisp
+│  │  ├─Lua
+│  │  ├─Makefile
+│  │  ├─Markdown
+│  │  ├─Markdown Slideshow        
+│  │  ├─MarkdownEditing
+│  │  ├─Matlab
+│  │  ├─Objective-C   
+│  │  ├─OCaml
+│  │  ├─Package Control      `插件管理器`       
+│  │  ├─Perl      
+│  │  ├─PHP
+│  │  ├─Python
+│  │  ├─PyV8        
+│  │  ├─R
+│  │  ├─Rails
+│  │  ├─Regular Expressions
+│  │  ├─RestructuredText
+│  │  ├─Ruby
+│  │  ├─Scala
+│  │  ├─SideBarEnhancements
+│  │  ├─SmartMarkdown
+│  │  ├─SQL
+│  │  ├─SublimeCodeIntel
+│  │  ├─SublimeLinter
+│  │  ├─SVN
+│  │  ├─TCL
+│  │  ├─Text
+│  │  ├─Textile
+│  │  ├─Theme - Default
+│  │  ├─Theme - Pseudo OSX
+│  │  ├─Theme - Soda
+│  │  ├─Themr                   `主题切换工具`
+│  │  ├─Thinkphp                `Thinkphp插件`
+│  │  ├─User                    `用户定义的文件目录`
+│  │  ├─VAlign
+│  │  ├─View In Browser
+│  │  ├─Vintage
+│  │  ├─WheelChanger
+│  │  ├─XML
+│  │  └─YAML  
+│  ├─Pristine Packages          `初次安装时带的插件安装压缩文件`
+│  │      ActionScript.sublime-package
+│  └─Settings
+│          Auto Save Session.sublime_session
+│          License.sublime_license
+│          Session.sublime_session   
+└─Pristine Packages
+</code></pre>
+<p>各种文件介绍
+插件包里的</p>
+<pre><code>package-metadata.json #存放托管的源码地址信息
+README.rst | README.md#插件介绍
+*sublime-completions  #自动完成
+*.sublime-snippet     #代码片段
+*.sublime-commands    #插件的命令，此文件写过的在有效命令面板中出现
+*.sublime-keymap      #快捷键定义文件 （跨平台所以有各平台的定义文件）
+*.sublime-mousemap    #鼠标组合键定义文件
+*.sublime-menu        #菜单定义文件
+*.tmPreferences       #模板配置文件（待考证）
+*.JSON(语言)-tmLanguage #语法定义文件
+*.sublime-settings  #配置文件
+*.py *.pyc          #py是python执行文件，pyc是同名的文件编译的缓存，改插件记得删除它如果改动不生效
+*.sublime-build     #编译配置文件
+*.tmTheme           #语法配色定义文件
+*.sublime-macro     #宏定义文件
+*.sublime-theme     #主题文件
+
+一些特殊文件，包目录Default目录下
+Side Bar Mount Point.sublime-menu #侧边栏点击目录时右键菜单补充
+Side Bar.sublime-menu             #侧边栏右键菜单
+Main.sublime-menu                 #主界面上的菜单
+Minimap.sublime-settings          #迷你地图的配置文件
+Tab Context.sublime-menu          #打开文件的那个标签的右键菜单
+Widget Context.sublime-menu       #终端界面这种Widget 的右键菜单
+Widget.sublime-settings           #Widget的文件显示面板的设置
+</code></pre>
+       </div>
+   </div>
+</div>
+
+<div class="bb-item">
+   <div class="content  J_Content">
+       <div class="scroller">
+<h2>一些快捷键、技巧</h2>
+<ol>
+<li>
+<p>按住 <code>ctrl</code> 键，鼠标单击就是多重选择。</p>
+</li>
+<li>
+<p><a href="http://baelabs.duapp.com/Sublime/multiple_selection_with_the_keyboard.html">键盘多重选择</a></p>
+</li>
+<li>
+<p>根据选择文本自动添加 ', "",(),[] 匹配。 <br />
+</p>
+</li>
+<li>
+<p>搜索按钮的功能说明 (<a href="http://hi.baidu.com/chaoxinggsc/item/904a471aa937bc35f6625c42">冷风贡献</a>)： <br />
+    <img src="http://e.hiphotos.baidu.com/album/pic/item/77094b36acaf2edd9ffd46a08c1001e93901936e.jpg" /></p>
+</li>
+<li>
+<p><a href="http://www.shuige.org/index.php/2012/09/sublime-text-2%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E7%BF%BB%E5%A2%99%EF%BC%88%E5%85%AC%E5%8F%B8%E5%A2%99%EF%BC%89%E6%96%B9%E6%B3%95">Sublime Text 2使用代理翻墙（公司墙）方法</a></p>
+</li>
+<li>
+<p><a href="http://wangjstu.diandian.com/post/2013-01-13/40046134547">中文乱码问题</a></p>
+</li>
+<li>
+<p><a href="http://www.admin10000.com/document/2129.html">设置 Sublime Text 的 Python 开发环境</a></p>
+</li>
+<li>
+<p>右键支持用sublime2打开</p>
+<pre><code>Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\Sublime2]
+@="Sublime2(&amp;S)"
+
+[HKEY_CLASSES_ROOT\*\shell\Sublime2\command]
+@="\"C:\\Program Files\\Sublime Text\\SublimeText.exe\" -p --remote-tab-silent \"%1\""
+</code></pre>
+</li>
+<li>
+<p>简单通过编译检测php文件错误<br>建立php.sublime-build文件放到自己的User目录中。 Sublime text3 把"cmd"改为"shell_cmd"。</p>
+<pre><code>{
+    "cmd": "php -l $file",
+    "selector": "source.php"
+}
+</code></pre>
+</li>
+<li>
+<p>package control 使用</p>
+<p>10.1 Install 安装插件 Remove 移除插件</p>
+<p>10.2 Discovery 去托管插件的官网找插件</p>
+<p>10.3 Enable 启用插件 Disable 禁用插件</p>
+<p>10.4 List 列出已装插件</p>
+<p>10.5 Upgrade 升级插件</p>
+</li>
+<li>
+<p>命令面板的几乎所有命令 菜单上都能找到,比如打开包目录
+    Preference-&gt;Browser Packages（zh：浏览程序包）</p>
+</li>
+<li>
+<p>插件安装后如何使用，首先去插件目录看readme.md|或者去github主页看介绍;然后在Preference-&gt;Package Settings-&gt;插件名-&gt;里设置配置文件和快捷键绑定</p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2013-02-13/40049595422">sublime text 将2的插件转换为3的插件必备插件 Py2to3 在windows下的使用说明</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-11-16/40042845471">用sublime构建phonegap项目 for mac</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-06-06/40027735364">如何开发Sublime Text2插件</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/page/2?tag=sublime%20text2">如何开发Sublime Text2插件_衍生篇</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-11-10/40041958361">配置Sublime Text使用Markdown，语法高亮,生成HTML</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-11-06/40041962078">Sublime Text 2 &amp;&amp; MinGW G++ On Windows</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-11-01/40041910842">sublime text2 插件 SublimeLinter</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-09-18/40039528495">Sublime Text 2 设置文件详解</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-09-08/40037774758">如何在Sublime Text 2里增加编辑运行java功能</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-09-05/40037348570">Sublime Text 2 - 性感无比的代码编辑器！程序员必备神器！跨平台支持Win/Mac/Linux</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-07-18/40030031821">Sublime Text：初学者不知道的那些事</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-07-14/40029291204">自己编写sublime text 2的snippet扩展包</a></p>
+</li>
+<li>
+<p><a href="http://code-tech.diandian.com/post/2012-05-26/21934082">在 Sublime Text 裡的格式化 PHP 代碼</a></p>
+</li>
+</ol>
+<p><strong>一些快捷键</strong></p>
+<ol>
+<li>Ctrl+L             选择整行（按住-继续选择下行） </li>
+<li>Ctrl+Shift+K(shhift+del)     删除整行，  ctrl + KK 从光标处删之行尾，Ctrl+K Backspace 从光标处删除至行首</li>
+<li>Ctrl+Shift+D       复制光标所在整行，插入在该行之前<br />
+</li>
+<li>Ctrl+D             选词 （按住-继续选择下个相同的字符串，再按，可跳到相应的方法定义处</li>
+<li>Ctrl+Shift+M       选择括号内的内容（按住-继续选择父括号） </li>
+<li>Ctrl+/             注释整行（如已选择内容，同“Ctrl+Shift+/”效果）</li>
+<li>Ctrl + alt + /     取消注释 </li>
+<li>Ctrl+Shift+UP      与上行互换  ctrl + shift + up: 列模式编辑<br />
+</li>
+<li>Ctrl + R           跳转当前页的目标方法</li>
+<li>Ctrl+K + U        大写</li>
+<li>Ctrl+K + L        小写</li>
+<li>鼠标中间           列模式编辑</li>
+<li>Ctrl+Shift+[]     代码折叠</li>
+<li>ctrl+k ctrl+1:    折叠所有代码 </li>
+<li>Ctrl + K,B        打开侧边栏</li>
+<li>ctrl + 回车：　　   光标后插入行，　Ctrl+Shift+Enter 光标前插入行</li>
+<li>ctrl + m:         匹配括号</li>
+<li>vim mode下        查找上一个下一个的快捷键是 是* #</li>
+<li>ctrl +z, y:       撤销，恢复撤销</li>
+<li>alt + .:          闭合当前标签</li>
+<li>Ctrl+F2:          设置书签</li>
+<li>F2:               下一个书签</li>
+<li>Shift+F2:         上一个书签</li>
+<li>ctrl + p:         即时的文件切换</li>
+<li>ctrl + shift + a: 选择标签内的内容 </li>
+<li>ctrl + 单击：      多行随意位置添加光标</li>
+<li>alt + F3( mac: ctrl + command + g): 选择页面中所有相同的词</li>
+<li>ctrl + F3:        跳转到下一个选中的词  <br />
+</li>
+<li>Ctrl+Shift+P Set Syntax:html : 设置文件类型</li>
+<li>Shift + 右键:     连续多行光标选中 (by Gary Gauh)</li>
+</ol>
+       </div>
+   </div>
+</div>
+
+<div class="bb-item">
+   <div class="content  J_Content">
+       <div class="scroller">
+<h2>一些有用的插件</h2>
+<p>插件管理：<a href="http://wbond.net/sublime_packages/package_control/installation">package control</a></p>
+<pre><code>import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
+</code></pre>
+<p>主题切换：<a href="https://github.com/benweier/Themr">Themr</a> <a href="https://github.com/aziz/tmTheme-Editor">tm配色文件生成器</a></p>
+<p>html+js神器：<a href="https://github.com/emmetio/emmet">Emmet</a> 、<a href="http://www.iteye.com/news/27580">Emmet中文文档</a></p>
+<p>版本控制：<a href="http://sublime.wbond.net/svn">SVN</a>、
+<a href="https://github.com/dexbol/sublime-TortoiseSVN">TortoiseSVN</a>、
+<a href="https://github.com/condemil/Gist">gist</a>、
+<a href="https://github.com/kemayo/sublime-text-2-git">git</a></p>
+<p>我们建立html文件时，做有些相同的代码。 这时候我们喜欢能有一个代码模板， 不能写重复相同的代码， gist插件能实现代码模板的功能。 它能见我们自己创建的代码模板，代码片段保持在github中的gist下。 
+<a href="http://lucifr.com/2012/03/07/sublime-text-2-plus-gist-equal-snippet-manager/">这里</a>介绍了详细的用法。</p>
+<p>FTP相关:<a href="http://blog.wpjam.com/article/sublime-text-2-sftp">SFTP</a></p>
+<p>web相关：<a href="http://www.html5cn.org/article-4982-1.html">Web Inspector</a>、
+<a href="http://weslly.github.io/ColorPicker" title="拾色器">ColorPicker</a></p>
+<p>文件管理：<a href="https://github.com/titoBouzout/SideBarEnhancements">SideBarEnhancements</a></p>
+<p>对齐工具:<a href="http://wbond.net/sublime_packages/alignment">Sublime Alignment</a>、
+<a href="https://github.com/jlong64/sublime_valign">Valign</a>、
+<a href="Sublime Alignment">codealignment</a> 只支持win</p>
+<p>快捷键相关：
+<a href="https://github.com/skuroda/FindKeyConflicts">FindKeyConflicts</a>
+<a href="https://github.com/welefen/KeymapManager">KeymapManager</a></p>
+<p><strong>代码相关：</strong></p>
+<p><a href="https://github.com/matiaspub/WheelChanger" title="鼠标滚动增强插件">wheelchange</a></p>
+<p><a href="https://github.com/aaronpowell/sublime-jquery-snippets">jQuery-snippets</a></p>
+<p><img alt="演示" src="http://i.minus.com/itoTuAIBmd4zz.gif" /></p>
+<p>这个插件提供jQuery的提示功能，不过每次提示都需要快捷键ctrl+shift+p上查找，不过如果和CodeIntel插件（下面说到）配合使用能互补不足，因为两个插件都有些jQuery代码缺少。</p>
+<p><a href="https://github.com/kemayo/sublime-text-2-clipboard-history">Clipboard History</a>
+用法：<code>按ctrl+shift+v</code></p>
+<p>演示：
+<img alt="演示" src="http://i.minus.com/ixXpoR85SY7Tv.gif" /></p>
+<p>粘贴板历史记录，方便使用复制/剪切的内容，快捷键<code>ctrl+shift+v</code>可调出该历史记录面板</p>
+<p><a href="https://github.com/Kronuz/SublimeCodeIntel">CodeIntel</a></p>
+<p>演示：
+<img alt="演示" src="http://i.minus.com/izNM5ohTBvVS1.gif" /></p>
+<pre><code>        "codeintel_syntax_map":
+        {
+            "Python Django": "Python",
+            "php": "C:/wamp/bin/php/php5.3.13/php.exe"
+        }
+</code></pre>
+<p>代码自动提示，支持大多数语言，能很好的提示大部分jQuery函数</p>
+<p><a href="http://code-tech.diandian.com/post/2012-07-18/40029369663">SublimeCodeIntel 让sublime跳转到变量定义的地方</a></p>
+<p><a href="http://code-tech.diandian.com/post/2012-07-14/40030879824">给Sublime Text 2安装CTags插件</a></p>
+<p><a href="https://github.com/Kindari/SublimeXdebug">Xdebug</a>
+左家梓使用过有问题可以用它，不过建议用Netbeans自带的</p>
+<p><a href="https://github.com/yangweijie/SublimeThinkPHP" title="Thinkphp框架插件">Thinkphp</a>
+本人编写，实现了读取官方文档列表，采集手册，去除项目（其实是打开目录中）文件的bom头，自动完成，读取项目中数据库配置后读取Thinkphp风格表名的字段显示（目前只支持，mysql，以后会支持其他）,访问在线api等。</p>
+       </div>
+   </div>
+</div>
+
+<div class="bb-item">
+   <div class="content  J_Content">
+       <div class="scroller">
+<h2>参考文献</h2>
+<p>QQ群（193076432）Sublime text</p>
+<p>大城小胖<a href="http://v.youku.com/v_show/id_XMzU5NzQ5ODgw.html">视频介绍</a></p>
+<p><a href="https://github.com/jikeytang/sublime-text">Sublime 新手帮助</a></p>
+<p><a href="http://lucifr.com/2011/08/31/sublime-text-2-tricks-and-tips">Sublime Text入门及技巧</a>
+<a href="http://baelabs.duapp.com/Sublime">Sublime Text 2 文档</a></p>
+<p><a href="http://baelabs.duapp.com/Sublime_unofficial">Sublime Text 非官方文档</a></p>
+<p><a href="http://sublimetext.userecho.com" title="论坛的不实用，作者转移阵地了">Sublime 新版建议区</a></p>
+       </div>
+   </div>
+</div>
+
+
+      </div>
+      <span id="bb-nav-prev" class="page-arrow">&larr;</span>
+      <span id="bb-nav-next" class="page-arrow">&rarr;</span>
+      <span id="tblcontents" class="menu-button tb-btn" title="目录">目录</span>
+      <a id="J_Keyboard" href="#J_KeyBoardDec" class="menu-button keyboard" title="快捷键" rel="keyboard">
+        <img src="images/keyboard.png" width="22" />
+      </a>
+      <div id="J_KeyBoardDec" class="shortcuts">
+        <h4>快捷键说明</h4>
+
+        <div class="columns threecols">
+          <div class="column first">
+            <dl class="keyboard-mappings">
+              <dt>m</dt>
+              <dd>拆合教程目录</dd>
+            </dl>
+            <dl class="keyboard-mappings">
+              <dt>—></dt>
+              <dd>下一页</dd>
+            </dl>
+            <dl class="keyboard-mappings">
+              <dt><—</dt>
+              <dd>上一页</dd>
+            </dl>
+          </div>
+          
+        </div><!-- /.column.first --> 
+      </div><!-- /.columns.equacols --> 
+  </div>
+</div>
+  <!-- /container -->
+  <!-- 代码高亮 START  -->
+
+  <!-- 代码高亮 END  -->
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.plugins.js"></script>
+  <script src="js/facebox.js"></script>
+  <script src="./js/page.js"></script>
+  <script>
+  /* Initialization */
+  function addPrettify() {
+    var els = document.querySelectorAll('pre');
+    for (var i = 0, el; el = els[i]; i++) {
+      if (!el.classList.contains('noprettyprint')) {
+        el.classList.add('prettyprint');
+      }
+    }
+    
+    var el = document.createElement('script');
+    el.type = 'text/javascript';
+    /* el.src = PERMANENT_URL_PREFIX + 'prettify.js'; */ /* ogom commented out */
+    el.src = 'js/prettify.js'; /* ogom added */
+    el.onload = function() {
+      prettyPrint();
+    }
+    document.body.appendChild(el);
+  };
+  $(function(){
+    $('#J_KeyBoardDec').hide();
+    Page.init();
+    addPrettify();
+  })
+  </script>
+</body>
+</html>Ï

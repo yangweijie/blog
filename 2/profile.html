@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Page Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/external.css" />
+	<link rel="stylesheet" href="css/cover.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.0.min.js"></script>
+
+</head>
+
+<body>
+
+
+<div data-role="page">
+
+	<div data-role="header" data-position="fixed" class="ui-nodisc-icon">
+		<h1>编辑个人资料</h1>
+		<a href="#" data-icon="arrow-l" data-iconpos="notext" data-shadow="false" data-rel="back">返回</a>
+        <a href="index.html" data-icon="home" data-iconpos="notext" data-shadow="false">首页</a>
+		<div class="div-line"></div>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p class="p-title mtb1">完善个人资料,填写订单省却输入烦恼</p>
+		<div class="reg-box">
+			<ul>
+				<li class="ui-field-contain">
+					<label for="text-mail">姓名</label>
+					<input name="text-mail" id="text-mail" value="" type="text" placeholder="请输入姓名">
+				</li>
+				<li class="ui-field-contain ui-nodisc-icon ui-alt-icon ui-first-child">
+					<label for="select-choice-2" class="select" >性别</label>
+					<select name="select-choice-2" id="select-choice-2" data-theme="d" data-icon="carat-r" >
+						<option value="adult">男</option>
+						<option value="child">女</option>
+					</select>
+				</li>
+				<li class="ui-field-contain">
+					<label for="text-mail">出生日期</label>
+					<input name="text-mail" id="text-mail" value="" type="text">
+				</li>
+
+				<li class="ui-field-contain ui-nodisc-icon ui-alt-icon ui-first-child">
+					<label for="select-choice-1" class="select" >手机国籍</label>
+					<select name="select-choice-1" id="select-choice-1" data-theme="d" data-icon="carat-r ">
+						<option value="adult">韩国+82</option>
+						<option value="child">中国+86</option>
+					</select>
+				</li>
+				<li class="ui-field-contain">
+					<label for="upw">手机号</label>
+					<input name="tel" id="tel" value="01012345678" type="tel" data-shadow="false">
+				</li>
+				<li class="ui-field-contain">
+					<label for="text-kakao">kakaoTalk ID</label>
+					<input name="text-kakao" id="text-kakao" value="" type="text" placeholder="便于方便沟通">
+				</li>
+				<li class="ui-field-contain">
+					<label for="text-mail">邮箱</label>
+					<input name="text-mail" id="text-mail" value="" type="text">
+				</li>
+			</ul>
+            <p class="add-btn ui-controlgroup-controls"><a href="order.html" data-icon="check" data-role="button">修改完成</a></p>
+
+		</div>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+</body>
+</html>

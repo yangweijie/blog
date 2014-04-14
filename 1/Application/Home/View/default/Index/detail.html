@@ -1,0 +1,20 @@
+<extend name="Index/common"/>
+
+<block name="main">
+	<article class="post">
+        <h1 class="post-title"><a href="__SELF__">{$info.title}</a></h1>
+        <ul class="post-meta">
+            <li>作者：{$info.uid|get_username}</li>
+            <li>时间：发表于 {$info.create_time|date='Y-m-d H:i',###}</li>
+            <li>分类：<a href="{:U('category/'.category_name($info['category_id']))}">{$info.category_id|get_category_title}</a></li>
+        </ul>
+        <div class="post-content">
+            <p>{$info.content}</p>
+        </div>
+        <p class="tags">标签：{$info.id|get_tag}</p>
+    </article>
+
+    {:hook('documentDetailAfter',$info)}
+
+</block>
+
