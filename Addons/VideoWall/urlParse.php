@@ -82,12 +82,10 @@ class urlParse {
 		}
 		if(is_array($data)){
 			if($desc != ''){$data['desc'] = $desc;}
-			if($data['type'] == '' || $data['id'] == '' || $data['title'] == '')
+			if($data['type'] == '' || $data['id'] == '' || $data['img'] == '' || $data['title'] == '')
 			{
 				return array('error'=>'解析的内容不全，请更换网站');
 			}
-			// if($data['img'] == '')
-			// 	$data['img'] = '__ADDONROOT__/static/images/no-cover.png';
 			return $data;
 		}else{
 			return array('error'=>'无法获取地址,请更换一个链接');
