@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>我的视频-记录我想分享的视频</title>
+        <meta name="keywords" content="80后 技术宅 WEB 程序猿 大道至简 " />
+        <meta name="description" content="80后 PHP，JavaScript开发工程师，ThinkPHP核心开发团队成员，OneThink核心开发团队成员。" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" media="(device-height: 568px)" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="format-detection" content="address=no" />
+
+
+        <link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="__STATIC__/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="__STATIC__/bootstrap/js/html5shiv.js"></script>
+        <![endif]-->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+        <![endif]-->
+        <!--[if gte IE 9]><!-->
+        <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.js"></script>
+        <!--<![endif]-->
+        <script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+        <link rel="stylesheet" href="__STATIC__/uploadify/uploadify.css">
+        <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+        <link rel="stylesheet" href="__ADDONROOT__/static/css/style.css">
+        <link rel="stylesheet" media="screen and (max-width: 1410px)" href="__ADDONROOT__/static/css/style-lg.css" />
+        <link rel="stylesheet" media="screen and (max-width: 1080px)" href="__ADDONROOT__/static/css/style-md.css" />
+        <link rel="stylesheet" media="screen and (max-width: 675px)" href="__ADDONROOT__/static/css/style-sm.css" />
+    </head>
+    <body>
+        <div class="modal fade" id="video" tabindex="-1" role="dialog" aria-labelledby="videolLabel" aria-hidden="true" data-backdrop="static">
+        </div>
+        <div class="modal fade" id="player" tabindex="-1" role="dialog" aria-labelledby="videolLabel" aria-hidden="true" data-backdrop="static">
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        </div>
+        <div class="hide" id="loading_tpl">
+            <div class="modal-dialog wt400">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">正从网上获取视频真实地址：</h4>
+                    </div>
+                    <div class="modal-body">
+                        正在解析中...
+                        <div class="progress progress-striped active">
+                            <div class="bar" style="width: 1%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container timeline_wrap">
+            <div class="row above">
+                <div class="span2"></div>
+                <div class="span8">
+                    <h1>我的视频</h1>
+                </div>
+                <div class="span2"></div>
+            </div>
+            <div class="row above">
+                <div class="span2"></div>
+                <div class="span8">
+
+                    <div class="input-prepend input-append">
+                        <a class="btn" id="upload_win_btn" href="javascript:;">
+                            上传
+                            <i class="icon-upload"></i>
+                        </a>
+                        <form class="form-search" id="search_form" action="{:addons_url('VideoWall://VideoWall/parse')}" method="post">
+                            <input type="text" name="url" class="span6" placeholder="请输入来自优酷/土豆/酷六/56/搜狐/新浪视频网站的播放页面地址,注意不是FLASH地址" autocomplete="off" required="required" title="请输入地址后再点解析">
+                            <button class="btn" data-loading-text="正在解析中..." href="javascript:;">
+                                解析
+                                <i class="icon-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="span2"></div>
+            </div>
+            <div class="row">
+                <div class="timeline_nav">
+                    <div class="bs-sidebar affix-top" id="scrollMonths">
+                        <div class="mega-timeline-selector" id="J_MegaTimeLineSelector">
+                            <volist name="months" id="vo">
+                                <ul class="nav mega-timeline-list selected">
+                                    <li>
+                                        <a id="period__{$key}" class="year"><eq name="i" value="1">刚刚<else />{$key}年</eq></a>
+                                    </li>
+                                    <volist name="vo" id="m">
+                                        <li class="month-li">
+                                            <a href="#period_{:date('Y_n', strtotime($m.'01 23:59:00'))}" class="month">{:date('m', strtotime($m.'01'))}月</a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline_wrap_content" id="J_MegaTimelinePosts" data-spy="scroll" data-target="#J_MegaTimeLineSelector" data-offset="210">
+                    <div class="dash_adorn"> </div>
+                    <volist name="months" id="vo">
+                        <div id="period_{$key}">
+                            <volist name="vo" id="m">
+                                <div id="period_{:date('Y_n', strtotime($m.'01 23:59:00'))}">
+                                    <volist name="list[$m]" id="vo">
+                                        <div class="popover right show">
+                                            <div class="arrow"></div>
+                                            <div class="glyphicon glyphicon-record"></div>
+                                            <div class="popover-title">
+                                                <div class="time clearfix">
+                                                    <span class="day">{$vo.create_time|date="d",###}</span>
+                                                    <div class="time-right">
+                                                        <span class="month">{$vo.create_time|date="n",###}月</span>
+                                                        <span class="year">{$vo.create_time|date="Y",###}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="popover-content">
+                                                <div class="media">
+                                                    <a class="pull-left" href="javascript:play({$vo.id});">
+                                                        <img class="media-object" width="290" height="190" src="{$vo.cover}" alt="{$vo.title}">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <p class="media-heading">
+                                                            <a href="javascript:play({$vo.id});">{$vo.title}</a>
+                                                        </p>
+                                                        {$vo.desp}
+                                                        <p>
+                                                            <neq name="is_login" value="0">
+                                                            <a href="{:addons_url('VideoWall://VideoWall/edit?id='.$vo['id'])}" class="edit">编辑</a>
+                                                            <a href="javascript:del({$vo['id']})">删除</a>
+                                                            </neq>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </volist>
+                                </div>
+                            </volist>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var host = '{:U('/', '', '', true)}';
+            var all_videos = {$all_videos};
+            var $video_modal = $('#video');
+            var uploader_url = "{:addons_url('VideoWall://VideoWall/uploader')}";
+            var no_pic = '__ADDONROOT__/static/images/no-cover.png';
+            var uploadify_swf = '__STATIC__/uploadify/uploadify.swf';
+            var uploadify_btn_img = '__ADDONROOT__/static/images/upload.png';
+            var test_url = "{:addons_url('VideoWall://VideoWall/del?id=1')}";
+            var is_login = {$is_login};
+            function del(id){
+                if(confirm('你确定要删除吗？'))
+                    location.href = test_url.replace('1', id);
+            }
+            var config = {
+                "video": {
+                    "type": "video/mp4"
+                },
+                "flash":
+                    {
+                        "player_uri": "/swf/flowplayer-3.2.7.swf",
+                        "need_version": "10,0,0,0",
+                        "autoBuffering": true,
+                        "html_when_no_flash": "<a target=\"_blank\" href=\"http://www.adobe.com/go/getflash\"><img height=\"39\" width=\"158\" src=\"http://www.adobe.com/images/shared/download_buttons/get_adobe_flash_player.png\" alt=\"Get Adobe Flash player\" /></a>"
+                    }
+            };
+
+            //上传视频
+            $("#upload_win_btn").uploadify({
+                "height"          : 31,
+                "swf"             : uploadify_swf,
+                "fileObjName"     : "video_upload",
+                "buttonImage"     : uploadify_btn_img,
+                "formData"        : {
+                    'session_id':'{:session_id()}'
+                },
+                "queueSizeLimit" : 1,
+                "uploader"        : "{:addons_url('VideoWall://VideoWall/uploadVideo')}",
+                "width"           : 70,
+                "removeTimeout"   : 1,
+                "fileTypeExts"    : "*.mp4;",
+                "onInit":function(){
+                    $('#upload_win_btn').addClass('pull-left');
+                },
+                "onUploadStart": function(){
+                    if(!is_login){
+                        alert('请登录后操作');
+                        $('#upload_win_btn').uploadify('cancel');
+                    }
+                },
+                "onFallback" : function() {
+                    alert('未检测到兼容版本的Flash.');
+                },
+                "onUploadSuccess" : uploadVideo
+            });
+            function uploadVideo(file, data){
+                var data = $.parseJSON(data);
+                var src = '';
+                if(data.status){
+                    console.log(data);
+                    $video_modal.on('shown.bs.modal', function (e) {
+                        //绑定上传图片的
+                        upload_cover();
+                        $video_modal.find('[name=video_id]').val(data.id);
+                        src = data.url || '__ROOT__' + data.path;
+                        $video_modal.find('[name=video_url]').val(src);
+                        $(this).find('form').submit(function(){
+                            $(':submit', $(this)).button('loading');
+                            var form = $(this);
+                            $.ajax({
+                                type: "POST",
+                                url: form.attr('action'),
+                                data: form.serialize(),
+                                async: false,
+                                dataType:'json',
+                                success: function(data) {
+                                    if(data.status){
+                                        $(this).modal('hide');
+                                        window.setTimeout(function(){
+                                            location.reload(true);
+                                        }, 1000);
+                                    }else{
+                                        alert(data.info);
+                                    }
+                                    return false;
+                                }
+                            });
+                            return false;
+                        })
+                    }).on('hidden.bs.modal',function(e){
+                        $(this).removeData('bs.modal');
+                    });
+                    $video_modal.modal('show');
+                    $video_modal.load(uploader_url);
+                } else {
+                    alert(data.info);
+                }
+            };
+
+            function upload_cover(){
+                $("#cover_upload").uploadify({
+                    "height"          : 150,
+                    "swf"             : uploadify_swf,
+                    "fileObjName"     : "cover_upload",
+                    "buttonText"      : "电影封面",
+                    "buttonImage"     : no_pic,
+                    "queueSizeLimit" : 1,
+                    "uploader"        : "{:addons_url('VideoWall://VideoWall/uploadPicture')}",
+                    "width"           : 200,
+                    "formData"        : {
+                        'session_id':'{:session_id()}'
+                    },
+                    "removeTimeout"   : 1,
+                    "fileTypeExts"    : "*.jpg; *.png; *.gif;",
+                    "onFallback" : function() {
+                        alert('未检测到兼容版本的Flash.');
+                    },
+                    "onUploadSuccess" : uploadPicture
+                });
+                function uploadPicture(file, data){
+                    console.log(data)
+                    var data = $.parseJSON(data);
+                    if(data.status){
+                       var src = data.url || '__ROOT__' + data.path;
+                        $video_modal.find('[name=cover]').val(src);
+                        $("#cover_upload").uploadify('settings', 'buttonImage', src);
+                    } else {
+                        alert(data.info);
+                    }
+                };
+            }
+
+        </script>
+        <script type="text/javascript" src="__ADDONROOT__/static/js/app.js"></script>
+        {:hook('pageFooter')}
+    </body>
+</html>

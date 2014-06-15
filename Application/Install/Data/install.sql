@@ -715,7 +715,7 @@ CREATE TABLE `onethink_config` (
   `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_name` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=46 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
 -- 转存表中的数据 `onethink_config`
@@ -755,7 +755,8 @@ INSERT INTO `onethink_config` (`id`, `name`, `type`, `title`, `group`, `extra`, 
 (42, 'PICTURE_UPLOAD_DRIVER', 3, '图片上传驱动类型', 4, 'Bcs:Bae-云环境\r\nSae:Sae-Storage\r\nLocal:Local-本地\r\nFtp:Ftp空间\r\nUpyun:有拍云', '需要配置相应的UPLOAD_{driver}_CONFIG 配置 放可使用，不然默认Local本地', 1393073505, 1393073505, 1, 'Sae:Sae-Storage', 0),
 (43, 'UPLOAD_BCS_CONFIG', 3, 'Bae上传配置', 4, '', '', 1393073559, 1393073559, 1, 'AccessKey:3321f2709bffb9b7af32982b1bb3179f\r\nSecretKey:67485cd6f033ffaa0c4872c9936f8207\r\nbucket:jaylab\r\nrename:0', 0),
 (44, 'UPLOAD_SAE_CONFIG', 3, 'Sae上传配置', 4, '', 'sae Domain 配了 用domain ，没配用上传方法的第一个目录', 1393073998, 1393073998, 1, 'domain:123', 0),
-(45, 'UPLOAD_QINIU_CONFIG', 3, '七牛上传配置', 4, '', '', 1393074989, 1393074989, 1, 'accessKey:ODsglZwwjRJNZHAu7vtcEf-zgIxdQAY-QqVrZD\r\nsecrectKey:Z9-RahGtXhKeTUYy9WCnLbQ98ZuZ_paiaoBjByKv\r\nbucket:onethinktest\r\ndomain:onethinktest.u.qiniudn.com\r\ntimeout:3600', 0);
+(45, 'UPLOAD_QINIU_CONFIG', 3, '七牛上传配置', 4, '', '', 1393074989, 1393074989, 1, 'accessKey:ODsglZwwjRJNZHAu7vtcEf-zgIxdQAY-QqVrZD\r\nsecrectKey:Z9-RahGtXhKeTUYy9WCnLbQ98ZuZ_paiaoBjByKv\r\nbucket:onethinktest\r\ndomain:onethinktest.u.qiniudn.com\r\ntimeout:3600', 0),
+(46, 'VERSION', 1, '站点版本', 4, '', '当前博客的版本', 1397351001, 1397956042, 1, '1.00beta', 0);
 
 -- --------------------------------------------------------
 
@@ -1006,7 +1007,7 @@ CREATE TABLE `onethink_menu` (
   `group` varchar(50) DEFAULT '' COMMENT '分组',
   `is_dev` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否仅开发者模式可见',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=139 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=140 ;
 
 --
 -- 转存表中的数据 `onethink_menu`
@@ -1138,7 +1139,8 @@ INSERT INTO `onethink_menu` (`id`, `title`, `pid`, `sort`, `url`, `hide`, `tip`,
 (135, '基本', 134, 0, 'Config/group?id=1', 0, '', '', 0),
 (136, '评论', 134, 0, 'Config/group?id=2', 0, '', '', 0),
 (137, '阅读', 134, 0, 'Config/group?id=3', 0, '', '', 0),
-(138, '站点', 134, 0, 'Config/group?id=4', 0, '', '', 0);
+(138, '站点', 134, 0, 'Config/group?id=4', 0, '', '', 0),
+(139, '在线升级', 1, 0, 'Update/index', 0, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1336,7 +1338,7 @@ INSERT INTO `onethink_timeline` (`id`, `title`, `startDate`, `endDate`, `cover_i
 (21, '响应式Web设计:HTML5和CSS3实战》读书笔记', '2013,9,05', '2013,9,05', 22, 'Jay', '', '<p><span style="color: rgb(99, 112, 125); font-family: Lato, Arial, sans-serif; font-size: 12px; line-height: 15px;  background-color: rgb(236, 240, 241);">响应式设计已经成为web开发所不可或缺的技能</span></p>'),
 (22, '短信 tpcrm系统', '2013,9,13', '2013,9,13', 23, 'Jay', '', '<p>公司的短信crm系统，需求不是很明确，有人接着开发第二办了</p>'),
 (23, 'onethink内容管理框架beta版发布', '2013,9,25', '2013,9,25', 24, 'Jay', '', '<p><span style="color: rgb(50, 50, 50); font-family: &#39;Century Gothic&#39;, &#39;Microsoft yahei&#39;; line-height: 28px;">随着移动互联网浪潮席卷全球，不断催生企业及个人用户积极投入建站的行列，在互联网中展示自己。但建设一个多元化、个人性化的网站需要投入大量的人力和物力成本，让不少人望而却步。为了让WEB应用开发变的更简单，顶想即将推出新的力作OneThink，致力于成为国内领先的内容管理框架。产品缘自顶想公司多年的沉淀和积累，基于最新的ThinkPHP框架和灵活的架构设计，采用了动态化和层次化的文档模型设计理念，是顶想公司厚积薄发之作，无论是博客、门户还是社区，从简单到复杂，WEB应用从此得心应手。</span><br style="color: rgb(50, 50, 50); font-family: &#39;Century Gothic&#39;, &#39;Microsoft yahei&#39;; line-height: 28px; white-space: normal;"/><br style="color: rgb(50, 50, 50); font-family: &#39;Century Gothic&#39;, &#39;Microsoft yahei&#39;; line-height: 28px; white-space: normal;"/><span style="color: rgb(50, 50, 50); font-family: &#39;Century Gothic&#39;, &#39;Microsoft yahei&#39;; line-height: 28px;">OneThink以其便捷的建站、丰富的扩展、灵活的二次开发，以及云服务的支持，为广大个人和企业建站带来新的契机和机遇，即将成为互联网新的弄潮儿。</span></p><p><span style="color: rgb(50, 50, 50); font-family: &#39;Century Gothic&#39;, &#39;Microsoft yahei&#39;; line-height: 28px;"><br/></span></p><p><span style="color: rgb(50, 50, 50); font-family: &#39;Century Gothic&#39;, &#39;Microsoft yahei&#39;; line-height: 28px;">本人负责插件机制的实现。</span></p>'),
-(24, 'jay''s实验室 博客用ot重新开发完成', '2013,10,16', '2013,10,16', 25, 'Jay', '', '<p>\r\n	国庆，用onethink重构了原来博客。\r\n</p>');
+(24, 'jay''s实验室 博客用ot重新开发完成', '2013,10,16', '2013,10,16', 25, 'Jay', '', '<p>\r\n 国庆，用onethink重构了原来博客。\r\n</p>');
 
 -- --------------------------------------------------------
 
@@ -1427,7 +1429,7 @@ CREATE TABLE `onethink_url` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_url` (`url`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='链接表' AUTO_INCREMENT=19 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='链接表' AUTO_INCREMENT=21 ;
 
 --
 -- 转存表中的数据 `onethink_url`
@@ -1451,7 +1453,9 @@ INSERT INTO `onethink_url` (`id`, `url`, `short`, `status`, `create_time`) VALUE
 (15, 'https://github.com/buke/openerp-doc/wiki/reStructuredText%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B', '', 1, 1392732847),
 (16, 'https://github.com/hfcorriez/fig-standards', '', 1, 1392733027),
 (17, 'https://code.google.com/p/pasc2at/wiki/SimplifiedChinese', '', 1, 1392733068),
-(18, 'http://extjs-doc-cn.github.io/ext4api/', '', 1, 1392733189);
+(18, 'http://extjs-doc-cn.github.io/ext4api/', '', 1, 1392733189),
+(19, 'http://jaylabs.sinaapp.com/Sublime/', '', 1, 1393286268),
+(20, 'http://jaylabs.sinaapp.com/Sublime_unofficial/', '', 1, 1393286465);
 
 -- --------------------------------------------------------
 

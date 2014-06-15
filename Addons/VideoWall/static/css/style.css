@@ -1,0 +1,236 @@
+@charset "utf-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "Century Gothic","MicroSoft YaHei","hiragino sans GB","Helvetica Neue",Helvetica,Arial,sans-serif;
+	position: relative;
+	background: #F4F6F8;
+}
+
+.row{
+	margin-left:-15px;
+	margin-right: -15px;
+}
+.above{
+	margin-left:30px;
+	margin-right: 0px;
+}
+.row form{display: inline;}
+.container {
+    width: 1290px!important;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.timeline_nav{
+    float: left;
+    width:215px;
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.bs-sidebar{
+    width: 70px;
+}
+.bs-sidebar.affix-top {
+	position: fixed;
+    top:80px;
+}
+
+/* First level of nav */
+.bs-sidenav {
+    font-size: 14px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top:    10px;
+    padding-bottom: 10px;
+}
+
+.bs-sidebar .bs-sidenav > li{
+    border-right: 6px solid rgb(103, 169, 199);
+    margin-bottom: 2px;
+}
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a {
+    color: rgb(103, 169, 199);
+    display: block;
+    padding:0 5px 0 0;
+    text-align: right;
+}
+.bs-sidebar .nav > li > a:hover,
+.bs-sidebar .nav > li > a:focus {
+    text-decoration: none;
+    background: none;
+}
+
+ul.nav.mega-timeline-list.selected .year{
+    font-size: 20px;
+}
+
+.mega-timeline-list{
+    border-right: 6px solid rgb(43, 133, 174);
+}
+
+.bs-sidebar .bs-sidenav > .active>a{
+    font-size: 20px;
+}
+.bs-sidebar .nav > .active>a {
+    font-weight: bold;
+    color:rgb(43, 133, 174);
+    background-color: transparent;
+    /*border-right: 2px solid rgb(255, 48, 48);*/
+}
+
+/* Nav: second level (shown on .active) */
+.bs-sidebar .nav .nav {
+    display: none; /* Hide by default, but at >768px, show it */
+}
+.bs-sidebar .nav .nav > li > a {
+    padding-top:    3px;
+    padding-bottom: 3px;
+    padding-left: 30px;
+    font-size: 90%;
+}
+
+.bs-sidebar .nav > .active > ul {
+    display: block;
+}
+
+.timeline_wrap{
+    position: relative;
+    z-index: 5;
+    padding-bottom: 60px;
+}
+.dash_adorn {
+    position: absolute;
+    top: -20px;
+    left: 0px;
+    width: 3px;
+    height: 27px;
+}
+.dash_adorn i {
+    display: block;
+    height: 6px;
+    overflow: hidden;
+    margin-bottom: 3px;
+    background-color: #c8c8c8;
+}
+.timeline_wrap_content{
+    background-image: url(../images/bg_tml_spine.png);
+    background-position: 6px top;
+    position: relative;
+    padding-left: 21px;
+    background-repeat: repeat-y;
+    margin-top: 20px;
+    float: left;
+}
+.timeline_wrap_content .popover{
+    position: relative;
+    -moz-box-shadow: 0 1px 1px #d0d0d0;
+    -webkit-box-shadow: 0 1px 1px #d0d0d0;
+    box-shadow: 0 1px 1px #d0d0d0;
+    margin-bottom: 25px;
+    margin-right: 20px;
+    padding-right: 50px;
+    max-width: none;
+    width: auto;
+}
+.media-heading{
+    font-size: 18px;
+}
+.glyphicon {
+	position: relative;
+	top: 1px;
+	display: inline-block;
+	font-family: 'Glyphicons Halflings';
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-record:before {
+	content: "⦿";
+}
+.timeline_wrap_content .popover .glyphicon-record{
+    position: absolute;
+    background-position: -192px -120px;
+    left: -31px;
+    font-size: 20px;
+    color: rgb(103, 169, 199);
+    top: 14px;
+}
+
+.timeline_wrap_content .popover .day {
+    float: left;
+    font-size: 35px;
+    line-height: 35px;
+    color: rgb(103, 169, 199);
+    font-weight: bold;
+    font-family: 'arial';
+    width: 45px;
+}
+.timeline_wrap_content .popover-title{
+    background: none;
+}
+
+.timeline_wrap_content .popover-content .media-body{
+    color: #ababab;
+}
+
+.timeline_wrap_content .popover-content .media-heading a{
+    color:#666;
+}
+
+.timeline_wrap_content .popover .time-right {
+    float: left;
+    width: 36px;
+    color: #ababab;
+}
+.timeline_wrap_content .arrow{top:25px !important;}
+
+.timeline_spine {
+    position: absolute;
+    left: 115px;
+    bottom: 0;
+    top: 0;
+    height: 100%;
+    width: 15px;
+    cursor: none;
+    outline: 0 none;
+}
+#J_MegaTimelinePosts{max-height: 530px;overflow-y: auto;}
+#myModal{
+	width: 700px;
+}
+#myModal .modal-body{
+    max-height:none;
+}
+#video{
+    width:auto;
+}
+#video .modal-body, #player{
+    max-height:100%;
+}
+.input-prepend div{}
+
+.uploadify-button {
+    border-radius:0;
+    background-color: transparent;
+    background-position: 0px -1px;
+    border: none;
+    padding: 0;
+}
+.uploadify:hover .uploadify-button {
+    background-position: 0px -1px;
+    background-color: transparent;
+}
+
+#upload_win_btn-button{background-color: #fff}

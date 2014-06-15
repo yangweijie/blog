@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="__ADDONROOT__/style.css">
+<div id="qrcode_{$addons_count}" class="qrcode"></div>
+<script type="text/javascript" src="__ADDONROOT__/jquery.qrcode.min.js"></script>
+<script type="text/javascript">
+	function utf16to8(str) {
+	    var out, i, len, c;
+	    out = "";
+	    len = str.length;
+	    for(i = 0; i < len; i++) {
+	    c = str.charCodeAt(i);
+	    if ((c >= 0x0001) && (c <= 0x007F)) {
+	        out += str.charAt(i);
+	    } else if (c > 0x07FF) {
+	        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+	        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+	    } else {
+	        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));
+	    }
+	    }
+	    return out;
+	}
+	jQuery(function(){
+		var config = {
+			render 		: !!document.createElement('canvas').getContext ? 'canvas' : 'table',
+			text		: utf16to8('{$addons_config.text}'),
+			width       : {$addons_config.width},     //设置宽度
+			height      : {$addons_config.height},     //设置高度
+			typeNumber  : {$addons_config.typeNumber},      //计算模式
+			correctLevel    : {$addons_config.correctLevel},//纠错等级
+			background      : "{$addons_config.background}",//背景颜色
+			foreground      : "{$addons_config.foreground}" //前景颜色
+		};
+		jQuery('#qrcode_{$addons_count}').qrcode(config);
+	})
+</script>

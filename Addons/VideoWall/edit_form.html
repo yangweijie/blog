@@ -1,0 +1,53 @@
+<div class="modal-dialog wt400">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            待发布的视频
+        </div>
+        <form class="form-horizontal" action="{:addons_url('VideoWall://VideoWall/update')}" method="post">
+            <div class="modal-body">
+                <div class="control-group">
+                    <div class="controls">
+                        <img src="{$cover}" alt="" width="200">
+                        <input type="hidden" name="id" value="{$id}">
+                        <input type="text" name="title" placeholder="标题" required title="请填写视频的标题" value="{$title}">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="desp">描述</label>
+                    <div class="controls">
+                        <textarea name="desp" rows="5" placeholder="描述" required title="请填写视频的描述" style="width:412px;">{$desp}</textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="desp">尺寸</label>
+                    <div class="controls">
+                        <input class="input-medium" type="text" name="width" placeholder="宽度" required title="请填写视频的宽度" value="{$width|default=640}">
+                        X
+                        <input class="input-medium" type="text" name="height" placeholder="高度" required title="请填写视频的高度" value="{$height|default=640}">
+                    </div>
+                </div>
+                <neq name="video_id" value="0">
+                <div class="control-group">
+                    <label class="control-label" for="desp">播放</label>
+                    <div class="controls">
+                        <label class="checkbox inline">
+                            <input type="checkbox" value="1" name="auto" <eq name="auto" value="1">checked </eq>> 自动播放
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" value="1" name="circle" <eq name="circle" value="1">checked </eq>> 循环播放
+                        </label>
+                        <label class="checkbox inline">
+                            <input type="checkbox" value="1" name="preload" <eq name="preload" value="1">checked </eq>> 预加载
+                        </label>
+                    </div>
+                </div>
+                </neq>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-loading-text="正在更新中...">更新</button>
+                <button type="button" class="btn btn" data-dismiss="modal">关闭</button>
+            </div>
+        </form>
+    </div>
+</div>

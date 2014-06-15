@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>SAE Editor</title>
+        <link href="static/css/sae_editor.css?v=5" rel="stylesheet" type="text/css" />
+        <link href="static/codemirror/lib/codemirror.css?v=5" rel="stylesheet" type="text/css" />
+        <link href="static/codemirror/theme/night.css?v=5" rel="stylesheet" type="text/css" />
+        <link href="static/codemirror/theme/cobalt.css?v=5" rel="stylesheet" type="text/css" />
+        <link href="static/jqueryui/css/jquery-ui.css?v=5" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="static/script/jquery.min.js?v=5"></script>
+        <script type="text/javascript" src="static/script/sae_editor.js?v=5"></script>
+        <script type="text/javascript" src="static/jqueryui/jquery-ui.min.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/lib/codemirror.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/mode/css/css.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/mode/javascript/javascript.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/mode/xml/xml.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/mode/clike/clike.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/mode/htmlmixed/htmlmixed.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/mode/php/php.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/mode/yaml/yaml.js?v=5"></script>
+        <script type="text/javascript" src="static/codemirror/mode/python/python.js?v=5"></script>
+        <script type="text/javascript" src="static/script/ajaxfileupload.js?v=5"></script>
+<script type="text/javascript">
+$(function(){
+    $("#select_applist").val('jaylabs');
+    $("#select_versionlist").val('1');
+    sae_glvar.appname = 'jaylabs';
+    getDir('1/','/');
+});
+</script>
+    </head>
+    <body>
+        <div class="topbar"> 
+            <span class="logo"><a href="#"><img src="static/image/sae_editor/logo.gif" width="31" height="31" alt="logo" /></a> </span> 
+            <span class="title">SAE CLOUD EDITOR</span> 
+            <span id="title_appname">APP:<span>jaylabs</span></span> 
+            <span id="title_version">VERSION:<span>1</span></span> 
+            <span id="opmsg" style="margin-left:30px;font-size:12px;"></span> 
+            <span style="float:right;margin-left:10px;">
+               <a href="javascript:void(0);" onclick="logout()" style="color:#FFF;font-size:14px;">注销</a> 
+            </span> 
+            <span class="saveall">
+                <input type="button" class="saveall_btn" value="全部保存" name="saveall" onclick="saveAll()" />
+            </span> 
+            <div class="clr"></div>
+        </div>
+        <div class="ebody" style="">
+            <div class="eleft">
+                <div class="tabbar_bg bodr_r">
+                    <span style="margin-left:5px;">应用</span>
+                    <select id="select_applist" style="width:115px;overflow-x:hidden;">
+                                                <option value="deersite">deersite</option>                
+                                                <option value="gucool">gucool</option>                
+                                                <option value="jaylabs">jaylabs</option>                
+                                                <option value="jdapi">jdapi</option>                
+                                                <option value="jdlog">jdlog</option>                
+                                                <option value="jobdb">jobdb</option>                
+                                                <option value="kuailefeimin">kuailefeimin</option>                
+                                                <option value="lazyphp4">lazyphp4</option>                
+                                            </select>
+                    <select id="select_versionlist">
+                                                <option value="1">1</option>                
+                                                <option value="2">2</option>                
+                                            </select>
+                    <a id="newapplink" href="" target="_blank"></a>
+                </div>
+                <div id="naviarea" class="bodr_r" onselectstart="return false;">
+                    <div class="applistbar bodr_b" style="overflow: hidden;"> 
+                        <div style="width:150px;float:left;overflow:hidden;">
+                            <span style="margin-left:5px;">路径</span>
+                            <span class="applist">
+                                <select name="pathlist" id="pathlist" style="width:115px;overflow-x:hidden;">
+                                <option value="1/">/<option>
+                                </select>
+                            </span>
+                        </div>
+                        <div style="width:60px;float:left;">
+                            <span class="icon" id="createfile_icon" style="margin-left:5px;"><img src="static/image/sae_editor/file_add_icon.gif" width="16" height="17" alt="create file" title="新建文件"/></span> 
+                            <span class="icon" id="createfolder_icon" style="margin-left:5px;"><img src="static/image/sae_editor/folder_add_icon.gif" width="18" height="16" alt="create folder" title="新建文件夹" /></span> 
+                            <span class="icon" id="uploadfile_icon" style="margin-left:5px;"><img src="static/image/sae_editor/file_upload_icon.gif" width="11" height="13" alt="create file" title="上传文件"/></span> 
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                    <div id="filelist">
+                        <div id="selected_bg" class="selected_bg"></div>
+                        <div id="treecontainer">
+                            <ul class="tree" id="filetree">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="eright">
+                <div onselectstart="return false;" class="tabbar_bg">
+                    <div id="show_hide_filelist" class="tabbar_bg bodr_r">《</div>
+                    <div id="prefile" class="tabbar_bg bodr_r">&lt;</div>
+                    <div id="tabbarcontainer" class="tabbarout">
+                        <div id="tabbar" class="tabbar tabbar_bg">
+                            <div class="clr"></div>
+                        </div>
+                    </div>
+                    <div id="nextfile" class="tabbar_bg bodr_l">&gt;</div>
+                    <div class="clr"></div>
+                </div>
+                <div id="codearea" class="codearea"> </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+        <div class="exmenu" id="exmenu">
+            <div class="entry">编辑</div>
+            <div class="entry">下载</div>
+            <div class="entry">重命名</div>
+            <div class="entry selected">通过URL访问</div>
+            <div class="split">
+                <div class="line"></div>
+            </div>
+            <div class="entry">删除</div>
+        </div>
+        <div id="dlg1">
+        </div>
+    </body>
+</html>

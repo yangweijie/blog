@@ -1,0 +1,28 @@
+<?php
+return array(
+	'host'=>array(
+		'title'=>'又拍云服务器:',
+		'type'=>'text',
+		'value'=>'',
+	),
+	'username'=>array(
+		'title'=>'又拍云用户:',
+		'type'=>'text',
+		'value'=>'',
+	),
+	'password'=>array(
+		'title'=>'又拍云密码:',
+		'type'=>'password',
+		'value'=>'',
+	),
+	'bucket'=>array(
+		'title'=>'又拍云空间名称:',
+		'type'=>'text',
+		'value'=>'MovieLog',
+	),
+	'timeout'=>array(
+		'title'=>'又拍云上传超时时间:',
+		'type'=>'text',
+		'value'=>'90',
+	),
+);

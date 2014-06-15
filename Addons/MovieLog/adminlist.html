@@ -1,0 +1,171 @@
+<php>
+	include_once ONETHINK_ADDON_PATH.'MovieLog/function.php';
+	$config = get_addon_config('MovieLog');
+	$static = default_cover();
+</php>
+<link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="__STATIC__/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="__STATIC__/bootstrap/js/html5shiv.js"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.js"></script>
+<!--<![endif]-->
+<style type="text/css">
+	#file_list td.success{
+		color: green;
+	}
+	#file_list td.error{
+		color: red;
+	}
+    #myModal{
+        width: 700px;
+    }
+
+    select, input {margin: 0 !important}
+
+</style>
+<!-- 数据列表 -->
+<table>
+	<thead>
+		<tr>
+			<th width="40">
+				<input class="check-all" type="checkbox">序号
+			</th>
+			<volist name="list_grid" id="vo">
+				<th>{$vo.title}</th>
+			</volist>
+		</tr>
+	</thead>
+	<tbody>
+		<volist name="_list" id="lv" key="vo">
+		<tr>
+			<td><input class="ids" type="checkbox" value="{$lv.id}" name="ids[]">{$lv.id}</td>
+			<volist name="list_grid" id="lk">
+				<td>{:get_addonlist_field($lv, $lk, $name)}</td>
+			</volist>
+		</tr>
+		</volist>
+	</tbody>
+</table>
+
+<div id="btn-group_tpl" class="hidden">
+    <div class="btn-group">
+        <button id="batch_update_btn" class="btn document_add" url="{:addons_url('MovieLog://MovieLog/update_batch')}" data-loading-text="正在更新中...">批量更新简介</button>
+        <button class="btn" href="{:addons_url('MovieLog://MovieLog/file')}" onclick="location.href=$(this).attr('href')">有拍云空间管理</button>
+    </div>
+</div>
+
+<div id="search-form_tpl" class="hidden">
+
+	<div class="sleft">
+		<select name="is_published" class="search-input">
+			<option value="">全部</option>
+			<option value="1">已看</option>
+			<option value="0">未看</option>
+		</select>
+		<input type="text" name="id" class="search-input" value="{:I('id')}" placeholder="请输入电影id">
+<!-- 	</div>
+	<div class="sleft"> -->
+		<input type="text" name="title" class="search-input" value="{:I('title')}" placeholder="请输入关键字">
+		<a class="sch-btn" href="javascript:;" id="search" url="{:U('adminList','name='.$name,false)}"><i class="btn-search"></i></a>
+	</div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        </div>
+<div class="fade hidden" id="loading_tpl">
+    <div class="modal-dialog wt400">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">正在批量更新电影简介中：</h4>
+            </div>
+            <div class="modal-body">
+                <div class="progress progress-striped active">
+                    <div class="bar" style="width: 1%;"></div>
+                </div>
+                <div class="data-table table-striped">
+                    <table id="file_list">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>标题</th>
+                                <th>结果</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var bar = $('#myModal .progress .bar');
+    function process(id, msg){
+        var $btn = $('#batch_update_btn');
+        if(id != 0){
+            var url = $btn.attr('url');
+            $('#myModal .progress .bar').width(function(n,c){
+                return c+5;
+            });
+            $('#file_list tbody').prepend(msg);
+            $.ajax({
+                url: url,
+                data: {id: id},
+                success:function(data){
+                    eval(data);
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    $('#myModal').html('网络出错了');
+                }
+            });
+        }else{
+            $('#myModal .progress .bar').width('670');
+            $('#file_list').before('<p>全部更新完毕</p>');
+            $btn.button('reset');
+        }
+    }
+	$(function(){
+        $('.fl').html($('#btn-group_tpl').html());
+		$('.search-form').html($('#search-form_tpl').html());
+		Think.setValue("is_published", '{$_GET.is_published}');
+		$('a.btn:contains("新 增")').remove();
+        $('img[src*="http://{$config.bucket}"]').error(function(e){
+            this.src = "{$static}";
+        });
+
+        $('#batch_update_btn').click(function(){
+            var url = $(this).attr('url');
+            $('#myModal').html($('#loading_tpl').html());
+            var $btn = $(this);
+            $btn.button('loading');
+            $('#myModal').modal('show');
+            $.ajax({
+                url: url,
+                success:function(data){
+					eval(data);
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    $('#myModal').html('网络出错了');
+                }
+            });
+            $('#myModal').modal('show');
+            return false;
+        });
+
+        $('#myModal').on('shown.bs.modal', function (e) {
+
+        }).on('hidden.bs.modal',function(e){
+            $(this).removeData('bs.modal');
+        });
+    });
+</script>

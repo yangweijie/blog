@@ -1,0 +1,92 @@
+.container {
+    width: 966px !important;
+}
+.coverlines .story{
+    width:240px;
+}
+.coverlines .story img{
+    height: 136px;
+}
+
+.coverlines .thumbnail h2 {
+    font-size: 20px;
+    line-height: 24px;
+    height: 136px;
+}
+
+.page-header .view-hero header h1 {
+    font-size: 52px;
+    line-height: 58px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.page-header .header-overview h1 {
+    font-size: 140px;
+    line-height: 140px;
+}
+.page-header .view-hero header {
+    padding: 80px 100px 60px;
+}
+
+.article-content {
+    width: 614px;
+    margin-left:0;
+    float: right;
+}
+
+.article-footer .story:nth-of-type(4){
+    display: none;
+}
+.timeline_wrap_content .popover{
+    width: 700px;
+}
+
+.page-header .author-middle{
+    width: 750px;
+    margin-bottom: 30px;
+}
+.page-header .author-right {
+    width: auto;
+    padding-left: 255px;
+    float: none;
+    clear: both;
+}
+.page-header .author{
+    padding: 85px 0 40px;
+}
+.page-header .author .itemize_info_list{
+    margin-top: 0px;
+}
+
+.article-left{
+    float: right;
+    padding: 0 0 0 30px;
+}
+
+.rows-left{
+    width: 629px;
+}
+
+.user-right-widget{
+    display: none;
+}
+
+.user-right-content{
+    width: 701px!important;
+}
+
+.control-label{
+    width: 100px;
+}
+
+.control-text-sm{
+    width: 150px;
+}
+.control-text{
+    width: 600px;
+}
+
+.control-offset{
+    margin-left: 100px;
+}

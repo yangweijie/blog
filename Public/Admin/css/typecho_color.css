@@ -207,9 +207,9 @@ code,pre,.mono {
 }
 
 #top-alert .close{
-	margin-top: 4px;
+	margin-top: 0px;
 	top: initial;
-	font-size: 44px;
+	font-size: 31px;
 }
 
 .popup {

@@ -1,0 +1,308 @@
+body{
+	background-color: #fff;
+	min-height: 715px;
+}
+#mega-header{
+	height:115px;
+	background-color:#fff;
+	position: fixed;
+	width: 100%;
+	top:0px;
+	left:0px;
+	z-index: 100;
+}
+#mega-header-content{
+	height: 75px;
+	background-color: #5C5C5C;
+	overflow: hidden;
+	clear: both;
+}
+div.mega-search{
+	width:200px;
+	height:36px;
+	position:absolute;
+	top:22px;
+	right:16px;
+}
+div.mega-search form{
+	width:200px;
+	height:36px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	background:#DEDEDE url(./archive-search.png) 10px 10px no-repeat scroll;
+}
+div.mega-search form.active{
+	background-color:#fff;
+	background-position:10px -54px;
+}
+div.mega-search form.active input{
+	background-color:#fff;
+}
+div.mega-search .search-text-wrapper{
+	padding:7px 10px 7px 36px;
+}
+div.mega-search input{
+	width:140px;
+	line-height:22px;
+	background-color:#DEDEDE;
+	height:22px;
+	font-size:16px;
+	color:#333;
+	outline:none;
+	border:0px;
+}
+#mega-content{
+	_top : 0px !important;
+	position: relative;
+	padding: 0;
+	margin: 0 auto;
+	z-index: 45;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+.mega-timeline-selector{
+	/*_float: left;*/
+	width: 115px;
+	height: 100%;
+	position: fixed;
+	_position:static;
+	_float:left;
+	left:0;
+	top:115px;
+	margin-top: 3px;
+}
+.mega-timeline-selector ul{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.mega-timeline-selector ul .month-li{
+	display: none;
+}
+.mega-timeline-selector ul.selected .month-li{
+	display: block;
+}
+.mega-timeline-list li{
+	margin-bottom: 1px;
+}
+.mega-timeline-list li a{
+	display: block;
+	padding-right: 8px;
+	color:#ccc;
+	border-right: 3px solid #ccc;
+	text-align: right;
+	height: 18px;
+	line-height:18px;
+	cursor: pointer;
+}
+
+.mega-timeline-list li a.year{
+	border-right: 4px solid #ccc;
+	height: 22px;
+	line-height:22px;
+}
+.mega-timeline-list li a.month{
+	font-size:12px;
+}
+.mega-timeline-list li :hover,
+.mega-timeline-list li.active a{
+	border-right: 3px solid #5C5C5C;
+	color:#5C5C5C;
+}
+.mega-timeline-list li a.year{
+	font-size:14px;
+}
+.mega-timeline-list li a.year:hover,
+.mega-timeline-selector ul.selected .year{
+	border-right: 4px solid #5C5C5C;
+	color:#5C5C5C;
+}
+
+.mega-timeline-posts{
+	margin-left: 115px;
+	padding-left: 15px;
+	height: 100%;
+}
+.mega-timeline-posts h2{
+	font-size: 20px;
+	margin-left:5px;
+	padding-bottom: 8px;
+	color: #5c5c5c;
+	height: 26px;
+	line-height: 26px;
+	padding-right: 20px;
+	clear: both;
+	overflow: hidden;
+}
+
+#J_MegaTimelinePosts{max-height: 530px;overflow-y: auto; overflow-x: hidden;}
+
+.mega-month-posts-list{
+	margin-bottom: 20px;
+}
+.mega-month-posts-list img.cover{
+	height: 125px;
+	vertical-align:middle;
+}
+.mega-month-posts-list .post-inner{
+	text-align: center;
+}
+.mega-month-posts-list .post-li{
+	float: left;
+	margin: 3px;
+}
+.mega-month-posts-list .post-li .post{
+	width: 87px;
+	height: 125px;
+	background: #D8DADD url(./archive_light_bg.png) center center scroll;
+	position: relative;
+	color: #676D72;
+	cursor: pointer;
+	padding: 0;
+	display:block;
+	z-index: 50;
+	text-decoration: none;
+	overflow: hidden;
+}
+.mega-month-posts-list .post-li .post-inner{
+	height: 125px;
+	overflow: hidden;
+}
+.post-icon-audio,.post-icon-video{
+	width: 46px;
+	height: 46px;
+	position: absolute;
+	top: 39px;
+	left: 39px;
+	z-index: 50;
+}
+.mega-month-posts-list .post-li .post-icon-audio{
+	background:url('./archive_audio_icon.png');
+}
+.mega-month-posts-list .post-li .post-icon-video{
+	background: url('./archive_video_icon.png');
+}
+.mega-month-posts-list .post-li .post-title,
+.mega-month-posts-list .post-li .post-title a{
+	color: #74797E;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 14px;
+	padding: 9px 10px 0;
+	word-break: break-all;
+}
+.mega-month-posts-list .post-li .post-content{
+	color: #7D848A;
+	left: 12px;
+	position: relative;
+	top: 3px;
+	width: 105px;
+	word-break: break-all;
+}
+.mega-month-posts-list .post-li .useraudio .post-content,
+.mega-month-posts-list .post-li .audio .post-content,
+.mega-month-posts-list .post-li .video .post-content,
+.mega-month-posts-list .post-li .photo .post-content{
+	left: 0px;
+	top: 0px;
+	width: 87px;
+}
+.mega-month-posts-list .post-li .post-meta{
+	left: -1px;
+	position: absolute;
+	top: -1px;
+	z-index: 101;
+	display:none;
+	width: 87px;
+	height: 127px;
+	background:url(./archive_dark_bg.png) repeat scroll;
+}
+.post-meta div.meta-date {
+	color: white;
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: 50px;
+	text-align: center;
+}
+.post-meta div.meta-notes {
+	text-align: center;
+	color: white;
+}
+
+.mega-month-posts-list .post-li div.post:hover .post-meta{
+	display:block;
+}
+
+.mega-blog-title{
+	font-weight: bold;
+	font-size: 30px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	float: left;
+	margin:20px 0 0 20px;
+	line-height: 30px;
+}
+.mega-blog-title a,
+.mega-blog-title a:link,
+.mega-blog-title a:visited,
+.mega-blog-title a:active {
+	color:#C2C3C4;
+}
+
+.mega-blog-title a:hover {
+	color:#B2B3B4;
+}
+#mega-wrap{background-color:#fff;}
+.mega-month-posts-list .mega-loading div{
+	background:#D8DADD url(./mega-loading.gif) no-repeat center center;
+	width: 87px;
+	height: 125px;
+	position: relative;
+	color: #676D72;
+	padding: 0;
+	display:block;
+	z-index: 50;
+}
+
+.month-count {
+	color: #939393;
+	font-size: 18px;
+	font-weight: 400;
+	margin-top: 2px;
+	float: right;
+}
+
+ol.edui-filter-decimal{
+	padding-left:16px;
+}
+ul.edui-filter-disc{
+	padding-left:14px;
+	list-style: disc;
+}
+
+/*页面样式*/
+.popover{
+    max-width: none !important;
+}
+.modal-body #search_result{
+    width: 656px;
+}
+.modal-body .media-body{
+    width: 346px;
+}
+.modal-body .right{
+    padding-top: 30px;
+}
+.modal-body .btn{
+    border-radius: 14px !important;
+}
+
+.popover .cover_popover{
+    text-align: center;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+#myModal{
+	width: 700px;
+}

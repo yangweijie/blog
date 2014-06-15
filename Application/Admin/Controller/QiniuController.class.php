@@ -8,7 +8,7 @@
 // +----------------------------------------------------------------------
 
 namespace Admin\Controller;
-use Think\QiNiuStorage;
+use Think\Upload\Driver\Qiniu;
 
 /**
  * 七牛扩展类测试控制器

@@ -20,6 +20,7 @@ class AddonsController extends AdminController {
             '已装插件后台'=> D('Addons')->getAdminList(),
         ));
         parent::_initialize();
+        C('TMPL_CACHE_ON',false);
     }
 
     //创建向导首页
@@ -590,7 +591,10 @@ str;
                 $template = $model['template_edit']? $model['template_edit']: '';
             else
                 $template = $model['template_add']? $model['template_add']: '';
-            $this->display($addon->addon_path.$template);
+            if($template)
+                $this->display($addon->addon_path.$template);
+            else
+                $this->display();
         }
     }
 

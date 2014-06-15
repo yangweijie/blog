@@ -1,0 +1,72 @@
+<extend name="Public/base" />
+
+<block name="style">
+	<style>
+	.red{color:red;!important}
+	</style>
+</block>
+
+<block name="body">
+	<script type="text/javascript" src="__JS__/common.js"></script>
+	<style type="text/css">
+	#file_list td.success{
+		color: green;
+	}
+	#file_list td.error{
+		color: red;
+	}
+	</style>
+	<div class="main-title">
+		<h2>手动更新-下载文件({$version})</h2>
+	</div>
+	<!-- 数据列表 -->
+	<div class="data-table table-striped">
+		<table id="file_list">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>文件名</th>
+					<th>下载结果</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+		var top_alert = $('#top-alert');
+	    window.updateAlert = function (text,c) {
+			text = text||'default';
+			c = c||false;
+			if ( c!=false ) {
+	            top_alert.removeClass('alert-error alert-warn alert-info alert-success').addClass(c);
+	        }else{
+	            top_alert.removeClass('alert-error alert-warn alert-info alert-success').addClass('alert-error');
+	        }
+	        if ( text!='default' ) {
+	            top_alert.find('li').html(text);
+				if (top_alert.hasClass('block')) {
+	                top_alert.slideDown(2000);
+				} else {
+					top_alert.addClass('block').slideDown(2000);
+				}
+			} else {
+				if (top_alert.hasClass('block')) {
+					top_alert.removeClass('block').slideUp(2000);
+				}
+			}
+
+		};
+		function showmsg(msg){
+			if(msg !== 1){
+				$('#file_list tbody').append(msg);
+			}else{
+				if($('#file_list tbody td span.error').length){
+					updateAlert('更新文件部分下载失败！，请刷新重新尝试此步骤');
+				}else{
+					updateAlert('更新文件全部下载成功， 请参见<a href="{$readme}" target="_blank">readme.md</a>进行手动升级~','alert-success');
+				}
+			}
+		}
+	</script>
+</block>

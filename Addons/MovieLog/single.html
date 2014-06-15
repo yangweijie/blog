@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link href="__STATIC__/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="__STATIC__/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+        <title>电影记忆-记录每一个看过的影视作品</title>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="__STATIC__/bootstrap/js/html5shiv.js"></script>
+        <![endif]-->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+        <![endif]-->
+        <!--[if gte IE 9]><!-->
+        <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="__STATIC__/bootstrap/js/bootstrap.js"></script>
+        <!--<![endif]-->
+        <link href="__STATIC__/datetimepicker/css/datetimepicker.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="__STATIC__/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="__STATIC__/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+        <link rel="stylesheet" href="__ADDONROOT__/static/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span2"></div>
+                <div class="span8">
+                    <h1>电影记忆</h1>
+                </div>
+                <div class="span2"></div>
+            </div>
+            <div class="row">
+                <div class="span2"></div>
+                <div class="span8">
+                    <form class="form-search" id="search_form" action="{:addons_url('MovieLog://MovieLog/search')}">
+                        <div class="input-append">
+                            <input type="text" name="title" class="span7 search-query" placeholder="请输入你想搜索的电影、动画、电视剧名称" autocomplete="off">
+                            <button class="btn" data-loading-text="正在搜索中..." href="javascript:;">
+                            <i class="icon-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="span2"></div>
+            </div>
+            <div class="row">
+                <div id="mega-wrap">
+                    <div id="mega-content">
+                        <div class="mega-timeline-selector" id="J_MegaTimeLineSelector">
+                            <volist name="months" id="vo">
+                                <ul class="nav mega-timeline-list selected">
+                                    <li>
+                                        <a id="J_Year_{$key}" class="year">{$key}年</a>
+                                    </li>
+                                    <volist name="vo" id="m">
+                                        <li class="month-li">
+                                            <a href="#J_MonthPosts_{$m}" class="month">{:date('m', strtotime($m.'01'))}月</a>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </volist>
+                        </div>
+                        <?php
+                            if(!setlocale(LC_TIME,'zh_CN.UTF-8'))
+                                setlocale(LC_TIME,'chinese.GB2312');
+                        ?>
+                        <div class="mega-timeline-posts" id="J_MegaTimelinePosts" data-spy="scroll" data-target="#J_MegaTimeLineSelector" data-offset="108">
+                            <volist name="list" id="vo">
+                                <h2 id="J_MonthPosts_{$key}" class="mega-posts-title">{:strftime('%Y年 %B', strtotime($key.'01'))}<span class="month-count">{$vo|count}篇记忆</span></h2>
+                                <div class="mega-month-posts-list" id="J_MonthPostsList_201404" style="height: 131px;">
+                                    <volist name="vo" id="day">
+                                    <div class="post-li" title="{$day.title}" src="{$day.images.large|movie_cover}" summary="{$day.summary}">
+                                        <div class="post text">
+                                            <div class="post-inner">
+                                                <img src="{$day.images.small|movie_cover}" alt="{$day.title}" class="cover">
+                                            </div>
+                                            <a class="post-meta" href="javscript:void(0);">
+                                                <div class="meta-date">{$day.ctime|date="Y-m-d",###}</div>
+                                                <div class="meta-notes">{$day.rating}</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    </volist>
+                                </div>
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+        </div>
+        <div class="fade" id="loading_tpl">
+             <div class="modal-dialog wt400">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">通过豆瓣网的搜索结果：</h4>
+                    </div>
+                    <div class="modal-body">
+                        正在搜索中...
+                        <div class="progress progress-striped active">
+                            <div class="bar" style="width: 1%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" charset="utf-8">
+            function ajaxToggle(obj){
+                var uid = {$is_login};
+                if(uid == 0){
+                    alert('请登录后再发布记忆');
+                    return false;
+                }
+                var url = "{:addons_url('MovieLog://MovieLog/update')}";
+                var $this = $(obj);
+                $this.button('loading');
+                $.ajax({
+                    url: url,
+                    data: {id : $this.attr('movie_id'), 'ctime': $this.prev().find('[name=ctime]').val(), 'is_published':1},
+                    type: 'POST',
+                    success:function(data){
+                        $this.button('reset');
+                        if(data.status){
+                            $this.addClass('btn-success');
+                            $this.text('已看');
+                            $this.attr('onclick', 'return false;');
+                            $this.removeAttr('movie_id');
+                            window.setTimeout(function(){
+                                location.reload(true);
+                            },2000);
+                        }else{
+                            alert('更新失败，请稍后尝试或联系网站作者');
+                        }
+                    },error:function(XMLHttpRequest, textStatus, errorThrown){
+                        alert('网络错误');
+                    }
+                });
+            }
+
+            $(function(){
+                //年月的同步展开收起
+                $('#J_MegaTimelinePosts').scroll(function(){
+                    $('#J_MegaTimeLineSelector ul').removeClass('selected');
+                    $('#J_MegaTimeLineSelector ul li.active').parent().addClass('selected');
+                }).trigger('scroll');
+                $('#J_MegaTimeLineSelector ul:first').addClass('selected').find('li:eq(1)').addClass('active');
+
+                //搜索
+                $('#search_form').submit(function(){
+                    var url = $(this).attr('action');
+                    var $search = $(this).find('[name=title]');
+                    var search = $search.val();
+                    search = $.trim(search);
+                    if(search == '')
+                        return false;
+                    $('#myModal').html($('#loading_tpl').html());
+                    var bar = $('#myModal .progress .bar');
+                    var process = setInterval(function(){
+                        bar.width(function(n,c){
+                            return c+10;
+                        });
+                    },1000);
+                    var $btn = $(this).find(':submit');
+                    $btn.button('loading');
+                    $('#myModal').modal('show');
+                    $.ajax({
+                        url: url,
+                        data: {title : search},
+                        success:function(data){
+                            clearInterval(process);
+                            bar.width('670');
+                            $('#myModal').html(data.tpl);
+                            $('#search_list img.media-object').error(function(){
+                                this.src = '__ADDONROOT__/static/movie-default-medium.gif';
+                                this.width = '68';
+                            });
+                            $('.time').datetimepicker({
+                                format: 'yyyy-mm-dd',
+                                language:"zh-CN",
+                                minView:2,
+                                todayBtn: true,
+                                autoclose:true,
+                            });
+                        },
+                        error:function(XMLHttpRequest, textStatus, errorThrown){
+                            $('#myModal').html('网络出错了');
+                        },
+                        complete:function(XMLHttpRequest, textStatus){
+                            $btn.button('reset');
+                        }
+                    });
+                    $('#myModal').modal('show');
+                    return false;
+                });
+
+                $('#myModal').on('shown.bs.modal', function (e) {
+
+                }).on('hidden.bs.modal',function(e){
+                    $(this).removeData('bs.modal');
+                });
+
+                //下方图片墙提示
+                $('#mega-content .post-li').popover({
+                    trigger:'manual',
+                    delay:{show:1000, hide: 1000},
+                    content:function(e){
+                        var src = $(this).attr('src');
+                        var summary = $(this).attr('summary');
+                        return "<div class='cover_popover'><img src='"+src+"'><p>"+summary+"</p></div>";
+                    },
+                    html : true,
+                    title: this.title
+                }).on("mouseover", function () {
+                    var _this = this;
+                    $(this).popover("show");
+                    $(this).siblings(".popover").on("mouseleave", function () {
+                        $(_this).popover('hide');
+                    });
+                }).on("mouseleave", function () {
+                    var _this = this;
+                    setTimeout(function () {
+                        if (!$(".popover:hover").length) {
+                            $(_this).popover("hide")
+                        }
+                    }, 100);
+                });
+
+                //刷新upaiyun图片缓存
+                $('img[src*="http://{$config.bucket}"]').error(function(e){
+                    setTimeout(function () {
+                        var url = "{:addons_url('MovieLog://MovieLog/refreshImg')}";
+                        var _this = this;
+                        this.src = '';
+                        $(this).parents('.post-li').addClass('mega-loading');
+                        $.ajax({
+                            url: url,
+                            data: {file : this.src},
+                            success:function(data){
+                                if(data.status)
+                                    _this.src = _this.src;
+                                $(this).parents('.post-li').removeClass('mega-loading');
+                            }
+                        });
+                    }, 1000);
+
+                });
+            });
+        </script>
+    </body>
+</html>
